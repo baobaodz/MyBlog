@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace是接口的全类名 -->
+<mapper namespace="com.blog.article.model.ArticleMapper">
+
+	<!-- 获取所有类别 -->
+	<select id="getAllCategory" resultType="com.blog.article.dao.Category">
+		SELECT CID,CNAME FROM CATEGORY
+	</select>
+	<!--将文章保存为草稿或者直接发布 -->
+	<insert id="saveToDraft" parameterType="java.util.Map">
+		INSERT INTO 
+		ARTICLE(TITLE,SUMMARY,PTIME,UTIME,CONTENT,CATEGORY_ID,DRAFT) 
+		VALUES
+		(#{title},#{summary},sysdate,sysdate,#{content},#{category_id},#{draft})
+	</insert>
+	<!--查询所有文章列表 -->
+	<select id="queryAllArticle" resultMap="articleResult">
+		<if test="pageNumber==0">
+			SELECT * FROM ARTICLE 
+			<if test="categoryID!=0">
+				WHERE CATEGORY_ID=#{categoryID}
+			</if>
+			ORDER BY PTIME DESC
+		</if>
+		<if test="pageNumber!=0">
+			SELECT * FROM (
+       			SELECT B.*,ROWNUM RN FROM
+          			(SELECT * FROM ARTICLE 
+          			<if test="categoryID!=0">
+          				WHERE CATEGORY_ID = #{categoryID}
+          			</if>
+          			ORDER BY PTIME DESC) B
+      			WHERE ROWNUM&lt;=#{pageNumber}*6
+      			)
+			WHERE RN&gt;(#{pageNumber}-1)*6
+		</if>
+	</select>
+	<resultMap type="com.blog.article.dao.Article" id="articleResult">
+		<result property="title" column="TITLE"/>
+		<result property="summary" column="SUMMARY"/>
+		<result property="ptime" column="PTIME"/>
+		<result property="utime" column="UTIME"/>
+		<result property="category_id" column="CATEGORY_ID"/>
+		<result property="draft" column="DRAFT"/>
+		<result property="content" column="CONTENT" jdbcType="CLOB" javaType="java.lang.String"/>
+	</resultMap>
+	<!--根据文章编号获取该文章 -->
+	<select id="getSpecificArticle" parameterType="int" resultType="com.blog.article.dao.Article">
+		SELECT * FROM ARTICLE WHERE AID = #{aid}
+	</select>
+	<!--最多浏览，显示8条 -->
+	<select id="orderByViewCount" resultType="com.blog.article.dao.Article">
+		SELECT AID,TITLE,PTIME FROM 
+			(SELECT AID,TITLE,PTIME FROM ARTICLE ORDER BY VIEWCOUNT DESC) 
+		WHERE ROWNUM&lt;=8
+	</select>
+	<!--获取文章按月归档 -->
+	<select id="queryArchivesGroupByMonth" resultType="java.util.Map">
+		SELECT TO_CHAR(PTIME,'YYYY-MM') YM,COUNT(*) COUNT 
+		FROM ARTICLE 
+		GROUP BY TO_CHAR(PTIME,'YYYY-MM') 
+		ORDER BY YM DESC
+	</select>
+	<!--查询文章归档 -->
+	<select id="queryArchives" parameterType="String" resultType="java.util.Map">
+		<if test="date.length()!=4">
+			SELECT AID,TITLE,PTIME FROM ARTICLE WHERE TO_CHAR(PTIME,'YYYY-MM')=#{date} ORDER BY PTIME DESC
+		</if>
+		<if test="date.length()==4">
+<!-- 			SELECT TO_CHAR(PTIME,'YYYY-MM') YM,COUNT(*) COUNT FROM( -->
+<!-- 				SELECT * FROM ARTICLE WHERE TO_CHAR(PTIME,'YYYY')=#{date})  -->
+<!-- 			GROUP BY TO_CHAR(PTIME,'YYYY-MM')  -->
+<!-- 			ORDER BY YM DESC -->
+			SELECT M.AID,M.TITLE,M.PTIME,M.VIEWCOUNT,M.YM,M.COUNT,ROWNUM RN FROM (
+				SELECT AID,TITLE,PTIME,VIEWCOUNT,YM,COUNT FROM ARTICLE A INNER JOIN(
+					SELECT TO_CHAR(PTIME,'YYYY-MM') YM,COUNT(1) COUNT 
+					FROM ARTICLE GROUP BY TO_CHAR(PTIME,'YYYY-MM') )C
+				ON C.YM = TO_CHAR(A.PTIME,'YYYY-MM') AND TO_CHAR(PTIME,'YYYY') = #{date} ORDER BY PTIME DESC) M
+		</if>
+	</select>
+	<!--更新操作 -->
+	<update id="updateToDraft" parameterType="java.util.Map">
+		UPDATE ARTICLE SET 
+		TITLE=#{title},SUMMARY=#{summary},UTIME=sysdate,
+		CONTENT=#{content,jdbcType=CLOB},CATEGORY_ID=#{category_id},DRAFT=#{draft} 
+		WHERE AID = #{aid}
+	</update>
+	
+	<!--删除指定文章 -->
+	<delete id="deleteSpecificArticle" parameterType="int">
+		DELETE FROM ARTICLE WHERE AID=#{aid}
+	</delete>
+	
+	<!--一键发布或取消发布文章 -->
+	<update id="publishOrAbolish" parameterType="java.util.Map">
+		UPDATE ARTICLE SET DRAFT = 1-#{draft} WHERE AID = #{aid}
+	</update>
+	<!--更新文章浏览量 -->
+	<update id="increaseViewCount" parameterType="com.blog.article.dao.Article">
+		UPDATE ARTICLE SET VIEWCOUNT = #{viewcount}+1  WHERE AID = #{aid}
+	</update>
+	<!--更新文章赞数 -->
+	<update id="increaseLikeCount" parameterType="com.blog.article.dao.Article">
+		UPDATE ARTICLE SET LIKECOUNT = #{likecount}+1  WHERE AID = #{aid}
+	</update>
+	<!--获取指定aid文章的上一篇和下一篇 -->
+	<select id="previousAndNext" parameterType="int" resultType="com.blog.article.dao.Article">
+	
+		SELECT AID,TITLE,PTIME FROM
+			ARTICLE_ORDERBYTIME
+		WHERE 
+			RN = (SELECT RN FROM ARTICLE_ORDERBYTIME WHERE AID = #{aid}) -1 
+		 OR 
+		 	RN = (SELECT RN FROM ARTICLE_ORDERBYTIME WHERE AID = #{aid}) 
+		 OR
+			RN = (SELECT RN FROM ARTICLE_ORDERBYTIME WHERE AID = #{aid}) +1 
+		ORDER BY RN
+		
+	</select>
+</mapper>
