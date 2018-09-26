@@ -344,6 +344,7 @@
 				</div>
 				<div class="panel-body myarchives">
 					<ul style="padding-left:0px;"></ul>
+					<center><a href="archives.jsp">more</a></center>
 				</div>
 				
 			</div>

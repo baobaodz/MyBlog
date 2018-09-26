@@ -235,3 +235,34 @@ li{
 .datepicker .ui-datepicker-calendar .ui-state-highlight:hover {
   color: #fff;
 }
+
+.panel-group .panel-body p{
+	
+	padding-left:20px;
+}
+.panel-group .panel-body p span{
+	
+	margin-right:15px;
+}
+.panel-group .panel-body p span:nth-child(3){
+	
+	display:inline-block;
+	width:70px;
+	height:inherit;
+	float:right;
+	margin-right:5px;
+}
+
+.panel-group .panel-body p:hover{
+	
+	background-color:#f0f0f0;
+}
+.panel-group .panel-heading .panel-title span{
+	
+	display:inline-block;
+	width:60px;
+	float:right;
+}
+
+
+

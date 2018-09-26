@@ -21,22 +21,24 @@
       	
 		var urlParam = window.location.search;//获取url参数
 		if(urlParam==null||urlParam==""){
-			var data = JSON.stringify({});
-			 
-		}else if(urlParam.indexOf("ym")!=-1){
+			$(".breadcrumb").find("li").eq(3).remove();
+			
+		}else if(urlParam.indexOf("ym")!=-1){//包含年-月
 			var ym = urlParam.substring(4);
 			var data = JSON.stringify({"date":ym});
 			$(".breadcrumb").find("li").eq(2).html("<a href='archives.jsp?y="+ym.substr(0,4)+"'>"+ym.substr(0,4)+"</a>");
 			$(".breadcrumb").find("li").eq(3).html("<a href='#'>"+ym.substr(5)+"</a>");
-		}else{
+			$(".btn-archivesyear").empty();//清空年份按钮节点
+		}else{//只有年份
 			var year = urlParam.substring(3);
 			var data = JSON.stringify({"date":year});
 			$(".breadcrumb").find("li").eq(2).html("<a href='archives.jsp?y="+year+"'>"+year+"</a>");
+			$(".btn-archivesyear").empty();
 		}
 		
 		$(".slide").empty();//清空轮播图div下所有节点
-		$("#cmonth").collapse("hide");
 		getArchivesByDate(data);
+		
 		//根据条件获取文章列表
 		function getArchivesByDate(data){
 			$.ajax({
@@ -47,54 +49,54 @@
      			data:data,
      			success:function(data){
      			
-     		   		$(".panel-group .panel-collapse").empty();
-     		   		if(data[0].VIEWCOUNT==null){
+     		   		$(".panel-group").empty();
+     		   		if(data[0].VIEWCOUNT==null){//年和月份
      		   			$("#cmonth").collapse("show");
      		   			for(var i=0;i<data.length;i++){
-     		   				$("#cmonth .panel-body").append("<p>"+data[i].TITLE+"</p>");
+     		   				var datetime = new Date(data[i].PTIME).toLocaleDateString().substr(7);
+     		   				$("#cmonth .panel-body").append("<p><span>"+datetime+"日</span>&nbsp;<a href='details.jsp?aid="+data[i].AID+"'>"+data[i].TITLE+"</a><span>&nbsp;</span></p>");
      		   			}
-     		   		}else{
+     		   		}else{//年
      		   			for(var i=0;i<data.length-1;i++){
      		   				if(data[i+1].YM!=data[i].YM){
      		   					$(".panel-group").append("<div class='panel panel-default'>"+
      		   						"<div class='panel-heading'>"+
-     		   							"<h4 class='panel-title'>"+
-     		   								"<a data-toggle='collapse' data-parent='#accordion' data-target='#c"+data[i].YM+"'>"+data[i].YM+"</a>"+
+     		   							"<h4 class='panel-title t"+data[i].YM+"'>"+
+     		   								"<a data-toggle='collapse' data-parent='#accordion' data-target='#c"+data[i].YM+"'><i class='fa fa-angle-double-down'></i> "+data[i].YM+"</a>"+
      		   							"</h4>"+
             						"</div>"+
        					 			"<div id='c"+data[i].YM+"' class='panel-collapse collapse in "+i+"'>"+
        					 				"<div class='panel-body'></div>"+
     								"</div>");
+    							$(".t"+data[i].YM).append("<span>"+data[i].COUNT+" items</span>");//显示每个月多少篇
     							$("#c"+data[i].YM).collapse("hide");
     							for(var j=data[i].RN-1;j>data[i].RN-1-data[i].COUNT;j--){
-    								$(".panel-group #c"+data[i].YM+" .panel-body").append("<p>"+data[j].TITLE+"</p>");
+    								var datetime = new Date(data[j].PTIME).toLocaleDateString().substr(5);
+    								$(".panel-group #c"+data[i].YM+" .panel-body").append("<p><span>"+datetime+"</span><span><a href='details.jsp?aid="+data[j].AID+"'>"+data[j].TITLE+"</a></span><span>阅读&nbsp;("+data[j].VIEWCOUNT+")</span></p>");
     							}
      		   				
      		   				}
      		   			}
+     		   			//追加最后一个月
      		   			$(".panel-group").append("<div class='panel panel-default'>"+
      		   					"<div class='panel-heading'>"+
-     		   						"<h4 class='panel-title'>"+
-     		   							"<a data-toggle='collapse' data-parent='#accordion' data-target='#c"+data[data.length-1].YM+"'>"+data[data.length-1].YM+"</a>"+
+     		   						"<h4 class='panel-title t"+data[i].YM+"'>"+
+     		   							"<a data-toggle='collapse' data-parent='#accordion' data-target='#c"+data[data.length-1].YM+"'><i class='fa fa-angle-double-down'></i> "+data[data.length-1].YM+"</a>"+
      		   						"</h4>"+
             					"</div>"+
        					 		"<div id='c"+data[data.length-1].YM+"' class='panel-collapse collapse in "+i+"'>"+
        					 			"<div class='panel-body'></div>"+
     							"</div>");
-    						$("#c"+data[data.length-1].YM).collapse("hide");
-     		   				for(var j=data[data.length-1].RN-1;j>data[data.length-1].RN-1-data[data.length-1].COUNT;j--){
-    								$(".panel-group #c"+data[data.length-1].YM+" .panel-body").append("<p>"+data[j].TITLE+"</p>");
-    						}
-     		   			
+    					$(".t"+data[i].YM).append("<span>"+data[i].COUNT+" items</span>");
+    					$("#c"+data[data.length-1].YM).collapse("hide");
+     		   			for(var j=data[data.length-1].RN-1;j>data[data.length-1].RN-1-data[data.length-1].COUNT;j--){
+     		   				var datetime = new Date(data[j].PTIME).toLocaleDateString().substr(5);
+    						$(".panel-group #c"+data[data.length-1].YM+" .panel-body").append("<p><span>"+datetime+"</span><a href='details.jsp?aid="+data[j].AID+"'>"+data[j].TITLE+"</a><span>阅读&nbsp;("+data[j].VIEWCOUNT+")</span></p>");
+    					}
      		   		}
-     		  
 				}
-			
 			}); 
-		
 		}
-		
-		loadMostViewCount();//加载右侧最多浏览
 		
 		//通过枚举类型来定义，不需要从后台获取，缺点就是非动态
 		function getCategoryName(cid){
@@ -114,7 +116,7 @@
 			}
 						
 		}
-		//加载最多浏览
+		loadMostViewCount();//加载右侧最多浏览
 		function loadMostViewCount(){
 			$.ajax({
 				url: "<%=request.getContextPath()%>/orderByViewCount",
@@ -134,6 +136,14 @@
     		prevText: '<i class="fa fa-fw fa-angle-left"></i>',
     		nextText: '<i class="fa fa-fw fa-angle-right"></i>'
  		});
+ 		//年份按钮点击事件
+ 		$(".archivesyear").click(function(){
+ 			var y = $(this).text();
+ 			var data = JSON.stringify({"date":y});
+ 			$(".breadcrumb").find("li").eq(2).html("<a href='archives.jsp?y="+y+"'>"+y+"</a>");
+ 			getArchivesByDate(data);
+ 			
+ 		})
  		
 	});
 	
@@ -196,7 +206,7 @@
 			<div class="col-md-12 column" style="padding-right:0px;">
 				<ol class="breadcrumb">
     					<li><a href="index.jsp"><i class="fas fa-file-signature"></i> 文章 </a></li>
-    					<li><a href="#">归档</a></li>
+    					<li><a href="archives.jsp">归档</a></li>
     					<li></li>
     					<li></li>
 				</ol>
@@ -237,14 +247,17 @@
 				</div>
 			<!--归档列表 -->
 			<div class="con" style="margin-top:10px;">
+				<div class="btn-archivesyear">
+					<button class="btn btn-default archivesyear"><a>2018</a></button>
+					<button class="btn btn-default archivesyear"><a>2017</a></button>
+				</div>
+            	<hr>
 				<div class="panel-group" id="accordion">
 					
 				</div>
 				<div id="cmonth" class="panel-collapse collapse in">
             		<div class="panel-body" style="background-color:white;"></div>
                 </div>
-            
-        
 			</div>
 			<!--bootstrap分页 -->
 			<div class="confoot" style="width:100%; text-align:center;">
