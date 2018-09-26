@@ -194,8 +194,9 @@
 								})
 							})
 						</script>
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="#">Link</a></li>
+						<ul class="nav navbar-nav navbar-right" style="margin-right:2px;">
+							<li><a href="archives.jsp">归档</a></li>
+							<li><a href="#">关于</a></li>
 						</ul>
 					</div>
 				

@@ -144,8 +144,8 @@ public class Article {
 		this.ptime = ptime;
 	}
 	public Article(String title, String summary, Date ptime, Date utime,
-			String content, int category_id, short draft, int likecount,
-			int viewcount) {
+			String content, int category_id, short draft, 
+			int viewcount,int likecount) {
 		super();
 		this.title = title;
 		this.summary = summary;

@@ -56,7 +56,7 @@
      			 $(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px'><h3><a href='details.jsp?aid="+data[i].aid+"' class='toview'>"+data[i].title
      			 +"</a></h3><span class='glyphicon glyphicon-time'>&nbsp;</span><span>"+new Date(data[i].ptime).toLocaleString()
      			 +"</span><br/><p>简介："+data[i].summary
-     			 +"</p><span><a class='btn' href='details.jsp?aid="+data[i].aid+"'>View details »</a></span></li>");
+     			 +"</p><p style='height:1.3em;'><span style='display:inline-block;float:left;'><i class='fa fa-eye'></i>("+data[i].viewcount+")&nbsp;&nbsp;<i class='far fa-heart'></i>("+data[i].likecount+")</span><span style='display:inline-block;float:right;'><a class='btn' href='details.jsp?aid="+data[i].aid+"'>View details »</a></span></p></li>");
 			   		
 			   }
 			   
@@ -158,6 +158,14 @@
     		prevText: '<i class="fa fa-fw fa-angle-left"></i>',
     		nextText: '<i class="fa fa-fw fa-angle-right"></i>'
  		});
+ 		//搜素框焦点事件 
+ 		$(".search-input").focus(function(){
+			$(this).width(150);//避免第一次没有效果
+			$(this).width(200);
+		})
+		$(".search-input").blur(function(){
+			$(this).width(150);
+		})
 	
 	})
 	
@@ -196,20 +204,10 @@
 							</div> 
 						
 						</form>
-						<!--搜素框焦点事件 -->
-						<script type="text/javascript">
-							$(function(){
-								$(".search-input").focus(function(){
-									$(this).width(150);//避免第一次没有效果
-									$(this).width(200);
-								})
-								$(".search-input").blur(function(){
-									$(this).width(150);
-								})
-							})
-						</script>
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="#">Link</a></li>
+						
+						<ul class="nav navbar-nav navbar-right" style="margin-right:2px;">
+							<li><a href="archives.jsp">归档</a></li>
+							<li><a href="#">关于</a></li>
 						</ul>
 					</div>
 				

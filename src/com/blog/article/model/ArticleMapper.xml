@@ -45,6 +45,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="utime" column="UTIME"/>
 		<result property="category_id" column="CATEGORY_ID"/>
 		<result property="draft" column="DRAFT"/>
+		<result property="viewcount" column="VIEWCOUNT"/>
+		<result property="likecount" column="LIKECOUNT"/>
 		<result property="content" column="CONTENT" jdbcType="CLOB" javaType="java.lang.String"/>
 	</resultMap>
 	<!--根据文章编号获取该文章 -->
