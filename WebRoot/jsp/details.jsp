@@ -123,6 +123,7 @@
 								getCategoryName(data);//面包屑导航获取文章类别名
 								increaseViewCount(data);//增加浏览量并显示
 								markdownToHtml(data);//Markdown转html把data传过去
+								getArticleWords();//获取全文字数和阅读时间
 								previousAndNext();//获取上下篇
 								showCatalogue();//加载右侧目录
 								
@@ -152,10 +153,10 @@
 							$("#blogcontainer").html("<textarea id='textHtml' style='display:none;'></textarea>");
 							
 							$("#blogcontainer").append("<h2 id='testH' style='text-align:center'>"+data.title+"</h2>");
-							$("#blogcontainer").append("<center><ul class='info'><li><i class='fas fa-calendar-check'></i> 发表于&nbsp;"
+							$("#blogcontainer").append("<center class='center-info'><p class='info'><span><i class='fas fa-calendar-check'></i> 发表于&nbsp;"
 							+ new Date(data.ptime).toLocaleDateString()
-							+ "</li><li>|</li><li><i class='fas fa-eye'></i>&nbsp;浏览&nbsp;"+data.viewcount+"</li><li>|</li><li><i class='far fa-heart'></i>&nbsp;喜欢 "+data.likecount+"</li></ul></center>");
-							
+							+ "</span><span>|</span><span><i class='fas fa-eye'></i>&nbsp;浏览&nbsp;"+data.viewcount+"</span><span>|</span><span><i class='far fa-heart'></i>&nbsp;喜欢 "+data.likecount+"</span></p></center>");
+							$("#blogcontainer").append("<p class='note'></p>");
 							$("#textHtml").append(data.content);
 							$(".favorite").append(data.likecount);
 							//开始对div转换
@@ -190,6 +191,36 @@
 						
 						}
 						
+						//获取全文字数和阅读时间
+						function getArticleWords(){
+							var container = $("#blogcontainer").text();
+							
+							var regEnglish = /\b\w+\b/g;//英文单词正则全局匹配
+							var regChinese = /[\u4e00-\u9fa5]/g;//汉字正则全局匹配
+							var containerEnglishWords = container.match(regEnglish);
+							var containerChineseWords = container.match(regChinese);
+							var title = $("#blogcontainer h2").text();
+							var info = $("#blogcontainer .info").text();
+							//标题中英文(不一定有英文)
+							var titleEnglishWords=[],titleChineseWords=[];
+							title.match(regEnglish)==null?titleEnglishWords.length = 0:titleEnglishWords.length = title.match(regEnglish).length;
+							title.match(regChinese)==null?titleChineseWords.length = 0:titleChineseWords.length = title.match(regChinese).length;
+							//发表信息中英文
+							var infoEnglishWords = info.match(regEnglish);
+							var infoChineseWords = info.match(regChinese);
+							
+							//正文字数
+							var wordsCount = containerEnglishWords.length
+											+containerChineseWords.length
+											-titleEnglishWords.length
+											-titleChineseWords.length
+											-infoEnglishWords.length
+											-infoChineseWords.length;
+							alert(wordsCount);
+							var viewTime = Math.ceil(wordsCount/300);//阅读时长
+							
+							$("#blogcontainer .note").append("<span>温馨提示：全文共"+wordsCount+"字，阅读需要约"+viewTime+"分钟</span>")
+						}
 						//获取上下篇
 						function previousAndNext(){
 							$.ajax({

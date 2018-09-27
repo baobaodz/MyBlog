@@ -91,16 +91,25 @@ a{
 }
 #blogcontainer .info{
 	
-	margin-bottom:20px;
-	height:22px;
-	width:50%;
+	margin-bottom:10px;
+	height:20px;
+	width:100%;
 	padding-left:7%;
+	font-size:0.8em;
 }
-#blogcontainer .info li{
+#blogcontainer .info span{
 	
-	display:inline-block;
-	float:left;
-	margin: 0px 5px;
+	margin-right:4px;
+}
+#blogcontainer .info span:nth-of-type(odd){
+	
+	width:20%;
+	
+}
+#blogcontainer .note{
+	
+	font-size:0.8em;
+	background-color:#c0c0c0;
 }
 .pagination > li{
 	
