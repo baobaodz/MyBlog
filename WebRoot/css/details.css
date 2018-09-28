@@ -108,8 +108,12 @@ a{
 }
 #blogcontainer .note{
 	
-	font-size:0.8em;
-	background-color:#c0c0c0;
+	font-size:0.9em;
+	background-color: rgba(192, 192, 192, 0.21);
+    height: 42px;
+    line-height: 42px;
+    padding-left: 10px;
+    color: #9d9a9a;
 }
 .pagination > li{
 	

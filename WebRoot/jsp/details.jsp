@@ -193,34 +193,20 @@
 						
 						//获取全文字数和阅读时间
 						function getArticleWords(){
-							var container = $("#blogcontainer").text();
-							
+						
+							$(".center-info").nextAll().addClass("wordcontent");//给center后面的同级元素添加class方便选择
+							var container = $(".wordcontent").text();
 							var regEnglish = /\b\w+\b/g;//英文单词正则全局匹配
 							var regChinese = /[\u4e00-\u9fa5]/g;//汉字正则全局匹配
-							var containerEnglishWords = container.match(regEnglish);
-							var containerChineseWords = container.match(regChinese);
-							var title = $("#blogcontainer h2").text();
-							var info = $("#blogcontainer .info").text();
-							//标题中英文(不一定有英文)
-							var titleEnglishWords=[],titleChineseWords=[];
-							title.match(regEnglish)==null?titleEnglishWords.length = 0:titleEnglishWords.length = title.match(regEnglish).length;
-							title.match(regChinese)==null?titleChineseWords.length = 0:titleChineseWords.length = title.match(regChinese).length;
-							//发表信息中英文
-							var infoEnglishWords = info.match(regEnglish);
-							var infoChineseWords = info.match(regChinese);
+							var EnglishWords = container.match(regEnglish);
+							var ChineseWords = container.match(regChinese);
 							
-							//正文字数
-							var wordsCount = containerEnglishWords.length
-											+containerChineseWords.length
-											-titleEnglishWords.length
-											-titleChineseWords.length
-											-infoEnglishWords.length
-											-infoChineseWords.length;
-							alert(wordsCount);
+							var wordsCount = EnglishWords.length+ChineseWords.length;//正文字数
 							var viewTime = Math.ceil(wordsCount/300);//阅读时长
 							
-							$("#blogcontainer .note").append("<span>温馨提示：全文共"+wordsCount+"字，阅读需要约"+viewTime+"分钟</span>")
+							$("#blogcontainer .note").append("<span>温馨提示：全文共 <b>"+wordsCount+"</b> 字，阅读需要约 <b>"+viewTime+" </b>分钟</span>")
 						}
+						
 						//获取上下篇
 						function previousAndNext(){
 							$.ajax({
