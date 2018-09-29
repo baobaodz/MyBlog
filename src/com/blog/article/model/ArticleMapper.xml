@@ -79,6 +79,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				ON C.YM = TO_CHAR(A.PTIME,'YYYY-MM') AND TO_CHAR(PTIME,'YYYY') = #{date} ORDER BY PTIME DESC) M
 		</if>
 	</select>
+	<!--根据访客ip查询 -->
+	<select id="getVisitorByIP" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM VISITOR WHERE VIP = #{visitorIP}
+	</select>
+	<!--获取访客次序 -->
+	<select id="getRankVisitor" resultType="int">
+		SELECT COUNT(*) FROM VISITOR
+	</select>
 	<!--更新操作 -->
 	<update id="updateToDraft" parameterType="java.util.Map">
 		UPDATE ARTICLE SET 
@@ -86,7 +94,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		CONTENT=#{content,jdbcType=CLOB},CATEGORY_ID=#{category_id},DRAFT=#{draft} 
 		WHERE AID = #{aid}
 	</update>
-	
+	<insert id="updateVisitor" parameterType="com.blog.article.dao.Visitor">
+		INSERT INTO VISITOR (VIP,VNAME,VTIME) VALUES (#{vip},#{vname},sysdate)
+	</insert>
 	<!--删除指定文章 -->
 	<delete id="deleteSpecificArticle" parameterType="int">
 		DELETE FROM ARTICLE WHERE AID=#{aid}

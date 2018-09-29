@@ -1,14 +1,19 @@
 package com.blog.article.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -185,6 +190,22 @@ public class ArticleController {
 	public Map<String,Object> publishOrAbolish(@RequestBody Map<String,Object> map){
 
 		articleService.publishOrAbolish(map);
+		return map;
+	}
+	/*
+	 * 验证当前访客是否为第一次访问，并获取次序
+	 */
+	@RequestMapping(value="verifyip",method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String,Object> verifyip(@RequestBody Map<String,Object> map){
+		
+		String visitorIP = String.valueOf(map.get("visitorIP"));
+		int i = articleService.getVisitorByIP(visitorIP);
+		int rank = 0;
+		if(i==0){
+			rank = articleService.getRankVisitor();
+		}
+		map.put("rank", rank);
 		return map;
 	}
 }

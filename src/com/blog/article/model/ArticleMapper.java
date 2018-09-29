@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.blog.article.dao.Article;
 import com.blog.article.dao.Category;
+import com.blog.article.dao.Visitor;
 
 public interface ArticleMapper {
 
@@ -35,4 +36,10 @@ public interface ArticleMapper {
 	public List<Map<String,String>> queryArchivesGroupByMonth();
 	
 	public List<Map<String,String>> queryArchives(@Param("date") String date);
+	
+	public int getVisitorByIP(String visitorIP);
+	
+	public void updateVisitor(Visitor visitor);
+	
+	public int getRankVisitor();
 }

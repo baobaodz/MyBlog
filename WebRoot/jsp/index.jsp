@@ -14,18 +14,43 @@
 <script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.js"></script>
+
 
 <title>baobaodz的主页</title>
 <script type="text/javascript">
 	$(function(){
 		
-      	//alert(returnCitySN["cip"]+','+returnCitySN["cname"]);
-		if (localStorage.name!=returnCitySN["cip"]){
-               localStorage.pagecount=Number(localStorage.pagecount)+1;
-               localStorage.name = returnCitySN["cip"];
-              
-        }
-        $(".result").text(localStorage.pagecount);
+      	localStorage.name = returnCitySN["cip"];//获取ip存进localStorage
+      	$.ajax({
+      		url:"<%=request.getContextPath()%>/verifyip",
+      		type:"post",
+      		dataType:"json",
+      		contentType:"application/json;charset=utf-8",
+      		data:JSON.stringify({
+     			"visitorIP": localStorage.name,
+     		}),
+      		success:function(data){
+      			var rank = data.rank;
+      			if(rank!=0){
+      				$.busyLoadFull("show", {//遮罩页面
+      					background: "rgba(90, 184, 103, 36.729412)", 
+      					image: "../images/loadingdeer.gif", 
+      					maxSize: "50px",
+      					animate: "slide",
+      					text: "你是本站第 "+rank+" 个访客哇(ง •̀_•́)ง",
+      					textPosition: "bottom",
+      					fontSize: "1.4em"
+      				});
+      				$(".busy-load-container-item .busy-load-text").append("<br><br><center class='start'><button class='btn btn-info'>开启baobaodz的博客</button></center>")
+					$(".start").click(function(){
+						$.busyLoadFull("hide", { animate: "fade" });
+					})
+      			}
+      		}
+      	})
+      	
 		var urlParam = window.location.search;//获取url参数?cid=2&page=6
 		if (urlParam == null || urlParam == "") {
 			var cid = 0;
@@ -232,22 +257,22 @@
 						<li data-slide-to="2" data-target="#carousel-356013"></li>
 					</ol>
 					<div class="carousel-inner">
-						<div class="item active" style="width: 300px; height: 300px;">
-							<img alt="" src="v3/default.jpg" />
+						<div class="item active" style="height:inherit;">
+							<img alt="" src="../images/bridge-california-cliff-7653.jpg" style="display: block;height:350px;width:850px;"/>
 							<div class="carousel-caption">
 								<h4>First Thumbnail label</h4>
 								<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id</p>
 							</div>
 						</div>
-						<div class="item" style="width: 300px; height: 300px;">
-							<img alt="" src="v3/default1.jpg" />
+						<div class="item" style="height:inherit;">
+							<img alt="" src="../images/beautiful-cold-dawn-547115.jpg" style="display: block;height:350px;width:850px;"/>
 							<div class="carousel-caption">
 								<h4>Second Thumbnail label</h4>
 								<p>Cras justo odio, dapibus ac facilisis in, ege
 							</div>
 						</div>
-						<div class="item" style="width: 300px; height: 300px;">
-							<img alt="" src="v3/default2.jpg" />
+						<div class="item" style="height:inherit;">
+							<img alt="" src="../images/black-wallpaper-dark-full-moon-8438.jpg" style="display: block;height:350px;width:850px;"/>
 							<div class="carousel-caption">
 							<h4>Third Thumbnail label</h4>
 							<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. D</p>
@@ -360,7 +385,6 @@
 			<div class="row clearfix">
 				<div class="col-md-12 column" style="width:100%;height:70px;background-color:white; text-align:center;line-height:70px;">
 					<p>Copyright © baobaodz博客 丨苏ICP备17002430号 丨 苏公网安备36042102000137</p>
-					<span class="result"></span>
 				</div>
 		
 

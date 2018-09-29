@@ -2,12 +2,14 @@ package com.blog.article.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.blog.article.dao.Article;
 import com.blog.article.dao.Category;
+import com.blog.article.dao.Visitor;
 import com.blog.article.model.ArticleMapper;
 
 @Service("ArticleService")
@@ -99,6 +101,38 @@ public class ArticleServiceImpl implements ArticleService{
 	public List<Map<String,String>> queryArchives(String date) {
 		List<Map<String,String>> list = articleMapper.queryArchives(date);
 		return list;
+	}
+
+	@Override
+	public int getVisitorByIP(String visitorIP) {
+		int i = articleMapper.getVisitorByIP(visitorIP);
+		if(i==0){
+			
+			//分配名字
+			String letter = "abcdefghijklmnopqrstuvwxyz"+"ABCDEFGHIJKLMBOPQRSTUVWXYZ";
+			StringBuilder sb = new StringBuilder();
+			Random random = new Random();
+			
+			for(int j=0;j<5;j++){
+				int ranIndex = random.nextInt(52);//产生指定范围随机整数
+				sb.append(letter.charAt(ranIndex));
+			}
+			long currentTime = System.currentTimeMillis();//获取当前时间毫秒数
+			String timeStr= ""+currentTime;
+			String subTime = timeStr.substring(8);
+			String visitorName = sb.append(subTime).toString();
+			
+			Visitor visitor = new Visitor(visitorIP,visitorName);
+			articleMapper.updateVisitor(visitor);
+		}
+		return i;
+	}
+
+	@Override
+	public int getRankVisitor() {
+		
+		int rank = articleMapper.getRankVisitor();
+		return rank;
 	}
 	
 }

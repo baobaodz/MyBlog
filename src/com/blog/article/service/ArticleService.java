@@ -33,4 +33,8 @@ public interface ArticleService {
 	public List<Map<String,String>> queryArchivesGroupByMonth();
 	
 	public List<Map<String,String>> queryArchives(String date);
+	
+	public int getVisitorByIP(String visitorIP);
+	
+	public int getRankVisitor();
 }

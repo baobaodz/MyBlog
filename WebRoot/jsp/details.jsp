@@ -63,19 +63,8 @@
 								<a class="search-btn" href="javascript:void(null)"><span class="glyphicon glyphicon-search"></span></a>
 							</div> 
 						</form>
-						<!--搜素框焦点事件 -->
-						<script type="text/javascript">
-							$(function(){
-								$(".search-input").focus(function(){
-									$(this).width(150);//避免第一次没有效果
-									$(this).width(200);
-								})
-								$(".search-input").blur(function(){
-									$(this).width(150);
-								})
-							})
-						</script>
-						<ul class="nav navbar-nav navbar-right" style="width:40px;">
+						
+						<ul class="nav navbar-nav navbar-right about" style="width:40px;margin-right:2px;">
 							<li><a href="#">Link</a></li>
 						</ul>
 					</div>
@@ -293,7 +282,14 @@
 						
 						
 						})
-						
+						//搜素框焦点事件
+						$(".search-input").focus(function(){
+							$(this).width(150);//避免第一次没有效果
+							$(this).width(200);
+						})
+						$(".search-input").blur(function(){
+							$(this).width(150);
+						})
 						
 					});
 				</script>
