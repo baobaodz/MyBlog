@@ -271,7 +271,9 @@
 									success : function(data) {
 										$.cookie("likeID",aid,{"path":"/"})
 										$(".fa-thumbs-up").css("color","red");
-										$(".fav-num").html().empty().text(data.likecount);
+										var num=$(".fav-num").text()+1;
+										alert(num);
+										$(".fav-num").text($(".fav-num").text()+1);
 									},
 								});
 							}else{

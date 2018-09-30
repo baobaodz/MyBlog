@@ -23,6 +23,7 @@
 	$(function(){
 		
       	localStorage.name = returnCitySN["cip"];//获取ip存进localStorage
+      	alert(returnCitySN["cip"]);
       	$.ajax({
       		url:"<%=request.getContextPath()%>/verifyip",
       		type:"post",
