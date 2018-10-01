@@ -110,8 +110,8 @@
 								
 								document.title = data.title;//动态赋值网页标签里的标题
 								getCategoryName(data);//面包屑导航获取文章类别名
-								increaseViewCount(data);//增加浏览量并显示
 								markdownToHtml(data);//Markdown转html把data传过去
+								increaseViewCount(data);//增加浏览量并显示
 								getArticleWords();//获取全文字数和阅读时间
 								previousAndNext();//获取上下篇
 								showCatalogue();//加载右侧目录
@@ -147,7 +147,8 @@
 							+ "</span><span>|</span><span><i class='fas fa-eye'></i>&nbsp;浏览&nbsp;"+data.viewcount+"</span><span>|</span><span><i class='far fa-heart'></i>&nbsp;喜欢 "+data.likecount+"</span></p></center>");
 							$("#blogcontainer").append("<p class='note'></p>");
 							$("#textHtml").append(data.content);
-							$(".favorite").append(data.likecount);
+							$(".fav-num").append(data.likecount);
+							
 							//开始对div转换
         					editormd.markdownToHTML("blogcontainer", {
            						htmlDecode: "style,script,iframe", //可以过滤标签解码
@@ -271,9 +272,8 @@
 									success : function(data) {
 										$.cookie("likeID",aid,{"path":"/"})
 										$(".fa-thumbs-up").css("color","red");
-										var num=$(".fav-num").text()+1;
-										alert(num);
-										$(".fav-num").text($(".fav-num").text()+1);
+										var num=Number($(".fav-num").text())+1;
+										$(".fav-num").empty().html(num);
 									},
 								});
 							}else{

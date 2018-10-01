@@ -22,6 +22,7 @@
 <script type="text/javascript">
 	$(function(){
 		
+		//本站第多少位访客只显示一次
       	localStorage.name = returnCitySN["cip"];//获取ip存进localStorage
       	alert(returnCitySN["cip"]);
       	$.ajax({
@@ -51,7 +52,26 @@
       			}
       		}
       	})
-      	
+      	//通过枚举类型来定义，不需要从后台获取，缺点就是非动态
+		function getCategoryName(cid){
+			var blogCategoryID = {
+				生活杂记:1,
+				java:2,
+				数据库:3,
+				音乐随想:4,
+				bug:5,
+				宇宙奇想:6
+			}
+							
+			for(var cat in blogCategoryID){
+				if(cid==blogCategoryID[cat]){
+					return cat;
+					//$(".breadcrumb").find("li").eq(1).html("<a href='index.jsp?cid="+cid+"&page=1'>"+cat+"</a>");
+				}
+			}
+						
+		}
+		
 		var urlParam = window.location.search;//获取url参数?cid=2&page=6
 		if (urlParam == null || urlParam == "") {
 			var cid = 0;
@@ -79,7 +99,8 @@
      		success:function(data){
      		   
      		   for(var i=0;i<data.length;i++){
-     			 $(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px'><h3><a href='details.jsp?aid="+data[i].aid+"' class='toview'>"+data[i].title
+     		   	 var cat = getCategoryName(data[i].category_id);
+     		   	 $(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px'><h3><span><a>"+cat+"</a><i class='label-arrow'></i></span><a href='details.jsp?aid="+data[i].aid+"' class='toview'>"+data[i].title
      			 +"</a></h3><span class='glyphicon glyphicon-time'>&nbsp;</span><span>"+new Date(data[i].ptime).toLocaleString()
      			 +"</span><br/><p>简介："+data[i].summary
      			 +"</p><p style='height:1.3em;'><span style='display:inline-block;float:left;'><i class='fa fa-eye'></i>("+data[i].viewcount+")&nbsp;&nbsp;<i class='far fa-heart'></i>("+data[i].likecount+")</span><span style='display:inline-block;float:right;'><a class='btn' href='details.jsp?aid="+data[i].aid+"'>View details »</a></span></p></li>");
@@ -92,24 +113,7 @@
 			}
 			
 		}); 
-		//通过枚举类型来定义，不需要从后台获取，缺点就是非动态
-		function getCategoryName(cid){
-			var blogCategoryID = {
-				生活杂记:1,
-				java:2,
-				数据库:3,
-				音乐随想:4,
-				bug:5,
-				宇宙奇想:6
-			}
-							
-			for(var cat in blogCategoryID){
-				if(cid==blogCategoryID[cat]){
-					$(".breadcrumb").find("li").eq(1).html("<a href='index.jsp?cid="+cid+"&page=1'>"+cat+"</a>");
-				}
-			}
-						
-		}
+		
 		//加载底部分页，参数为当前页数及类别ID
 		function loadPagination(pageNumber,cid){
 		
