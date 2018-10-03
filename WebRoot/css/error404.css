@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333333;
+    background-color: #F7F7F7;
+}
+a{
+	text-decoration:none;
+	color:#45ba9a;
+}
+#page-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.page-blank-wrap {
+    overflow: hidden;
+    width: 800px;
+    margin: 25px auto 0;
+    padding: 0 20px;
+}
+.page-blank-wrap .site-error {
+    margin-bottom: 30px;
+    text-align: center;
+}

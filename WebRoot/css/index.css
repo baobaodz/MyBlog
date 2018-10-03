@@ -8,10 +8,11 @@ body{
 }
 a{
 	text-decoration:none;
+	color:#737373;
 }
 a:hover{
 	text-decoration:none;
-	color:gray;
+	color:#48b79b;
 	
 }
 li{
@@ -54,7 +55,7 @@ li{
 	line-height: 30px;
 }
 .navbar-nav .more .more-expand li:hover a{
-	color:gray;
+	color:#48b79b;
 	text-decoration:none;
 
 }
@@ -89,17 +90,30 @@ li{
 	box-shadow:0px 1px 6px #c0c0c0;
 	
 }
+.articlelist li:hover{
+	
+	box-shadow:0px 3px 6px #c0c0c0;
+	
+}
 .articlelist li h3>span{
 	
 	display:inline-block;
+	height:20px;
+	width:auto;
+	padding-bottom:2px;
 	background-color:#ff8040;
 	font-size:.6em;
-	line-height:20px;
-	height:20px;
-	width:45px;
+	line-height:26px;
 	margin-right:5px;
 	text-align:center;
 	position:relative;
+	
+	
+}
+.articlelist li h3>span a{
+	line-height:26px;
+	height:20px;
+	color:white;
 	
 }
 .label-arrow{
@@ -165,7 +179,7 @@ li{
 
 .panel .mybloginfo dl dt a{
 	
-	color:#bce8f1;
+	color:#747474;
 }
 .panel-default .panel-body ul li{
 	

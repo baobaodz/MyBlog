@@ -24,7 +24,6 @@
 		
 		//本站第多少位访客只显示一次
       	localStorage.name = returnCitySN["cip"];//获取ip存进localStorage
-      	alert(returnCitySN["cip"]);
       	$.ajax({
       		url:"<%=request.getContextPath()%>/verifyip",
       		type:"post",
@@ -298,7 +297,7 @@
 		</div>
 		<div class="col-md-3 column myblogright" style="padding:10px 0px;">
 		
-			<div class="panel panel-info">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h5 class="panel-title"><i class="fa fa-align-justify "></i> 关于本站</h5>
 					
@@ -357,7 +356,7 @@
   				<div class="datepicker-header"></div>
 			</div>
  
-			<div class="panel panel-info">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 最多浏览</h3>
 				</div>
@@ -366,7 +365,7 @@
 				</div>
 				
 			</div>
-			<div class="panel panel-info">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 文章归档</h3>
 				</div>
@@ -376,7 +375,7 @@
 				</div>
 				
 			</div>
-			<div class="panel panel-info">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 联系我</h3>
 				</div>
