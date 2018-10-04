@@ -76,7 +76,12 @@ public class ArticleController {
 		String pageNum = String.valueOf(map.get("pageNumber"));
 		int pageNumber = Integer.parseInt(pageNum);
 		String categoryid = String.valueOf(map.get("categoryID"));
-		int categoryID = Integer.parseInt(categoryid);
+		int categoryID = 0;
+		if(categoryid!="null"){
+			
+			categoryID = Integer.parseInt(categoryid);
+		}
+		
 		List<Article> articles = articleService.queryAllArticle(pageNumber,categoryID);
 		return JSON.toJSON(articles).toString();
 	}
