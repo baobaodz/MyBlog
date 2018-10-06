@@ -238,7 +238,7 @@
 						
 						<ul class="nav navbar-nav navbar-right" style="margin-right:2px;">
 							<li><a href="archives.jsp">归档</a></li>
-							<li><a href="message.jsp">留言</a></li>
+							<li><a href="#">关于</a></li>
 						</ul>
 					</div>
 				
@@ -355,7 +355,8 @@
 			</div>
 			<!--日历插件 -->
 			<div class="datepicker">
-  				<div class="datepicker-header"></div>
+  				<div class="..
+  				datepicker-header"></div>
 			</div>
  
 			<div class="panel panel-default">
