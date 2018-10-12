@@ -276,7 +276,7 @@
 				</div>
 				<div class="panel-body myblogmotto">
 					<dl style="width:35%;">
-						<dt><img alt="头像" src="https://avatar.csdn.net/0/C/F/3_c_kite.jpg" class="img-circle"></dt>
+						<dt><img alt="头像" src="../images/avatar.png" class="img-circle"></dt>
 					</dl>
 					<dl style="width:65%;">
 						<dt><h3>baoabaodz</h3></dt>

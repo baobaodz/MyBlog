@@ -75,7 +75,6 @@
 					$(".selectcat").val(data.category_id);
 					$(".summarytext").text(data.summary);
 					$(".editormd-markdown-textarea").text(data.content);
-					summarytext
 
 				}
 

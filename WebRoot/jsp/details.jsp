@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../css/details.css" >
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <script src="../js/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="../bootstrap-3.3.7/js/bootstrap.js"></script>
 <script src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="../js/dynamicscrollspy.js"></script>
