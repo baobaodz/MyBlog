@@ -25,23 +25,26 @@
 	$(function(){
 		
 		//本站第多少位访客只显示一次
-		
-      	localStorage.name = returnCitySN["cip"];//获取ip存进localStorage
-      	if($.cookie("vistorName")==null||$.cookie("vistorName")==""){
-      	
-      		$.ajax({
+		var ip = returnCitySN["cip"];
+		if(localStorage.ipname!=ip){
+			$.ajax({
       			url:"<%=request.getContextPath()%>/verifyip",
       			type:"post",
       			dataType:"json",
       			contentType:"application/json;charset=utf-8",
       			data:JSON.stringify({
-     				"visitorIP": localStorage.name,
+     				"visitorIP": ip,
      			}),
       			success:function(data){
+      				localStorage.ipname = ip;
       				var rank = data.RN;
+      				alert(rank);
+      				alert(visitorName);
+      				alert(data.rank);
       				var visitorName = data.VNAME;
       				localStorage.visitorName = visitorName;
-      				$.cookie("vistorName",visitorName,{"path":"/"})
+      				$.cookie("vistorName",visitorName,{"path":"/"});
+      				alert(data.length);
       				if(data.length==2){
       				
       					$.busyLoadFull("show", {//遮罩页面
@@ -61,7 +64,9 @@
       				
       			}
       		})
-      	}
+		
+		}
+      	
       	//获取访客随机名称存入cookie
 		function getVistorName(){
 							

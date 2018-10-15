@@ -85,11 +85,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<!--获取访客次序 -->
 	<select id="getRankVisitor" parameterType="String" resultType="java.util.Map">
-<!-- 		SELECT COUNT(*) FROM VISITOR -->
-		SELECT VNAME,RN FROM 
-			(SELECT V.*,ROWNUM RN FROM VISITOR V ORDER BY VTIME) 
+		SELECT VNAME,RN FROM(
+			SELECT b.*,ROWNUM RN FROM
+				(SELECT * FROM VISITOR V ORDER BY VTIME ) b
+			) 
 		WHERE VIP = #{visitorIP}
 	</select>
+	
 	<select id="getVistorName" parameterType="String" resultType="String">
 		select vname from visitor where vip = #{visitorIP} 
 	</select>
