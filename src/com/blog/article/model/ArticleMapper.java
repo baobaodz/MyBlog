@@ -39,7 +39,9 @@ public interface ArticleMapper {
 	
 	public int getVisitorByIP(String visitorIP);
 	
+	public String getVistorName(String visitorIP);
+	
 	public void updateVisitor(Visitor visitor);
 	
-	public int getRankVisitor();
+	public Map<String,String> getRankVisitor(String visitorIP);
 }

@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.css" >
 <link href="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="../css/message.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery-ui.js"></script>
@@ -69,17 +70,53 @@
 			}
 						
 		}
+		$(".makemessage").click(function(){
+			
+			var message = $(".form-control").val();
+			if(message==null||message==""){
+				alert("留言不能为空！");
+				return false;
+			}else{
+				$.ajax({
+					url : "<%=request.getContextPath()%>/queryAllArticle",
+     				type: "post",
+     				dataType : "json",
+     				contentType: "application/json;charset=utf-8",
+     				data:JSON.stringify({
+     					"message": message,
+     					"categoryID": cid
+     				}),
+     				success:function(data){
+     		   
+     		   			for(var i=0;i<data.length;i++){
+     		   				var cat = getCategoryName(data[i].category_id);
+     		   	 			$(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px'><h3><span><a href='index.jsp?cid="+data[i].category_id+"&page=1'>"+cat+"</a><i class='label-arrow'></i></span><a href='details.jsp?aid="+data[i].aid+"' class='toview'>"+data[i].title
+     			 			+"</a></h3><span class='glyphicon glyphicon-time'>&nbsp;</span><span>"+new Date(data[i].ptime).toLocaleString()
+     			 			+"</span><br/><p>简介："+data[i].summary
+     			 			+"</p><p style='height:1.3em;'><span style='display:inline-block;float:left;'><i class='fa fa-eye'></i>("+data[i].viewcount+")&nbsp;&nbsp;<i class='far fa-heart'></i>("+data[i].likecount+")</span><span style='display:inline-block;float:right;'><a class='btn' href='details.jsp?aid="+data[i].aid+"'>View details »</a></span></p></li>");
+			   		
+			   			}
+			   
+					}
+			
+				}); 
+			
+			}
+		
+		
+		
+		})
+		
 		
 		var urlParam = window.location.search;//获取url参数?cid=2&page=6
 		if (urlParam == null || urlParam == "") {
-			var cid = 0;
+			
 			var pageNumber = 1;
-			$(".mycatnav").remove();
-			$(".myblogright").css("padding-top","0px");
-		} else if (urlParam.indexOf("cid") != -1) {
-			cid = urlParam.substr(5, 1);
-			pageNumber = urlParam.substr(12, 2);
-			$(".slide").empty();//清空轮播图div下所有节点
+			
+			$(".myblogright").css("padding-top","10px");
+		} else if (urlParam.indexOf("page") != -1) {
+			
+			pageNumber = urlParam.substr(6, 2);
 			getCategoryName(cid);//获取分类名
 		} 
 		
@@ -248,43 +285,23 @@
 		<div class="row clearfix mycatnav">
 			<div class="col-md-12 column" style="padding-right:0px;">
 				<ol class="breadcrumb">
-    					<li><a href="index.jsp"><i class="fas fa-file-signature"></i>全部文章 </a></li>
-    					<li><a href="#"></a></li>
+    					<li><a href="index.jsp"><i class="fas fa-file-signature"></i>baobaodz </a></li>
+    					<li><a href="#">留言</a></li>
 				</ol>
 			</div>
 		</div>
 		<div class="row clearfix">
 			
 			<div class="col-md-9 column myblogleft">
-				<div class="carousel slide" id="carousel-356013">
-					<ol class="carousel-indicators">
-						<li class="active" data-slide-to="0" data-target="#carousel-356013"></li>
-						<li data-slide-to="1" data-target="#carousel-356013"></li>
-						<li data-slide-to="2" data-target="#carousel-356013"></li>
-					</ol>
-					<div class="carousel-inner">
-						<div class="item active" style="height:inherit;">
-							<img alt="" src="../images/bridge-california-cliff-7653.jpg" style="display: block;height:350px;width:850px;"/>
-							<div class="carousel-caption">
-								<h4>First Thumbnail label</h4>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id</p>
-							</div>
-						</div>
-						<div class="item" style="height:inherit;">
-							<img alt="" src="../images/beautiful-cold-dawn-547115.jpg" style="display: block;height:350px;width:850px;"/>
-							<div class="carousel-caption">
-								<h4>Second Thumbnail label</h4>
-								<p>Cras justo odio, dapibus ac facilisis in, ege
-							</div>
-						</div>
-						<div class="item" style="height:inherit;">
-							<img alt="" src="../images/black-wallpaper-dark-full-moon-8438.jpg" style="display: block;height:350px;width:850px;"/>
-							<div class="carousel-caption">
-							<h4>Third Thumbnail label</h4>
-							<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. D</p>
-							</div>
-						</div>
-						</div> <a class="left carousel-control" href="#carousel-356013" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-356013" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+				<!--留言 -->
+				<div class="messagecontainer">
+					<form role="form">
+  						<div class="form-group">
+    						
+    						<textarea class="form-control" rows="4"></textarea>
+    						<button class="btn btn-default makemessage">留言</button>
+  						</div>
+					</form>
 				</div>
 			<!--文章列表 -->
 			<div class="con">

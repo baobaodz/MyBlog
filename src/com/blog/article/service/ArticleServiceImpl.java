@@ -129,10 +129,17 @@ public class ArticleServiceImpl implements ArticleService{
 	}
 
 	@Override
-	public int getRankVisitor() {
+	public Map<String,String> getRankVisitor(String visitorIP) {
 		
-		int rank = articleMapper.getRankVisitor();
-		return rank;
+		Map<String,String> map = articleMapper.getRankVisitor(visitorIP);
+		return map;
+	}
+
+	@Override
+	public String getVistorName(String visitorIP) {
+
+		String vistorName = articleMapper.getVistorName(visitorIP);
+		return vistorName;
 	}
 	
 }

@@ -202,15 +202,27 @@ public class ArticleController {
 	 */
 	@RequestMapping(value="verifyip",method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String,Object> verifyip(@RequestBody Map<String,Object> map){
+	public Map<String,String> verifyip(@RequestBody Map<String,String> map){
 		
 		String visitorIP = String.valueOf(map.get("visitorIP"));
 		int i = articleService.getVisitorByIP(visitorIP);
-		int rank = 0;
-		if(i==0){
-			rank = articleService.getRankVisitor();
+		map = articleService.getRankVisitor(visitorIP);
+		if(i!=0){
+			map.put("rank", "0");
 		}
-		map.put("rank", rank);
+		return map;
+	}
+	
+	/*
+	 * 获取访客名称
+	 */
+	@RequestMapping(value="getVistorName",method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String,Object> getVistorName(@RequestBody Map<String,Object> map){
+		
+		String visitorIP = String.valueOf(map.get("visitorIP"));
+		String visitorName = articleService.getVistorName(visitorIP);
+		map.put("visitorName", visitorName);
 		return map;
 	}
 }

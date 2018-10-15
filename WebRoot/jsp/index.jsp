@@ -10,8 +10,10 @@
 <link href="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../css/index.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -23,34 +25,65 @@
 	$(function(){
 		
 		//本站第多少位访客只显示一次
+		
       	localStorage.name = returnCitySN["cip"];//获取ip存进localStorage
-      	$.ajax({
-      		url:"<%=request.getContextPath()%>/verifyip",
-      		type:"post",
-      		dataType:"json",
-      		contentType:"application/json;charset=utf-8",
-      		data:JSON.stringify({
-     			"visitorIP": localStorage.name,
-     		}),
-      		success:function(data){
-      			var rank = data.rank;
-      			if(rank!=0){
-      				$.busyLoadFull("show", {//遮罩页面
-      					background: "rgba(90, 184, 103, 36.729412)", 
-      					image: "../images/loadingdeer.gif", 
-      					maxSize: "50px",
-      					animate: "slide",
-      					text: "你是本站第 "+rank+" 个访客哇(ง •̀_•́)ง",
-      					textPosition: "bottom",
-      					fontSize: "1.4em"
-      				});
-      				$(".busy-load-container-item .busy-load-text").append("<br><br><center class='start'><button class='btn btn-info'>开启baobaodz的博客</button></center>")
-					$(".start").click(function(){
-						$.busyLoadFull("hide", { animate: "fade" });
-					})
+      	if($.cookie("vistorName")==null||$.cookie("vistorName")==""){
+      	
+      		$.ajax({
+      			url:"<%=request.getContextPath()%>/verifyip",
+      			type:"post",
+      			dataType:"json",
+      			contentType:"application/json;charset=utf-8",
+      			data:JSON.stringify({
+     				"visitorIP": localStorage.name,
+     			}),
+      			success:function(data){
+      				var rank = data.RN;
+      				var visitorName = data.VNAME;
+      				localStorage.visitorName = visitorName;
+      				$.cookie("vistorName",visitorName,{"path":"/"})
+      				if(data.length==2){
+      				
+      					$.busyLoadFull("show", {//遮罩页面
+      						background: "rgba(90, 184, 103, 36.729412)", 
+      						image: "../images/loadingdeer.gif", 
+      						maxSize: "50px",
+      						animate: "slide",
+      						text: "你是本站第 "+rank+" 个访客哇(ง •̀_•́)ง",
+      						textPosition: "bottom",
+      						fontSize: "1.4em"
+      					});
+      					$(".busy-load-container-item .busy-load-text").append("<br><br><center class='start'><button class='btn btn-info'>开启baobaodz的博客</button></center>")
+						$(".start").click(function(){
+							$.busyLoadFull("hide", { animate: "fade" });
+						})
+      				}
+      				
       			}
-      		}
-      	})
+      		})
+      	}
+      	//获取访客随机名称存入cookie
+		function getVistorName(){
+							
+			if($.cookie("vistorName")==null||$.cookie("vistorName")=="") {
+ 								
+				$.ajax({
+					url:"<%=request.getContextPath()%>/getVistorName",
+					type : "post",
+					dataType : "json",
+					contentType : "application/json;charset=utf-8",
+					data : JSON.stringify({
+						"visitorIP": localStorage.name
+					}),
+					success : function(data) {
+					
+						$.cookie("vistorName",data.vistorName,{"path":"/"})
+								
+					}
+				});
+			}
+						
+		}
       	//通过枚举类型来定义，不需要从后台获取，缺点就是非动态
 		function getCategoryName(cid){
 			var blogCategoryID = {

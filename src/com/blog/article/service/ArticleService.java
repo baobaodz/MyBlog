@@ -36,5 +36,7 @@ public interface ArticleService {
 	
 	public int getVisitorByIP(String visitorIP);
 	
-	public int getRankVisitor();
+	public String getVistorName(String visitorIP);
+	
+	public Map<String,String> getRankVisitor(String visitorIP);
 }

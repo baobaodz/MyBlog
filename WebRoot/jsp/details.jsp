@@ -163,7 +163,7 @@
 						function increaseViewCount(data){
 							
 							if($.cookie("viewID")!=aid) {
- 								
+ 					 			
 								$.ajax({
 									url:"<%=request.getContextPath()%>/increaseViewCount",
 									type : "post",
