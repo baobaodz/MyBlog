@@ -29,6 +29,8 @@ a{
 	
 	text-align: center;
     vertical-align: middle;
+    height:50px;
+	line-height:50px;
 }
 .row .clearfix .mynav {
 	
@@ -38,7 +40,7 @@ a{
 }
 #catline > li:hover{
 	
-	background-color:#75d8f4;
+	border-bottom:4px solid #fbd257;
 	height:51px;
 }
 .mynav #bs-example-navbar-collapse-1 #catline .more{
@@ -72,7 +74,7 @@ a{
 	line-height: 30px;
 }
 .mynav #bs-example-navbar-collapse-1 #catline .more .more-expand li:hover a{
-	color:white;
+	color:#008080;
 
 }
 .search{
@@ -93,6 +95,12 @@ a{
 	
 	height:50px;
 	line-height:50px;
+}
+.navbar-collapse .about > li a{
+	
+	height:50px;
+	line-height:50px;
+	display:inline-bolock;
 }
 #blogcontainer .info{
 	

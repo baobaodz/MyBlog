@@ -64,6 +64,9 @@
       		})
       	}
       	queryMessage();
+      	loadMostViewCount();//加载右侧最多浏览
+		loadArchives();//加载文章归档
+		
       	//通过枚举类型来定义，不需要从后台获取，缺点就是非动态
 		function getCategoryName(cid){
 			var blogCategoryID = {
@@ -100,7 +103,8 @@
      					"visitorName":localStorage.visitorName
      				}),
      				success:function(data){
-     		   
+     		   			
+     		   			
      		   			queryMessage();//查询留言
 			   
 					}
@@ -149,8 +153,7 @@
 		} 
 		
 
-		loadMostViewCount();//加载右侧最多浏览
-		loadArchives();//加载文章归档
+		
 		//加载底部分页，参数为当前页数及类别ID
 		function loadPagination(pageNumber,cid){
 			if(cid!=0){

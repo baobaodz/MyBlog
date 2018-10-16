@@ -64,8 +64,8 @@
 							</div> 
 						</form>
 						
-						<ul class="nav navbar-nav navbar-right about" style="width:40px;margin-right:2px;">
-							<li><a href="#">Link</a></li>
+						<ul class="nav navbar-nav navbar-right about" style="width:80px;height:50px;line-height:50px;margin-right:2px;">
+							<li><a href="#">归档</a></li>
 						</ul>
 					</div>
 				
