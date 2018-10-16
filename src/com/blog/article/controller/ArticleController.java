@@ -208,7 +208,9 @@ public class ArticleController {
 		int i = articleService.getVisitorByIP(visitorIP);
 		map = articleService.getRankVisitor(visitorIP);
 		if(i!=0){
-			map.put("rank", "0");
+			map.put("ipIsExist", "true");
+		}else{
+			map.put("ipIsExist", "false");
 		}
 		return map;
 	}

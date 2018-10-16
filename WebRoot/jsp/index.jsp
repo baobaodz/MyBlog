@@ -36,16 +36,13 @@
      				"visitorIP": ip,
      			}),
       			success:function(data){
-      				localStorage.ipname = ip;
+      				localStorage.ipname = ip;//把ip地址出入本地
       				var rank = data.RN;
-      				alert(rank);
-      				alert(visitorName);
-      				alert(data.rank);
       				var visitorName = data.VNAME;
-      				localStorage.visitorName = visitorName;
+      				localStorage.visitorName = visitorName;//把访客名存入本地
       				$.cookie("vistorName",visitorName,{"path":"/"});
-      				alert(data.length);
-      				if(data.length==2){
+      			
+      				if(data.ipIsExist=="false"){
       				
       					$.busyLoadFull("show", {//遮罩页面
       						background: "rgba(90, 184, 103, 36.729412)", 
@@ -64,30 +61,6 @@
       				
       			}
       		})
-		
-		}
-      	
-      	//获取访客随机名称存入cookie
-		function getVistorName(){
-							
-			if($.cookie("vistorName")==null||$.cookie("vistorName")=="") {
- 								
-				$.ajax({
-					url:"<%=request.getContextPath()%>/getVistorName",
-					type : "post",
-					dataType : "json",
-					contentType : "application/json;charset=utf-8",
-					data : JSON.stringify({
-						"visitorIP": localStorage.name
-					}),
-					success : function(data) {
-					
-						$.cookie("vistorName",data.vistorName,{"path":"/"})
-								
-					}
-				});
-			}
-						
 		}
       	//通过枚举类型来定义，不需要从后台获取，缺点就是非动态
 		function getCategoryName(cid){

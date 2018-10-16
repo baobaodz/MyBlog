@@ -110,7 +110,7 @@
 								
 								document.title = data.title;//动态赋值网页标签里的标题
 								getCategoryName(data);//面包屑导航获取文章类别名
-								markdownToHtml(data);//Markdown转html把data传过去
+								markdownToHtml(data);//Markdown转html
 								increaseViewCount(data);//增加浏览量并显示
 								getArticleWords();//获取全文字数和阅读时间
 								previousAndNext();//获取上下篇
