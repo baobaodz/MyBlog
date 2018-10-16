@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.blog.article.dao.Article;
 import com.blog.article.dao.Category;
+import com.blog.article.dao.Message;
 import com.blog.article.dao.Visitor;
 import com.blog.article.model.ArticleMapper;
 
@@ -140,6 +141,18 @@ public class ArticleServiceImpl implements ArticleService{
 
 		String vistorName = articleMapper.getVistorName(visitorIP);
 		return vistorName;
+	}
+
+	@Override
+	public void saveMessage(Message message) {
+
+		articleMapper.saveMessage(message);
+	}
+
+	@Override
+	public List<Message> queryMessage() {
+		List<Message> messages = articleMapper.queryMessage();
+		return messages;
 	}
 	
 }

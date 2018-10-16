@@ -25,6 +25,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.blog.article.dao.Article;
 import com.blog.article.dao.Category;
+import com.blog.article.dao.Message;
 import com.blog.article.service.ArticleService;
 
 
@@ -226,5 +227,28 @@ public class ArticleController {
 		String visitorName = articleService.getVistorName(visitorIP);
 		map.put("visitorName", visitorName);
 		return map;
+	}
+	/*
+	 * ±£¥Ê¡Ù—‘
+	 */
+	@RequestMapping(value="saveMessage",method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String,Object> saveMessage(@RequestBody Map<String,Object> map){
+		
+		String mess = String.valueOf(map.get("message"));
+		String mname = String.valueOf(map.get("visitorName"));
+		Message message = new Message(mname,mess);
+		articleService.saveMessage(message);
+		return map;
+	}
+	/*
+	 * ≤È—Ø¡Ù—‘
+	 */
+	@RequestMapping(value="queryMessage",method=RequestMethod.POST)
+	@ResponseBody
+	public String queryMessage(@RequestBody Map<String,Object> map){
+		
+		List<Message> messages = articleService.queryMessage();
+		return JSON.toJSON(messages).toString();
 	}
 }

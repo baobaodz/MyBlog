@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.blog.article.dao.Article;
 import com.blog.article.dao.Category;
+import com.blog.article.dao.Message;
 
 public interface ArticleService {
 
@@ -39,4 +40,8 @@ public interface ArticleService {
 	public String getVistorName(String visitorIP);
 	
 	public Map<String,String> getRankVisitor(String visitorIP);
+	
+	public void saveMessage(Message message);
+	
+	public List<Message> queryMessage();
 }

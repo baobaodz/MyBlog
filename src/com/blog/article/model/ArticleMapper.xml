@@ -16,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES
 		(#{title},#{summary},sysdate,sysdate,#{content},#{category_id},#{draft})
 	</insert>
+	
 	<!--查询所有文章列表 -->
 	<select id="queryAllArticle" resultMap="articleResult">
 		<if test="pageNumber==0">
@@ -95,6 +96,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getVistorName" parameterType="String" resultType="String">
 		select vname from visitor where vip = #{visitorIP} 
 	</select>
+	<select id="queryMessage" resultType="com.blog.article.dao.Message">
+		SELECT * FROM MESSAGE ORDER BY MTIME DESC
+	</select>
 	<!--更新操作 -->
 	<update id="updateToDraft" parameterType="java.util.Map">
 		UPDATE ARTICLE SET 
@@ -102,8 +106,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		CONTENT=#{content,jdbcType=CLOB},CATEGORY_ID=#{category_id},DRAFT=#{draft} 
 		WHERE AID = #{aid}
 	</update>
+	<!--保存访客 -->
 	<insert id="updateVisitor" parameterType="com.blog.article.dao.Visitor">
 		INSERT INTO VISITOR (VIP,VNAME,VTIME) VALUES (#{vip},#{vname},sysdate)
+	</insert>
+	<!--保存留言 -->
+	<insert id="saveMessage" parameterType="com.blog.article.dao.Message">
+		INSERT INTO MESSAGE(MNAME,MESS,MTIME) VALUES (#{mname},#{mess},sysdate)
 	</insert>
 	<!--删除指定文章 -->
 	<delete id="deleteSpecificArticle" parameterType="int">

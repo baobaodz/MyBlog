@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.css" >
-<link href="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.css">
 <link rel="stylesheet" href="../css/index.css">
 <link rel="stylesheet" href="../css/message.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -17,41 +17,53 @@
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
 
 
 <title>baobaodz的主页</title>
 <script type="text/javascript">
 	$(function(){
-		
+		   
 		//本站第多少位访客只显示一次
-      	localStorage.name = returnCitySN["cip"];//获取ip存进localStorage
-      	$.ajax({
-      		url:"<%=request.getContextPath()%>/verifyip",
-      		type:"post",
-      		dataType:"json",
-      		contentType:"application/json;charset=utf-8",
-      		data:JSON.stringify({
-     			"visitorIP": localStorage.name,
-     		}),
-      		success:function(data){
-      			var rank = data.rank;
-      			if(rank!=0){
-      				$.busyLoadFull("show", {//遮罩页面
-      					background: "rgba(90, 184, 103, 36.729412)", 
-      					image: "../images/loadingdeer.gif", 
-      					maxSize: "50px",
-      					animate: "slide",
-      					text: "你是本站第 "+rank+" 个访客哇(ง •̀_•́)ง",
-      					textPosition: "bottom",
-      					fontSize: "1.4em"
-      				});
-      				$(".busy-load-container-item .busy-load-text").append("<br><br><center class='start'><button class='btn btn-info'>开启baobaodz的博客</button></center>")
-					$(".start").click(function(){
-						$.busyLoadFull("hide", { animate: "fade" });
-					})
+		var ip = returnCitySN["cip"];
+		if(localStorage.ipname!=ip){
+			$.ajax({
+      			url:"<%=request.getContextPath()%>/verifyip",
+      			type:"post",
+      			dataType:"json",
+      			contentType:"application/json;charset=utf-8",
+      			data:JSON.stringify({
+     				"visitorIP": ip,
+     			}),
+      			success:function(data){
+      				localStorage.ipname = ip;//把ip地址出入本地
+      				var rank = data.RN;
+      				var visitorName = data.VNAME;
+      				localStorage.visitorName = visitorName;//把访客名存入本地
+      				$.cookie("vistorName",visitorName,{"path":"/"});
+      			
+      				if(data.ipIsExist=="false"){
+      				
+      					$.busyLoadFull("show", {//遮罩页面
+      						background: "rgba(90, 184, 103, 36.729412)", 
+      						image: "../images/loadingdeer.gif", 
+      						maxSize: "50px",
+      						animate: "slide",
+      						text: "你是本站第 "+rank+" 个访客哇(ง •̀_•́)ง",
+      						textPosition: "bottom",
+      						fontSize: "1.4em"
+      					});
+      					$(".busy-load-container-item .busy-load-text").append("<br><br><center class='start'><button class='btn btn-info'>开启baobaodz的博客</button></center>");
+						$(".start").click(function(){
+							$.busyLoadFull("hide", { animate: "fade" });
+						})
+      				}
+      				
       			}
-      		}
-      	})
+      		})
+      	}
+      	queryMessage();
       	//通过枚举类型来定义，不需要从后台获取，缺点就是非动态
 		function getCategoryName(cid){
 			var blogCategoryID = {
@@ -72,30 +84,24 @@
 		}
 		$(".makemessage").click(function(){
 			
-			var message = $(".form-control").val();
+			var message = $(".messageinfo").val();
 			if(message==null||message==""){
 				alert("留言不能为空！");
 				return false;
 			}else{
+				alert(message);
 				$.ajax({
-					url : "<%=request.getContextPath()%>/queryAllArticle",
+					url : "<%=request.getContextPath()%>/saveMessage",
      				type: "post",
      				dataType : "json",
      				contentType: "application/json;charset=utf-8",
      				data:JSON.stringify({
      					"message": message,
-     					"categoryID": cid
+     					"visitorName":localStorage.visitorName
      				}),
      				success:function(data){
      		   
-     		   			for(var i=0;i<data.length;i++){
-     		   				var cat = getCategoryName(data[i].category_id);
-     		   	 			$(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px'><h3><span><a href='index.jsp?cid="+data[i].category_id+"&page=1'>"+cat+"</a><i class='label-arrow'></i></span><a href='details.jsp?aid="+data[i].aid+"' class='toview'>"+data[i].title
-     			 			+"</a></h3><span class='glyphicon glyphicon-time'>&nbsp;</span><span>"+new Date(data[i].ptime).toLocaleString()
-     			 			+"</span><br/><p>简介："+data[i].summary
-     			 			+"</p><p style='height:1.3em;'><span style='display:inline-block;float:left;'><i class='fa fa-eye'></i>("+data[i].viewcount+")&nbsp;&nbsp;<i class='far fa-heart'></i>("+data[i].likecount+")</span><span style='display:inline-block;float:right;'><a class='btn' href='details.jsp?aid="+data[i].aid+"'>View details »</a></span></p></li>");
-			   		
-			   			}
+     		   			queryMessage();//查询留言
 			   
 					}
 			
@@ -106,8 +112,30 @@
 		
 		
 		})
+		//查询留言
+		function queryMessage(){
+			$.ajax({
+				url : "<%=request.getContextPath()%>/queryMessage",
+     			type: "post",
+     			dataType : "json",
+     			contentType: "application/json;charset=utf-8",
+     			data:JSON.stringify({}),
+     			success:function(data){
+     		   		
+     		   		for(var i=0;i<data.length;i++){
+     		   			
+     		   	 		$(".messagelist").append("<li style='background-color: white;margin:10px 0px;padding:15px 15px 10px 15px'>"+
+     		   	 		"<span style='display:inline-block;float:left;height:30px;color:#6ab7a3;'>"+data[i].mname+"</span>"+
+     		   	 		"<span style='display:inline-block;float:right;height:30px;color:#929997;font-size:.9em;'>"+new Date(data[i].mtime).toLocaleDateString()+"</span>"+
+     			 		"<p style='clear:both;'>"+data[i].mess+"</p></li>");
+			   		
+			   		}
+			   
+				}
+			
+			}); 
 		
-		
+		}
 		var urlParam = window.location.search;//获取url参数?cid=2&page=6
 		if (urlParam == null || urlParam == "") {
 			
@@ -120,35 +148,9 @@
 			getCategoryName(cid);//获取分类名
 		} 
 		
-		
-		//根据条件获取文章列表
-		$.ajax({
-			url : "<%=request.getContextPath()%>/queryAllArticle",
-     		type: "post",
-     		dataType : "json",
-     		contentType: "application/json;charset=utf-8",
-     		data:JSON.stringify({
-     			"pageNumber": pageNumber,
-     			"categoryID": cid
-     		}),
-     		success:function(data){
-     		   
-     		   for(var i=0;i<data.length;i++){
-     		   	 var cat = getCategoryName(data[i].category_id);
-     		   	 $(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px'><h3><span><a href='index.jsp?cid="+data[i].category_id+"&page=1'>"+cat+"</a><i class='label-arrow'></i></span><a href='details.jsp?aid="+data[i].aid+"' class='toview'>"+data[i].title
-     			 +"</a></h3><span class='glyphicon glyphicon-time'>&nbsp;</span><span>"+new Date(data[i].ptime).toLocaleString()
-     			 +"</span><br/><p>简介："+data[i].summary
-     			 +"</p><p style='height:1.3em;'><span style='display:inline-block;float:left;'><i class='fa fa-eye'></i>("+data[i].viewcount+")&nbsp;&nbsp;<i class='far fa-heart'></i>("+data[i].likecount+")</span><span style='display:inline-block;float:right;'><a class='btn' href='details.jsp?aid="+data[i].aid+"'>View details »</a></span></p></li>");
-			   		
-			   }
-			   
-			   loadPagination(pageNumber,cid);//加载底部分页
-			   loadMostViewCount();//加载右侧最多浏览
-			   loadArchives();//加载文章归档
-			}
-			
-		}); 
-		
+
+		loadMostViewCount();//加载右侧最多浏览
+		loadArchives();//加载文章归档
 		//加载底部分页，参数为当前页数及类别ID
 		function loadPagination(pageNumber,cid){
 			if(cid!=0){
@@ -298,10 +300,14 @@
 					<form role="form">
   						<div class="form-group">
     						
-    						<textarea class="form-control" rows="4"></textarea>
-    						<button class="btn btn-default makemessage">留言</button>
+    						<textarea class="form-control messageinfo" rows="4"></textarea>
   						</div>
+  						<button class="btn btn-default makemessage">留言</button>
 					</form>
+					<br>
+					<p>最近评论</p>
+					<div class="messagelist">
+					</div>
 				</div>
 			<!--文章列表 -->
 			<div class="con">

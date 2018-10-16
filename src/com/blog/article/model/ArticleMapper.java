@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.blog.article.dao.Article;
 import com.blog.article.dao.Category;
+import com.blog.article.dao.Message;
 import com.blog.article.dao.Visitor;
 
 public interface ArticleMapper {
@@ -44,4 +45,8 @@ public interface ArticleMapper {
 	public void updateVisitor(Visitor visitor);
 	
 	public Map<String,String> getRankVisitor(String visitorIP);
+	
+	public void saveMessage(Message message);
+	
+	public List<Message> queryMessage();
 }
