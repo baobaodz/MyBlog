@@ -29,8 +29,6 @@ a{
 	
 	text-align: center;
     vertical-align: middle;
-    height:50px;
-	line-height:50px;
 }
 .row .clearfix .mynav {
 	
@@ -93,14 +91,21 @@ a{
 }
 .navbar-collapse .about > li{
 	
-	height:50px;
-	line-height:50px;
+	height:49px;
+	line-height:49px;
+	float:left;
+	width:50px;
 }
 .navbar-collapse .about > li a{
 	
-	height:50px;
-	line-height:50px;
+	height:49px;
+	line-height:49px;
 	display:inline-bolock;
+	font-size:.9em;
+}
+.navbar-collapse .about > li:hover{
+	
+	border-bottom:4px solid #fbd257;
 }
 #blogcontainer .info{
 	

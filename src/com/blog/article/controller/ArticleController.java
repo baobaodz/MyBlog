@@ -240,8 +240,7 @@ public class ArticleController {
 		Message message = new Message(mname,mess);
 		articleService.saveMessage(message);
 		return map;
-	}
-	/*
+	}	/*
 	 * ≤È—Ø¡Ù—‘
 	 */
 	@RequestMapping(value="queryMessage",method=RequestMethod.POST)

@@ -57,15 +57,16 @@
 								</ul>
 							</li>
 						</ul>
-						<form class="navbar-form navbar-left" role="search" style="width:180px;">
+						<form class="navbar-form navbar-left" role="search" style="width:170px;">
 							<div class="form-group search">
 								<input type="text" class="form-control search-input" placeholder=" 搜索" />
 								<a class="search-btn" href="javascript:void(null)"><span class="glyphicon glyphicon-search"></span></a>
 							</div> 
 						</form>
 						
-						<ul class="nav navbar-nav navbar-right about" style="width:80px;height:50px;line-height:50px;margin-right:2px;">
-							<li><a href="#">归档</a></li>
+						<ul class="nav navbar-nav navbar-right about" style="width:100px;height:50px;line-height:50px;margin-right:2px;">
+							<li><a href="archives.jsp">归档</a></li>
+							<li><a href="message.jsp">留言</a></li>
 						</ul>
 					</div>
 				
@@ -286,11 +287,11 @@
 						})
 						//搜素框焦点事件
 						$(".search-input").focus(function(){
-							$(this).width(150);//避免第一次没有效果
+							$(this).width(160);//避免第一次没有效果
 							$(this).width(200);
 						})
 						$(".search-input").blur(function(){
-							$(this).width(150);
+							$(this).width(160);
 						})
 						
 					});
