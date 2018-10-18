@@ -99,6 +99,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="queryMessage" resultType="com.blog.article.dao.Message">
 		SELECT * FROM MESSAGE ORDER BY MTIME DESC
 	</select>
+	<select id="querySiteInfo" resultType="java.util.Map">
+		SELECT ARTICLENUM,LIKENUM,VIEWNUM,MESSNUM FROM SITEINFO
+	</select>
 	<!--更新操作 -->
 	<update id="updateToDraft" parameterType="java.util.Map">
 		UPDATE ARTICLE SET 

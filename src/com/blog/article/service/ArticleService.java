@@ -44,4 +44,6 @@ public interface ArticleService {
 	public void saveMessage(Message message);
 	
 	public List<Message> queryMessage();
+	
+	public Map<String,String> querySiteInfo();
 }

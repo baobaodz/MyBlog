@@ -240,7 +240,8 @@ public class ArticleController {
 		Message message = new Message(mname,mess);
 		articleService.saveMessage(message);
 		return map;
-	}	/*
+	}	
+	/*
 	 * 查询留言
 	 */
 	@RequestMapping(value="queryMessage",method=RequestMethod.POST)
@@ -249,5 +250,17 @@ public class ArticleController {
 		
 		List<Message> messages = articleService.queryMessage();
 		return JSON.toJSON(messages).toString();
+	}
+	
+	
+	/*
+	 * 查询站点信息
+	 */
+	@RequestMapping(value="querySiteInfo",method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String,String> querySiteInfo(@RequestBody Map<String,String> map){
+		
+		Map<String,String> siteInfo = articleService.querySiteInfo();
+		return siteInfo;
 	}
 }

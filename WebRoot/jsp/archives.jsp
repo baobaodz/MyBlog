@@ -116,6 +116,25 @@
 			}
 						
 		}
+		
+		loadSiteInfo();//加载站点信息
+		//加载站点信息
+		function loadSiteInfo(){
+			$.ajax({
+				url : "<%=request.getContextPath()%>/querySiteInfo",
+     			type: "post",
+     			dataType : "json",
+     			contentType: "application/json;charset=utf-8",
+     			data:JSON.stringify({}),
+     			success:function(data){
+     				$(".mybloginfo").find("dd").eq(0).text(data.ARTICLENUM);
+     				$(".mybloginfo").find("dd").eq(1).text(data.LIKENUM);
+     				$(".mybloginfo").find("dd").eq(2).text(data.VIEWNUM);
+     				$(".mybloginfo").find("dd").eq(3).text(data.MESSNUM);
+				}
+			})
+		
+		}
 		loadMostViewCount();//加载右侧最多浏览
 		function loadMostViewCount(){
 			$.ajax({
@@ -269,7 +288,7 @@
 		</div>
 		<div class="col-md-3 column myblogright" style="padding:10px 0px;">
 		
-			<div class="panel panel-info">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h5 class="panel-title"><i class="fa fa-align-justify "></i> 关于本站</h5>
 					
@@ -287,19 +306,19 @@
 				<div class="panel-body mybloginfo">
 					<dl>
         				<dt>文章</dt>
-        				<dd>23</dd>
+        				<dd></dd>
         			</dl>
         			<dl>
         				<dt>喜欢</dt>
-        				<dd>21</dd>
+        				<dd></dd>
+        			</dl>
+        			<dl>
+        				<dt>浏览</dt>
+        				<dd></dd>
         			</dl>
         			<dl>
         				<dt>留言</dt>
-        				<dd>1</dd>
-        			</dl>
-        			<dl>
-        				<dt>评论</dt>
-        				<dd>12</dd>
+        				<dd></dd>
         			</dl>
         				
 				</div>
@@ -328,7 +347,7 @@
   				<div class="datepicker-header"></div>
 			</div>
  
-			<div class="panel panel-info">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 最多浏览</h3>
 				</div>
@@ -337,7 +356,7 @@
 				</div>
 				
 			</div>
-			<div class="panel panel-info">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 文章归档</h3>
 				</div>
@@ -346,7 +365,7 @@
 				</div>
 				
 			</div>
-			<div class="panel panel-info">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 联系我</h3>
 				</div>

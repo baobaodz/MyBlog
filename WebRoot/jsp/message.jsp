@@ -64,9 +64,27 @@
       		})
       	}
       	queryMessage();
+      	loadSiteInfo();//加载站点信息
       	loadMostViewCount();//加载右侧最多浏览
 		loadArchives();//加载文章归档
 		
+		//加载站点信息
+		function loadSiteInfo(){
+			$.ajax({
+				url : "<%=request.getContextPath()%>/querySiteInfo",
+     			type: "post",
+     			dataType : "json",
+     			contentType: "application/json;charset=utf-8",
+     			data:JSON.stringify({}),
+     			success:function(data){
+     				$(".mybloginfo").find("dd").eq(0).text(data.ARTICLENUM);
+     				$(".mybloginfo").find("dd").eq(1).text(data.LIKENUM);
+     				$(".mybloginfo").find("dd").eq(2).text(data.VIEWNUM);
+     				$(".mybloginfo").find("dd").eq(3).text(data.MESSNUM);
+				}
+			})
+		
+		}
       	//通过枚举类型来定义，不需要从后台获取，缺点就是非动态
 		function getCategoryName(cid){
 			var blogCategoryID = {
@@ -104,7 +122,6 @@
      				}),
      				success:function(data){
      		   			
-     		   			
      		   			queryMessage();//查询留言
 			   
 					}
@@ -112,9 +129,6 @@
 				}); 
 			
 			}
-		
-		
-		
 		})
 		//查询留言
 		function queryMessage(){
@@ -152,50 +166,6 @@
 			getCategoryName(cid);//获取分类名
 		} 
 		
-
-		
-		//加载底部分页，参数为当前页数及类别ID
-		function loadPagination(pageNumber,cid){
-			if(cid!=0){
-				var cat = getCategoryName(cid);
-				$(".breadcrumb").find("li").eq(1).html("<a href='index.jsp?cid="+cid+"&page=1'>"+cat+"</a>");
-			}
-			$.ajax({
-				url: "<%=request.getContextPath()%>/queryAllArticle",
-     			type: "post",
-     			dataType : "json",
-     			contentType: "application/json;charset=utf-8",
-     			data:JSON.stringify({
-     				"pageNumber": 0,
-     				"categoryID": cid
-     			}),
-     			success:function(data){
-     			
-     				var currentPage = pageNumber;
-     				if(currentPage==1){
-     					$(".pagination").append("<li><a>上一页</a></li>");
-     				}else{
-     					$(".slide").empty();//清空轮播图div下所有节点
-     					$(".pagination").append("<li><a href='index.jsp?cid="+cid+"&page="+(--currentPage)+"'>上一页</a></li>");
-     				}
-     			
-     				var pageCount = parseInt((data.length-1)/6)+1;//总页数
-     		   		for(var i=1;i<=pageCount;i++){
-     			 		$(".pagination").append("<li><a href='index.jsp?cid="+cid+"&page="+i+"'>"+i+"</a></li>");
-			  		}
-			  		
-			  		if(pageNumber>=pageCount){
-     					$(".pagination").append("<li><a>下一页</a></li>");
-     					$(".pagination").find("li").eq(pageNumber).find("a").css("background-color","skyblue");
-     				}else{
-     					$(".pagination").append("<li><a href='index.jsp?cid="+cid+"&page="+(++pageNumber)+"'>下一页</a></li>");
-     					$(".pagination").find("li").eq(pageNumber-1).find("a").css("background-color","skyblue");
-     				}
-				}
-				
-			});
-			
-		}
 		//加载最多浏览
 		function loadMostViewCount(){
 			$.ajax({
@@ -343,19 +313,19 @@
 				<div class="panel-body mybloginfo">
 					<dl>
         				<dt>文章</dt>
-        				<dd>23</dd>
+        				<dd></dd>
         			</dl>
         			<dl>
         				<dt>喜欢</dt>
-        				<dd>21</dd>
+        				<dd></dd>
+        			</dl>
+        			<dl>
+        				<dt>浏览</dt>
+        				<dd></dd>
         			</dl>
         			<dl>
         				<dt>留言</dt>
-        				<dd>1</dd>
-        			</dl>
-        			<dl>
-        				<dt>评论</dt>
-        				<dd>12</dd>
+        				<dd></dd>
         			</dl>
         				
 				</div>

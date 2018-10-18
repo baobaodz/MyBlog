@@ -154,5 +154,12 @@ public class ArticleServiceImpl implements ArticleService{
 		List<Message> messages = articleMapper.queryMessage();
 		return messages;
 	}
+
+	@Override
+	public Map<String, String> querySiteInfo() {
+
+		Map<String, String> map = articleMapper.querySiteInfo();
+		return map;
+	}
 	
 }

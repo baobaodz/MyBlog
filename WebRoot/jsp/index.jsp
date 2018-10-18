@@ -115,13 +115,31 @@
      			 +"</p><p style='height:1.3em;'><span style='display:inline-block;float:left;'><i class='fa fa-eye'></i>("+data[i].viewcount+")&nbsp;&nbsp;<i class='far fa-heart'></i>("+data[i].likecount+")</span><span style='display:inline-block;float:right;'><a class='btn' href='details.jsp?aid="+data[i].aid+"'>View details »</a></span></p></li>");
 			   		
 			   }
-			   
+			   loadSiteInfo();//加载站点信息
 			   loadPagination(pageNumber,cid);//加载底部分页
 			   loadMostViewCount();//加载右侧最多浏览
 			   loadArchives();//加载文章归档
 			}
 			
 		}); 
+		
+		//加载站点信息
+		function loadSiteInfo(){
+			$.ajax({
+				url : "<%=request.getContextPath()%>/querySiteInfo",
+     			type: "post",
+     			dataType : "json",
+     			contentType: "application/json;charset=utf-8",
+     			data:JSON.stringify({}),
+     			success:function(data){
+     				$(".mybloginfo").find("dd").eq(0).text(data.ARTICLENUM);
+     				$(".mybloginfo").find("dd").eq(1).text(data.LIKENUM);
+     				$(".mybloginfo").find("dd").eq(2).text(data.VIEWNUM);
+     				$(".mybloginfo").find("dd").eq(3).text(data.MESSNUM);
+				}
+			})
+		
+		}
 		
 		//加载底部分页，参数为当前页数及类别ID
 		function loadPagination(pageNumber,cid){
@@ -328,19 +346,19 @@
 				<div class="panel-body mybloginfo">
 					<dl>
         				<dt>文章</dt>
-        				<dd>23</dd>
+        				<dd></dd>
         			</dl>
         			<dl>
         				<dt>喜欢</dt>
-        				<dd>21</dd>
+        				<dd></dd>
+        			</dl>
+        			<dl>
+        				<dt>浏览</dt>
+        				<dd></dd>
         			</dl>
         			<dl>
         				<dt>留言</dt>
-        				<dd>1</dd>
-        			</dl>
-        			<dl>
-        				<dt>评论</dt>
-        				<dd>12</dd>
+        				<dd></dd>
         			</dl>
         				
 				</div>
