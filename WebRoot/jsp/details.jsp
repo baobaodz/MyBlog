@@ -153,6 +153,7 @@
 							//开始对div转换
         					editormd.markdownToHTML("blogcontainer", {
            						htmlDecode: "style,script,iframe", //可以过滤标签解码
+           						previewTheme : "dark",
             					emoji: true,
             					taskList:true,
             					tex: true,             // 默认不解析

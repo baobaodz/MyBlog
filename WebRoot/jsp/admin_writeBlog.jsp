@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../editor.md-master/css/editormd.css"/>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/editormd.min.js"></script>
+
 <script src="../js/editormd.js"></script>
 <script src="../editor.md-master/lib/marked.min.js"></script>
 <script src="../editor.md-master/lib/flowchart.min.js"></script>
@@ -36,6 +37,8 @@
 			path : "../editor.md-master/lib/",
 			//这个配置在simple.html中并没有，但是为了能够提交表单，
 			//使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
+            previewCodeHighlight : false,
+            //previewTheme : "dark",
 			emoji:true,
         	saveHTMLToTextarea : true
 		});
