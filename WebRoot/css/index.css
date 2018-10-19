@@ -83,6 +83,7 @@ li{
 	margin-bottom:0px;
 	background-color:white;
 }
+
 .articlelist li{
 	
 	padding: 2px 15px 10px 15px;
@@ -104,16 +105,20 @@ li{
 	background-color:#ff8040;
 	font-size:.6em;
 	line-height:26px;
-	margin-right:5px;
+	margin-right:7px;
 	text-align:center;
 	position:relative;
+	vertical-align: middle;
+	border-radius: 7px;
 	
 	
 }
 .articlelist li h3>span a{
-	line-height:26px;
+	line-height:21px;
 	height:20px;
 	color:white;
+	font-size: .7em;
+    margin: 8px;
 	
 }
 .label-arrow{
@@ -123,7 +128,7 @@ li{
 	right:-6px;
 	top: 3px;
 	border-top: 7px solid transparent;
-	border-left: 7px solid #ff0000;
+	border-left: 7px solid #ff8040;
 	border-bottom: 7px solid transparent;
 	position:absolute;
 }

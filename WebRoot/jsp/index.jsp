@@ -293,21 +293,21 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="item active" style="height:inherit;">
-							<img alt="" src="../images/bridge-california-cliff-7653.jpg" style="display: block;height:350px;width:850px;"/>
+							<img alt="" src="../images/bg1.JPG"/>
 							<div class="carousel-caption">
 								<h4>First Thumbnail label</h4>
 								<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id</p>
 							</div>
 						</div>
 						<div class="item" style="height:inherit;">
-							<img alt="" src="../images/beautiful-cold-dawn-547115.jpg" style="display: block;height:350px;width:850px;"/>
+							<img alt="" src="../images/bg1.JPG"/>
 							<div class="carousel-caption">
 								<h4>Second Thumbnail label</h4>
 								<p>Cras justo odio, dapibus ac facilisis in, ege
 							</div>
 						</div>
 						<div class="item" style="height:inherit;">
-							<img alt="" src="../images/black-wallpaper-dark-full-moon-8438.jpg" style="display: block;height:350px;width:850px;"/>
+							<img alt="" src="../images/bg1.JPG"/>
 							<div class="carousel-caption">
 							<h4>Third Thumbnail label</h4>
 							<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. D</p>
