@@ -96,7 +96,7 @@ li{
 	box-shadow:0px 3px 6px #c0c0c0;
 	
 }
-.articlelist li h3>span{
+.articlelist li h4>span{
 	
 	display:inline-block;
 	height:20px;
@@ -113,7 +113,7 @@ li{
 	
 	
 }
-.articlelist li h3>span a{
+.articlelist li h4>span a{
 	line-height:21px;
 	height:20px;
 	color:white;
@@ -132,13 +132,33 @@ li{
 	border-bottom: 7px solid transparent;
 	position:absolute;
 }
-.articlelist li p span{
+.articlelist li .imgcontainer{
+	
+	height:86%;
+	width:27%;
+	float:left;
+	background-color:yellow;
+	margin:14px 18px 0px 0px;
+}
+.articlelist li .infocontainer{
+	
+	height:80%;
+	padding-top:5px;
+}
+.articlelist li .infocontainer p span{
 	
 	display:inline-block;
 	
 	
 }
-.articlelist li p span:nth-child(1){
+.articlelist li .infocontainer .summarycontainer{
+	
+	overflow:hidden;
+	height:60px;
+	line-height:1.5em;
+	color:gray;
+}
+.articlelist li .infocontainer p span:nth-child(1){
 	
 	float:left;
 	line-height: 1.8em;
@@ -146,7 +166,7 @@ li{
     height: 1.8em;
 	
 }
-.articlelist li p span:nth-child(2){
+.articlelist li .infocontainer p span:nth-child(2){
 	
 	float:right;
 	background-color:#FFEB3B;

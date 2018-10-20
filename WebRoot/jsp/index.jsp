@@ -109,10 +109,20 @@
      		   
      		   for(var i=0;i<data.length;i++){
      		   	 var cat = getCategoryName(data[i].category_id);
-     		   	 $(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px'><h3><span><a href='index.jsp?cid="+data[i].category_id+"&page=1'>"+cat+"</a><i class='label-arrow'></i></span><a href='details.jsp?aid="+data[i].aid+"' class='toview'>"+data[i].title
-     			 +"</a></h3><span class='glyphicon glyphicon-time'>&nbsp;</span><span>"+new Date(data[i].ptime).toLocaleString()
-     			 +"</span><br/><p>简介："+data[i].summary
-     			 +"</p><p style='height:1.3em;'><span style='display:inline-block;float:left;'><i class='fa fa-eye'></i>("+data[i].viewcount+")&nbsp;&nbsp;<i class='far fa-heart'></i>("+data[i].likecount+")</span><span style='display:inline-block;float:right;'><a class='btn' href='details.jsp?aid="+data[i].aid+"'>View details »</a></span></p></li>");
+     		   	 $(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px;height:180px;'>"+
+     		   	 "<div class='visible-md-8 hidden-xs imgcontainer'></div>"+
+     		   	 "<div class='infocontainer'>"+
+     		   	 	"<h4>"+
+     		   	 		"<span><a href='index.jsp?cid="+data[i].category_id+"&page=1'>"+cat+"</a><i class='label-arrow'></i></span>"+
+     		   	 		"<a href='details.jsp?aid="+data[i].aid+"' class='toview'>"+data[i].title+"</a>"+
+     		   	 	"</h4>"+
+     			 	"<span class='glyphicon glyphicon-time'></span><span>"+new Date(data[i].ptime).toLocaleString()+"</span><br/>"+
+     			 	"<p class='summarycontainer'>简介："+data[i].summary+"</p>"+
+     				"<p>"+
+     					"<span style='display:inline-block;float:left;'><i class='fa fa-eye'></i>("+data[i].viewcount+")&nbsp;&nbsp;<i class='far fa-heart'></i>("+data[i].likecount+")</span>"+
+     					"<span style='display:inline-block;float:right;'><a class='btn' href='details.jsp?aid="+data[i].aid+"'>View details »</a></span>"+
+     				"</p>"+
+     			"</div></li>");
 			   		
 			   }
 			   loadSiteInfo();//加载站点信息
