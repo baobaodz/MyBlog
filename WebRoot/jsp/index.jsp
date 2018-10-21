@@ -110,7 +110,11 @@
      		   for(var i=0;i<data.length;i++){
      		   	 var cat = getCategoryName(data[i].category_id);
      		   	 $(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px;height:180px;'>"+
-     		   	 "<div class='visible-md-8 hidden-xs imgcontainer'></div>"+
+     		   	 "<div class='imgcontainer visible-md-8 hidden-xs'>"+
+     		   	 	"<a href='http://pgxn28eo1.bkt.clouddn.com/images/jpg/articlepreview"+data[i].aid+".jpg' target='blank'>"+
+     		   	 		"<img src='http://pgxn28eo1.bkt.clouddn.com/images/jpg/articlepreview"+data[i].aid+".jpg'>"+
+     		   	 	"</a>"+
+     		   	 "</div>"+
      		   	 "<div class='infocontainer'>"+
      		   	 	"<h4>"+
      		   	 		"<span><a href='index.jsp?cid="+data[i].category_id+"&page=1'>"+cat+"</a><i class='label-arrow'></i></span>"+
@@ -118,7 +122,7 @@
      		   	 	"</h4>"+
      			 	"<span class='glyphicon glyphicon-time'></span><span>"+new Date(data[i].ptime).toLocaleString()+"</span><br/>"+
      			 	"<p class='summarycontainer'>简介："+data[i].summary+"</p>"+
-     				"<p>"+
+     				"<p class='visible-md-8 hidden-xs'>"+
      					"<span style='display:inline-block;float:left;'><i class='fa fa-eye'></i>("+data[i].viewcount+")&nbsp;&nbsp;<i class='far fa-heart'></i>("+data[i].likecount+")</span>"+
      					"<span style='display:inline-block;float:right;'><a class='btn' href='details.jsp?aid="+data[i].aid+"'>View details »</a></span>"+
      				"</p>"+

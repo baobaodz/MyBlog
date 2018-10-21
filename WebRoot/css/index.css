@@ -137,8 +137,13 @@ li{
 	height:86%;
 	width:27%;
 	float:left;
-	background-color:yellow;
+	background-color:#c0c0c0;
 	margin:14px 18px 0px 0px;
+}
+.articlelist li .imgcontainer img{
+	
+	height:100%;
+	width:100%;
 }
 .articlelist li .infocontainer{
 	

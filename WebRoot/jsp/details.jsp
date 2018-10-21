@@ -26,6 +26,9 @@
 <script src="../editor.md-master/lib/raphael.min.js"></script>
 <script src="../editor.md-master/lib/sequence-diagram.min.js"></script>
 <script src="../editor.md-master/lib/underscore.min.js"></script>
+<link rel="stylesheet" href="../css/rainbow.css">
+<script src="../js/highlight.pack.js"></script>
+
 
 
 
@@ -154,6 +157,7 @@
         					editormd.markdownToHTML("blogcontainer", {
            						htmlDecode: "style,script,iframe", //可以过滤标签解码
            						previewTheme : "dark",
+           						previewCodeHighlight : true,
             					emoji: true,
             					taskList:true,
             					tex: true,             // 默认不解析
@@ -297,6 +301,7 @@
 						
 					});
 				</script>
+				<script>hljs.initHighlightingOnLoad();</script>
 				<!--右侧动态目录 -->
 				<div class="col-md-3 column" id="scrollspy" style="height:150px;">
 
