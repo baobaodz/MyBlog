@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="../editor.md-master/css/editormd.css"/>
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.css" >
+<link rel="stylesheet" href="../css/rainbow.css">
+<link rel="stylesheet" href="../css/bootstrap-switch.css">
 <link rel="stylesheet" href="../css/details.css" >
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <script src="../js/jquery.min.js"></script>
@@ -17,6 +19,7 @@
 <script src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="../js/dynamicscrollspy.js"></script>
 <script src="../js/dynamicscrollspy.min.js"></script>
+<script src="../js/bootstrap-switch.js"></script>
 <script src="../js/editormd.min.js"></script>
 <script src="../js/editormd.js"></script>
 <script src="../editor.md-master/lib/marked.min.js"></script>
@@ -26,11 +29,6 @@
 <script src="../editor.md-master/lib/raphael.min.js"></script>
 <script src="../editor.md-master/lib/sequence-diagram.min.js"></script>
 <script src="../editor.md-master/lib/underscore.min.js"></script>
-<link rel="stylesheet" href="../css/rainbow.css">
-<script src="../js/highlight.pack.js"></script>
-
-
-
 
 <title></title>
 </head>
@@ -87,12 +85,16 @@
 		    	</div>
 		    </div>
 			<div class="row clearfix">
-				<div class="col-md-9 column" style="background-color:white;">
+				<div class="col-md-9 column" style="background-color:white;position:relative;">
 					<div id="article_header"></div>
 					
 					<div id="blogcontainer" style="width: 100%;margin: 0 auto">
 						<textarea id="textmarkdown" style="display:none;"></textarea>
 					</div>
+					<div class="switchtheme" style="position:absolute;top:10px;right:10px;">
+						<input type="checkbox" name="switchcheckbox" checked>
+						
+                    </div>
 					
 				</div>
 				<script type="text/javascript">
@@ -156,8 +158,8 @@
 							//开始对div转换
         					editormd.markdownToHTML("blogcontainer", {
            						htmlDecode: "style,script,iframe", //可以过滤标签解码
-           						previewTheme : "dark",
            						previewCodeHighlight : true,
+           						previewTheme : "dark",
             					emoji: true,
             					taskList:true,
             					tex: true,             // 默认不解析
@@ -298,22 +300,32 @@
 						$(".search-input").blur(function(){
 							$(this).width(160);
 						})
+						$("[name='switchcheckbox']").bootstrapSwitch({
+							size: "mini",
+							onText:"normal",
+							offText:"dark"
+						
+						});
 						
 					});
+					
 				</script>
-				<script>hljs.initHighlightingOnLoad();</script>
+				
 				<!--右侧动态目录 -->
-				<div class="col-md-3 column" id="scrollspy" style="height:150px;">
+				<div class="col-md-3 column visible-md-8 hidden-xs" id="scrollspy" style="height:150px;">
 
 				</div>
 			
 			</div>
 			<div class="row clearfix">
 				<div class="col-md-12 column" style="height:40px;line-height:40px;">
-					<div></div>
-					<a href="javascript:void(null)" class="favorite">
+					<div>
+						<a href="javascript:void(null)" class="favorite">
 						<i class="far fa-thumbs-up"></i> 赞<span class="fav-num"></span>
-					</a>
+						</a>
+						<button class="default ct">黑色</button>
+					</div>
+					
 				</div>
 			</div>
 			
@@ -325,8 +337,11 @@
 							<!--js追加上一篇下一篇 -->
 						</ul>
 					</div>
+					
 				</div>
-				<div class="col-md-3 column" style="height:60px;text-align:center;line-height:60px;"></div>
+				<div class="col-md-3 column" style="height:60px;text-align:center;line-height:60px;">
+				
+				</div>
 				
 			</div>
 			<div class="row clearfix">
@@ -334,6 +349,34 @@
 					<p>Copyright © baobaodz博客 丨苏ICP备17002430号 丨 苏公网安备36042102000137</p>
 				</div>
 			</div>
-	</div>		
+	</div>
+	
+	<script src="../js/highlight.pack.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+    		
+    		
+    		$(".ct").click(function(){
+    			if(localStorage.codeBlockTheme!="normal"){
+    				$(".editormd-preview-container pre,.editormd-html-preview pre").css("background-color","#282C36");
+    				$(".pln").css("color","#999AA4");
+    				$(".pun").css("color","#999AA4");
+    				$(".lit").css("color","#a3c6a5");
+    			}
+    			
+    		
+    		})
+			$("ol.linenums").wrap("<code></code>");
+			//hljs.initHighlightingOnLoad();
+			//$("pre span").removeClass();
+			hljs.configure({useBR: true});
+			
+// 			$("pre").each(function(i, block) {
+//   				hljs.highlightBlock(block);
+// 			});
+    		
+		}	
+	</script>
 </body>
+		
 </html>

@@ -3916,22 +3916,22 @@
 /* plain text */
 @media screen {
   .str {
-    color: #080;
+    color: #98c379;
   }
 
   /* string content */
   .kwd {
-    color: #008;
+    color: #c678dd;
   }
 
   /* a keyword */
   .com {
-    color: #800;
+    color: #5c6370;
   }
 
   /* a comment */
   .typ {
-    color: #606;
+    color: #61aeee;
   }
 
   /* a type name */
@@ -4035,15 +4035,6 @@ li.L6,
 li.L7,
 li.L8 {
   list-style-type: none;
-}
-
-/* Alternate shading for lines */
-li.L1,
-li.L3,
-li.L5,
-li.L7,
-li.L9 {
-  background: #f6f6f6;
 }
 
 .editormd-preview-container pre.prettyprint, .editormd-html-preview pre.prettyprint {
