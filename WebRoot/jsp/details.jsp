@@ -88,13 +88,10 @@
 				<div class="col-md-9 column" style="background-color:white;position:relative;">
 					<div id="article_header"></div>
 					
-					<div id="blogcontainer" style="width: 100%;margin: 0 auto">
+					<div id="blogcontainer" style="width: 100%;margin: 0 auto;">
 						<textarea id="textmarkdown" style="display:none;"></textarea>
 					</div>
-					<div class="switchtheme" style="position:absolute;top:10px;right:10px;">
-						<input type="checkbox" name="switchcheckbox" checked>
-						
-                    </div>
+					
 					
 					
 				</div>
@@ -258,9 +255,12 @@
 							
 								var num = $(this).scrollTop();
 								if(num>35){
+									
 									$(".mynav").removeClass("navbar-fixed-top");
+									$(".switchtheme").css("display","block");
 								}else{
 									$(".mynav").addClass("navbar-fixed-top");
+									$(".switchtheme").css("display","none");
 								}
             				});
 							
@@ -301,11 +301,17 @@
 						$(".search-input").blur(function(){
 							$(this).width(160);
 						})
-						$("[name='switchcheckbox']").bootstrapSwitch({
-							size: "mini",
-							onText:"normal",
-							offText:"dark"
 						
+						if(localStorage.normalCodeBlockTheme!="true"){//浅色
+							$("input[name='switchcheckbox']").attr("checked",false);
+						}
+						//初始化转换按钮
+    					$("input[name='switchcheckbox']").bootstrapSwitch({
+    		
+							size: "mini",
+							onText: "DARK",
+							offText: "LIGHT"
+							
 						});
 						
 					});
@@ -313,8 +319,11 @@
 				</script>
 				
 				<!--右侧动态目录 -->
-				<div class="col-md-3 column visible-md-8 hidden-xs" id="scrollspy" style="height:150px;">
-
+				<div class="col-md-3 column visible-md-8 hidden-xs" id="scrollspy" style="height:150px;;">
+					<div class="switchtheme" style="position:fixed;top:50px;right:90px;display:none;">
+						<p>代码块风格不喜欢？点击下方按钮切换</p>
+						<input type="checkbox" name="switchcheckbox" checked >
+                    </div>
 				</div>
 			
 			</div>
@@ -324,7 +333,7 @@
 						<a href="javascript:void(null)" class="favorite">
 						<i class="far fa-thumbs-up"></i> 赞<span class="fav-num"></span>
 						</a>
-						<button class="default ct">黑色</button>
+						
 					</div>
 					
 				</div>
@@ -352,30 +361,29 @@
 			</div>
 	</div>
 	
-	<script src="../js/highlight.pack.js"></script>
+	<!--页面全部加载完后执行 -->
 	<script type="text/javascript">
 		window.onload = function(){
-    		
-    		
-    		$(".ct").click(function(){
-    			if(localStorage.codeBlockTheme!="normal"){
-    				$(".editormd-preview-container pre,.editormd-html-preview pre").css("background-color","#282C36");
+			
+			switchCodeTheme(localStorage.normalCodeBlockTheme);
+			$("[name='switchcheckbox']").on("switchChange.bootstrapSwitch", function(event,state) {
+  							
+  				localStorage.normalCodeBlockTheme = state;
+  				switchCodeTheme(localStorage.normalCodeBlockTheme);
+			});
+			//代码块风格转换
+			function switchCodeTheme(data){
+			
+				if(data=="true"){
+					$(".editormd-preview-container pre,.editormd-html-preview pre").css("background-color","#282C36");
     				$(".pln").css("color","#999AA4");
     				$(".pun").css("color","#999AA4");
-    				$(".lit").css("color","#a3c6a5");
-    			}
-    			
-    		
-    		})
-			$("ol.linenums").wrap("<code></code>");
-			//hljs.initHighlightingOnLoad();
-			//$("pre span").removeClass();
-			hljs.configure({useBR: true});
-			
-// 			$("pre").each(function(i, block) {
-//   				hljs.highlightBlock(block);
-// 			});
-    		
+    				$(".lit").css("color","#a3c6a5");		
+				}else{
+					$(".editormd-preview-container pre,.editormd-html-preview pre").css("background-color","#f6f6f6");
+					$(".pln").css("color","#909292");
+				}
+			}
 		}	
 	</script>
 </body>
