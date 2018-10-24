@@ -320,7 +320,7 @@
 				
 				<!--右侧动态目录 -->
 				<div class="col-md-3 column visible-md-8 hidden-xs" id="scrollspy" style="height:150px;;">
-					<div class="switchtheme" style="position:fixed;top:50px;right:90px;display:none;">
+					<div class="switchtheme">
 						<p>代码块风格不喜欢？点击下方按钮切换</p>
 						<input type="checkbox" name="switchcheckbox" checked >
                     </div>
@@ -375,13 +375,14 @@
 			function switchCodeTheme(data){
 			
 				if(data=="true"){
-					$(".editormd-preview-container pre,.editormd-html-preview pre").css("background-color","#282C36");
+				
+					$(".editormd-preview-container pre,.editormd-html-preview pre").css({"background-color":"#282C36","transition":"background-color 1s"});
     				$(".pln").css("color","#999AA4");
     				$(".pun").css("color","#999AA4");
     				$(".lit").css("color","#a3c6a5");		
 				}else{
 					$(".editormd-preview-container pre,.editormd-html-preview pre").css("background-color","#f6f6f6");
-					$(".pln").css("color","#909292");
+					$(".pln").css("color","#174646");
 				}
 			}
 		}	

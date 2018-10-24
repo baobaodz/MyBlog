@@ -160,7 +160,20 @@ a{
 	
 	background-color: #c0c0c0;
 }
-
+#scrollspy .switchtheme{
+	
+	position:fixed;
+	top:50px;
+	right:138px;
+	display:none;
+}
+#scrollspy .switchtheme p{
+	
+	
+	font-size:.8em;
+	font-family:"微软雅黑";
+	color:#a3a3a3;
+}
 /* nav */
 .nav {
   padding-left: 0px;
