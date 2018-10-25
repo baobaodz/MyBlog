@@ -174,7 +174,8 @@
      			
      				var currentPage = pageNumber;
      				if(currentPage==1){
-//      					$(".pagination").append("<li><a>上一页</a></li>");
+     					$(".pagination").append("<li><a>上一页</a></li>");
+     					$(".pagination").find("li").eq(0).css("display","none");
      				}else{
      					$(".slide").empty();//清空轮播图div下所有节点
      					$(".pagination").append("<li><a href='index.jsp?cid="+cid+"&page="+(--currentPage)+"'>上一页</a></li>");
