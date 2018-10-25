@@ -174,7 +174,7 @@
      			
      				var currentPage = pageNumber;
      				if(currentPage==1){
-     					$(".pagination").append("<li><a>上一页</a></li>");
+//      					$(".pagination").append("<li><a>上一页</a></li>");
      				}else{
      					$(".slide").empty();//清空轮播图div下所有节点
      					$(".pagination").append("<li><a href='index.jsp?cid="+cid+"&page="+(--currentPage)+"'>上一页</a></li>");
@@ -335,7 +335,7 @@
 			</div>
 			<!--bootstrap分页 -->
 			<div class="confoot" style="width:100%; text-align:center;">
-				<ul class="pagination pagination-lg">
+				<ul class="pagination pagination-sm">
 					<!--js追加底部分页条 -->
 				</ul>
 			</div>

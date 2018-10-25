@@ -377,12 +377,13 @@
 				if(data=="true"){
 				
 					$(".editormd-preview-container pre,.editormd-html-preview pre").css({"background-color":"#282C36","transition":"background-color 1s"});
-    				$(".pln").css("color","#999AA4");
-    				$(".pun").css("color","#999AA4");
+    				$(".pln").css("color","#c8c5c3");
+    				$(".pun").css("color","#c8c5c3");
     				$(".lit").css("color","#a3c6a5");		
 				}else{
 					$(".editormd-preview-container pre,.editormd-html-preview pre").css("background-color","#f6f6f6");
 					$(".pln").css("color","#174646");
+					$(".pun").css("color","#174646");
 				}
 			}
 		}	

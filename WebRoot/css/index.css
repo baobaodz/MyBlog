@@ -177,6 +177,12 @@ li{
 	background-color:#FFEB3B;
 	
 }
+.confoot .pagination li{
+	
+	display:inline-block;
+	
+	margin:0px 3px;
+}
 .panel {
 	
 	border:1px solid #d9d9d9;
