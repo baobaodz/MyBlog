@@ -241,9 +241,9 @@
 								
 							});
 							$("#scrollspy").DynamicScrollspy({
-  								tH: 2, //页面正文部分需要监听的最低级别的标题，默认为H2标签。
-  								bH: 6, //页面正文部分需要监听的最高级别的标题，默认为H6标签。
-  								genIDs: true, //是否为标题随机生成ID，默认值为false。
+  								tH: 2, 
+  								bH: 6, 
+  								genIDs: true,
   								offset: 100, //滚动监听面板距离viewport顶部的偏移值，默认为100。
   								ulClassNames: "hidden-print", //为最顶层的ul元素添加这个class。
   								activeClass: "active", //添加到当前激活的li元素上的class。
@@ -258,11 +258,29 @@
 									
 									$(".mynav").removeClass("navbar-fixed-top");
 									$(".switchtheme").css("display","block");
+									$(".totop").css({
+										"display":"block"
+										
+									});
+									$(".totop").animate({bottom:'120px'},"fast");
+									
+									
 								}else{
 									$(".mynav").addClass("navbar-fixed-top");
 									$(".switchtheme").css("display","none");
+									$(".totop").css({
+										"display":"none",
+										"position":"fixed",
+										"bottom":"10px"
+								
+									});
 								}
             				});
+            				$(".totop").click(function(){
+										
+								$("html,body").animate({scrollTop:0},"slow");
+								$(".totop").animate({bottom:'700px'},"fast");
+							})
 							
 						}
 						//点击时增加赞数
@@ -323,6 +341,9 @@
 					<div class="switchtheme">
 						<p>代码块风格不喜欢？点击下方按钮切换</p>
 						<input type="checkbox" name="switchcheckbox" checked >
+                    </div>
+                    <div class="totop">
+                   		<img src="../images/totop.png">
                     </div>
 				</div>
 			

@@ -111,7 +111,7 @@
      		   	 var cat = getCategoryName(data[i].category_id);
      		   	 $(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px;height:180px;'>"+
      		   	 "<div class='imgcontainer visible-md-8 hidden-xs'>"+
-     		   	 	"<a href='http://pgxn28eo1.bkt.clouddn.com/images/jpg/articlepreview"+data[i].aid+".jpg' target='blank'>"+
+     		   	 	"<a href='http://pgxn28eo1.bkt.clouddn.com/images/jpg/articlepreview"+data[i].aid+".jpg' target='blank' title='下载原图'>"+
      		   	 		"<img src='http://pgxn28eo1.bkt.clouddn.com/images/jpg/articlepreview"+data[i].aid+".jpg'>"+
      		   	 	"</a>"+
      		   	 "</div>"+
@@ -188,6 +188,7 @@
 			  		
 			  		if(pageNumber>=pageCount){
      					$(".pagination").append("<li><a>下一页</a></li>");
+     					$(".pagination").find("li").eq(pageCount+1).css("display","none");
      					$(".pagination").find("li").eq(pageNumber).find("a").css("background-color","skyblue");
      				}else{
      					$(".pagination").append("<li><a href='index.jsp?cid="+cid+"&page="+(++pageNumber)+"'>下一页</a></li>");

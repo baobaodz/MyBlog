@@ -174,13 +174,22 @@ a{
 	font-family:"微软雅黑";
 	color:#a3a3a3;
 }
+#scrollspy .totop{
+	
+	width:60px;
+	height:60px;
+	position:fixed;
+	bottom:10px;
+	right:60px;
+	display:none;
+}
 /* nav */
 .nav {
   padding-left: 0px;
   width:277px;
   font-size:1.1em;
   font-family:"微软雅黑";
-  
+  overflow:hidden;
 }
 /* all anchors */
 
