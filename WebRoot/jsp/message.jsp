@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.css" >
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.css">
@@ -110,7 +111,7 @@
 				alert("留言不能为空！");
 				return false;
 			}else{
-				alert(message);
+				
 				$.ajax({
 					url : "<%=request.getContextPath()%>/saveMessage",
      				type: "post",
@@ -143,7 +144,7 @@
      		   		for(var i=0;i<data.length;i++){
      		   			
      		   	 		$(".messagelist").append("<li style='background-color: white;margin:10px 0px;padding:15px 15px 10px 15px'>"+
-     		   	 		"<span style='display:inline-block;float:left;height:30px;color:#6ab7a3;'>"+data[i].mname+"</span>"+
+     		   	 		"<span style='display:inline-block;width:60px;height:60px;background-color:yellow;float:left;'><img src=''></span>"+"<span style='display:inline-block;float:left;height:30px;color:#6ab7a3;'>"+data[i].mname+"</span>"+
      		   	 		"<span style='display:inline-block;float:right;height:30px;color:#929997;font-size:.9em;'>"+new Date(data[i].mtime).toLocaleDateString()+"</span>"+
      			 		"<p style='clear:both;'>"+data[i].mess+"</p></li>");
 			   		
@@ -302,7 +303,7 @@
 				</div>
 				<div class="panel-body myblogmotto">
 					<dl style="width:35%;">
-						<dt><img alt="头像" src="https://avatar.csdn.net/0/C/F/3_c_kite.jpg" class="img-circle"></dt>
+						<dt><img alt="头像" src="../images/avatar.png" class="img-circle"></dt>
 					</dl>
 					<dl style="width:65%;">
 						<dt><h3>baoabaodz</h3></dt>
