@@ -261,26 +261,24 @@
 									$(".switchtheme").css("display","block");
 									$(".totop").css({
 										"display":"block"
-										
 									});
-									$(".totop").animate({bottom:'120px'},"fast");
-									
 									
 								}else{
 									$(".mynav").addClass("navbar-fixed-top");
 									$(".switchtheme").css("display","none");
 									$(".totop").css({
-										"display":"none",
-										"position":"fixed",
-										"bottom":"10px"
+										"display":"none"
 								
 									});
+									$(".totop").animate({top:'460px'},"fast");
+									$(".totop").animate({top:'440px'},"slow");
 								}
             				});
             				$(".totop").click(function(){
 										
 								$("html,body").animate({scrollTop:0},"slow");
-								$(".totop").animate({bottom:'700px'},"fast");
+								$(".totop").animate({top:'-100px'},"slow");
+								
 							})
 							
 						}
@@ -344,7 +342,7 @@
 						<input type="checkbox" name="switchcheckbox" checked >
                     </div>
                     <div class="totop">
-                   		<img src="../images/totop.png">
+<!--                    		<img src="../images/totop.png"> -->
                     </div>
 				</div>
 			

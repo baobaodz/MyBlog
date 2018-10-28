@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+``~<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -144,9 +144,9 @@
      		   		for(var i=0;i<data.length;i++){
      		   			
      		   	 		$(".messagelist").append("<li style='background-color: white;margin:10px 0px;padding:15px 15px 10px 15px'>"+
-     		   	 		"<span style='display:inline-block;width:60px;height:60px;background-color:yellow;float:left;'><img src=''></span>"+"<span style='display:inline-block;float:left;height:30px;color:#6ab7a3;'>"+data[i].mname+"</span>"+
+     		   	 		"<div class='headimage' style='display:inline-block;width:60px;height:60px;background-color:yellow;float:left;'><img src=''></div>"+"<div class='rightinfo' style='display:inline-block;width:91%;'><span style='display:inline-block;float:left;height:30px;color:#6ab7a3;'>"+data[i].mname+"</span>"+
      		   	 		"<span style='display:inline-block;float:right;height:30px;color:#929997;font-size:.9em;'>"+new Date(data[i].mtime).toLocaleDateString()+"</span>"+
-     			 		"<p style='clear:both;'>"+data[i].mess+"</p></li>");
+     			 		"<p style='clear:both;'>"+data[i].mess+"</p></div></li>");
 			   		
 			   		}
 			   
