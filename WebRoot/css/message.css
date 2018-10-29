@@ -4,3 +4,45 @@
 	
 	margin-top:10px;
 }
+.messagelist li {
+	
+	background-color: white;
+	margin:10px 0px;
+	padding-left:10px;
+	padding-top:15px;
+	padding-bottom:15px;
+	box-sizing:border-box;
+}
+.messagelist li .leftheadimage{
+	display:inline-block;
+	width:70px;
+	height:70px;
+	margin-right:10px;
+	border-radius:35px;
+}
+.messagelist li .rightinfo{
+	display:inline-block;
+	width:87%;
+	padding-left:4px;
+}
+.messagelist li .rightinfo .rname{
+	
+	display:inline-block;
+	float:left;
+	height:30px;
+	color:#6ab7a3;
+	
+}
+.messagelist li .rightinfo .rdate{
+	
+	display:inline-block;
+	float:right;
+	height:30px;
+	color:#929997;
+	font-size:.9em;
+	
+}
+.messagelist li .rightinfo p{
+	
+	clear:both;
+}

@@ -1,4 +1,4 @@
-``~<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -142,11 +142,16 @@
      			success:function(data){
      		   		
      		   		for(var i=0;i<data.length;i++){
-     		   			
-     		   	 		$(".messagelist").append("<li style='background-color: white;margin:10px 0px;padding:15px 15px 10px 15px'>"+
-     		   	 		"<div class='headimage' style='display:inline-block;width:60px;height:60px;background-color:yellow;float:left;'><img src=''></div>"+"<div class='rightinfo' style='display:inline-block;width:91%;'><span style='display:inline-block;float:left;height:30px;color:#6ab7a3;'>"+data[i].mname+"</span>"+
-     		   	 		"<span style='display:inline-block;float:right;height:30px;color:#929997;font-size:.9em;'>"+new Date(data[i].mtime).toLocaleDateString()+"</span>"+
-     			 		"<p style='clear:both;'>"+data[i].mess+"</p></div></li>");
+     		   			var rad = Math.floor((data[i].mname.substring(0,1).charCodeAt()+data[i].mname.substring(9).charCodeAt())/6);
+     		   	 		$(".messagelist").append("<li>"+
+     		   	 		"<div class='leftheadimage'>"+
+     		   	 			"<img src='http://pgxn28eo1.bkt.clouddn.com/images/headimage/default"+rad+".png'>"+
+     		   	 		"</div>"+
+     		   	 		"<div class='rightinfo'>"+
+     		   	 			"<span class='rname'>"+data[i].mname+"</span>"+
+     		   	 			"<span class='rdate'>"+new Date(data[i].mtime).toLocaleDateString()+"</span>"+
+     			 			"<p>"+data[i].mess+"</p>"+
+     			 		"</div></li>");
 			   		
 			   		}
 			   
@@ -294,7 +299,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="col-md-3 column myblogright" style="padding:10px 0px;">
+		<div class="col-md-3 column myblogright visible-md-8 hidden-xs" style="padding:10px 0px;">
 		
 			<div class="panel panel-default">
 				<div class="panel-heading">
