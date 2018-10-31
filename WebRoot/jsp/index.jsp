@@ -54,7 +54,7 @@
       						textPosition: "bottom",
       						fontSize: "1.4em"
       					});
-      					$(".busy-load-container-item .busy-load-text").append("<br><br><center class='start'><button class='btn btn-info'>开启baobaodz的博客</button></center>")
+      					$(".busy-load-container-item .busy-load-text").append("<br><br><center class='start'><button class='btn btn-info'>开启baobaodz的博客</button></center>");
 						$(".start").click(function(){
 							$.busyLoadFull("hide", { animate: "fade" });
 						})
