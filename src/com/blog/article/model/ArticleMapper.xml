@@ -96,9 +96,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getVistorName" parameterType="String" resultType="String">
 		select vname from visitor where vip = #{visitorIP} 
 	</select>
-	<select id="queryMessage" resultType="com.blog.article.dao.Message">
+	<select id="queryMessage" resultMap="messageResult">
 		SELECT * FROM MESSAGE ORDER BY MTIME DESC
 	</select>
+	<resultMap type="com.blog.article.dao.Message" id="messageResult">
+		<result property="mess" column="MESS"/>
+		<result property="mname" column="MNAME"/>
+		<result property="mtime" column="MTIME"/>
+	</resultMap>
 	<select id="querySiteInfo" resultType="java.util.Map">
 		SELECT ARTICLENUM,LIKENUM,VIEWNUM,MESSNUM FROM SITEINFO
 	</select>
@@ -115,7 +120,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	<!--保存留言 -->
 	<insert id="saveMessage" parameterType="com.blog.article.dao.Message">
-		INSERT INTO MESSAGE(MNAME,MESS,MTIME) VALUES (#{mname},#{mess},sysdate)
+		INSERT INTO MESSAGE(MNAME,MESS,MTIME) VALUES (#{mname},#{mess},#{mtime})
 	</insert>
 	<!--删除指定文章 -->
 	<delete id="deleteSpecificArticle" parameterType="int">

@@ -190,10 +190,10 @@
 			  		if(pageNumber>=pageCount){
      					$(".pagination").append("<li><a>下一页</a></li>");
      					$(".pagination").find("li").eq(pageCount+1).css("display","none");
-     					$(".pagination").find("li").eq(pageNumber).find("a").css("background-color","skyblue");
+     					$(".pagination").find("li").eq(pageNumber).find("a").css("background-color","#ffeb3b");
      				}else{
      					$(".pagination").append("<li><a href='index.jsp?cid="+cid+"&page="+(++pageNumber)+"'>下一页</a></li>");
-     					$(".pagination").find("li").eq(pageNumber-1).find("a").css("background-color","skyblue");
+     					$(".pagination").find("li").eq(pageNumber-1).find("a").css("background-color","#ffeb3b");
      				}
 				}
 				
@@ -425,10 +425,16 @@
 			</div>
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 联系我</h3>
+					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 友链</h3>
 				</div>
 				<div class="panel-body">
-					<ul style="padding-left:0px;"></ul>
+					<ul style="padding-left:0px;">
+						<li><a href="http://baobaodz.top" target="blank">baobaodz的hexo博客</a></li>
+						<li><a href="https://www.liaoxuefeng.com/" target="blank">廖雪峰的官方网站</a></li>
+						<li><a href="https://www.xttblog.com/" target="blank">业余草</a></li>
+						<li><a href="https://www.hollischuang.com/" target="blank">Hollis</a></li>
+						<li><a href="http://www.importnew.com/" target="blank">importnew</a></li>
+					</ul>
 				</div>
 				
 			</div>

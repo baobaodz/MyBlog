@@ -1,6 +1,5 @@
 package com.blog.article.dao;
 
-import java.sql.Clob;
 import java.util.Date;
 
 public class Article {

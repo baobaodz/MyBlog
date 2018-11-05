@@ -20,6 +20,11 @@ li{
 	list-style: none;
 	
 }
+@font-face {
+	font-family: "mFont";
+ 	src: url(../fonts/方正宋刻本秀楷简体.TTF);
+}
+
 .navbar-nav > li:hover{
 	
 	border-bottom:4px solid #fbd257;
@@ -156,6 +161,10 @@ li{
 	
 	
 }
+.articlelist li .infocontainer h4 p{
+	
+	font-family:"mFont";
+}
 .articlelist li .infocontainer .summarycontainer{
 	
 	overflow:hidden;
@@ -180,12 +189,14 @@ li{
 .confoot .pagination li{
 	
 	display:inline-block;
-	
+	border:1px solid #f1f1f1;
+	border-radius:3px;
 	margin:0px 3px;
+	
 }
 .panel {
 	
-	border:1px solid #d9d9d9;
+	border:1px solid #fafafa;
 }
 .panel .panel-body{
 	

@@ -142,6 +142,7 @@
      			success:function(data){
      		   		
      		   		for(var i=0;i<data.length;i++){
+     		   			
      		   			var rad = Math.floor((data[i].mname.substring(0,1).charCodeAt()+data[i].mname.substring(9).charCodeAt())/6);
      		   	 		$(".messagelist").append("<li>"+
      		   	 		"<div class='leftheadimage'>"+
@@ -149,7 +150,7 @@
      		   	 		"</div>"+
      		   	 		"<div class='rightinfo'>"+
      		   	 			"<span class='rname'>"+data[i].mname+"</span>"+
-     		   	 			"<span class='rdate'>"+new Date(data[i].mtime).toLocaleDateString()+"</span>"+
+     		   	 			"<span class='rdate'>"+new Date(data[i].mtime).toLocaleString()+"</span>"+
      			 			"<p>"+data[i].mess+"</p>"+
      			 		"</div></li>");
 			   		

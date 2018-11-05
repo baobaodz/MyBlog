@@ -1,8 +1,6 @@
 package com.blog.article.dao;
 
-import java.sql.Date;
-
-
+import java.util.Date;
 public class Message {
 
 	private int mid;
