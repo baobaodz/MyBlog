@@ -5,7 +5,6 @@ li{
 }
 a{
 	
-	
 	text-decoration:none;
 	color:#5fb6ad;
 }
@@ -133,32 +132,52 @@ a{
     padding-left: 10px;
     color: #9d9a9a;
 }
-.pagination > li{
+#article_footer{
+	
+	height:6em;
+	width: 100%;
+	margin:15px 0px;
+	font-size:1.1em;
+	font-family:"微软雅黑";
+}
+#article_footer .nepr{
+	
+	height:6em;
+	padding:0px;
+	
+	
+}
+#article_footer .nepr li{
 	
 	display: inline-block;
-	
 	width: 50%;
-	
+	height:6em;
+	position: relative;
 	
 }
-.pagination > li a{
+
+#article_footer .nepr li a{
 	
 	width: 100%;
-	font-size:14px;
+	text-decoration:none;
+	color:#5fb6ad;
+	position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+	
 }
-.pagination > li:first-child a{
+#article_footer .nepr li:first-child a{
 	display: inline-block;
 	float:left;
 }
-.pagination-lg > li:nth-child(2) a{
+#article_footer .nepr li:nth-child(2) a{
 	display: inline-block;
-	text-align: right;
-	
-
+	float:right;
+	text-align:right;
 }
-.pagination > li:hover{
+#article_footer .nepr li:hover{
 	
-	background-color: #c0c0c0;
+	background-color: #efefef;
 }
 #scrollspy .switchtheme{
 	

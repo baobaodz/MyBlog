@@ -22,7 +22,7 @@ li{
 }
 @font-face {
 	font-family: "mFont";
- 	src: url(../fonts/方正宋刻本秀楷简体.TTF);
+ 	src: url(../fonts/songkebenxiukai.ttf);
 }
 
 .navbar-nav > li:hover{

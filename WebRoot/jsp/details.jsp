@@ -117,8 +117,8 @@
 								getCategoryName(data);//面包屑导航获取文章类别名
 								markdownToHtml(data);//Markdown转html
 								increaseViewCount(data);//增加浏览量并显示
-								getArticleWords();//获取全文字数和阅读时间
 								previousAndNext();//获取上下篇
+								getArticleWords();//获取全文字数和阅读时间
 								showCatalogue();//加载右侧目录
 								
 							}
@@ -218,17 +218,17 @@
 								success : function(data) {
 						
 									if(data.length==3){
-										$("#article_footer .pagination").append("<li><a href='details.jsp?aid="+data[0].aid+"'><span class='glyphicon glyphicon-chevron-left'></span>"+data[0].title+"</a></li>");
-										$("#article_footer .pagination").append("<li><a href='details.jsp?aid="+data[2].aid+"'>"+data[2].title+"<span class='glyphicon glyphicon-chevron-right'></span></a><li>");
+										$("#article_footer .nepr").append("<li><a href='details.jsp?aid="+data[0].aid+"'><span class='glyphicon glyphicon-chevron-left'></span>"+data[0].title+"</a></li>");
+										$("#article_footer .nepr").append("<li><a href='details.jsp?aid="+data[2].aid+"'>"+data[2].title+"<span class='glyphicon glyphicon-chevron-right'></span></a></li>");
 									}else{
 										if(data[0].aid==aid){//当前为第一篇文章
 										
-											$("#article_footer .pagination").append("<li><a href='#'><span class='glyphicon glyphicon-chevron-left'></span>包包还在努力当中~</a></li>");
-											$("#article_footer .pagination").append("<li><a href='details.jsp?aid="+data[1].aid+"'>"+data[1].title+"<span class='glyphicon glyphicon-chevron-right'></span></a><li>");//下一篇
+											$("#article_footer .nepr").append("<li><a href='#'><span class='glyphicon glyphicon-chevron-left'></span>包包还在努力当中~</a></li>");
+											$("#article_footer .nepr").append("<li><a href='details.jsp?aid="+data[1].aid+"'>"+data[1].title+"<span class='glyphicon glyphicon-chevron-right'></span></a></li>");//下一篇
 											
 										}else {//当前为最后一篇文章
-											$("#article_footer .pagination").append("<li><a href='details.jsp?aid="+data[0].aid+"'><span class='glyphicon glyphicon-chevron-left'></span>"+data[0].title+"</a></li>");//上一篇
-											$("#article_footer .pagination").append("<li><a href='#'>没有咯<span class='glyphicon glyphicon-chevron-right'></span></a><li>");
+											$("#article_footer .nepr").append("<li><a href='details.jsp?aid="+data[0].aid+"'><span class='glyphicon glyphicon-chevron-left'></span>"+data[0].title+"</a></li>");//上一篇
+											$("#article_footer .nepr").append("<li><a href='#'>没有咯<span class='glyphicon glyphicon-chevron-right'></span></a></li>");
 										}
 									}
 								}
@@ -362,9 +362,9 @@
 			
 
 			<div class="row clearfix">
-				<div class="col-md-9 column" style="height:40px;line-height:40px;margin:15px 0px;">
-					<div id="article_footer" style="width: 100%;margin: 0 auto">
-						<ul class="pagination pagination-lg" style="width:100%;margin:0">
+				<div class="col-md-9 column" style="margin:20px 0px;">
+					<div id="article_footer">
+						<ul class="nepr" style="width:100%;margin:0">
 							<!--js追加上一篇下一篇 -->
 						</ul>
 					</div>
