@@ -10,8 +10,10 @@
 <link rel="stylesheet" href="../editor.md-master/css/editormd.css"/>
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.css" >
-<link rel="stylesheet" href="../css/rainbow.css">
 <link rel="stylesheet" href="../css/bootstrap-switch.css">
+<link rel="stylesheet" href="../css/adaptive-modal.css">
+<link rel="stylesheet" href="../css/elusive-webfont.css">
+<link rel="stylesheet" href="../css/share.css">
 <link rel="stylesheet" href="../css/details.css" >
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <script src="../js/jquery.min.js"></script>
@@ -21,6 +23,8 @@
 <script src="../js/dynamicscrollspy.js"></script>
 <script src="../js/dynamicscrollspy.min.js"></script>
 <script src="../js/bootstrap-switch.js"></script>
+<script src="../js/jquery.adaptive-modal.js"></script>
+<script src="../js/modernizr.js"></script>
 <script src="../js/editormd.min.js"></script>
 <script src="../js/editormd.js"></script>
 <script src="../editor.md-master/lib/marked.min.js"></script>
@@ -89,7 +93,7 @@
 				<div class="col-md-9 column" style="background-color:white;position:relative;">
 					<div id="article_header"></div>
 					
-					<div id="blogcontainer" style="width: 100%;margin: 0 auto;">
+					<div id="blogcontainer" style="width: 100%;margin:0 auto;">
 						<textarea id="textmarkdown" style="display:none;"></textarea>
 					</div>
 					
@@ -309,8 +313,8 @@
 							
 							}
 						
-						
 						})
+
 						//搜素框焦点事件
 						$(".search-input").focus(function(){
 							$(this).width(160);//避免第一次没有效果
@@ -354,13 +358,63 @@
 						<a href="javascript:void(null)" class="favorite">
 						<i class="far fa-thumbs-up"></i> 赞<span class="fav-num"></span>
 						</a>
+						<a href="#sharemodal" class="socialshare" data-toggle="adaptive-modal">
+						<i class="far fa-thumbs-up"></i> 分享<span class="fav-num"></span>
+						</a>
 						
 					</div>
 					
 				</div>
 			</div>
+			<div id="sharemodal">
+				
+				<div class="share-dialog">
+    				<div class="share-close"></div>
+    				<div class="share-dialog-title">分享</div>
+    				<div class="share-dialog-cont">
+        				<div class="share-copy">
+            				<div class="share-copy-l">分享链接：</div>
+            				<div class="share-copy-c"><input name="shareurl" id="copytext" type="text"/></div>
+            				<div id="btnCopy" class="share-copy-r"  data-clipboard-target="copytext">复制链接</div>
+            				<div class="clear"></div>
+            			
+        				</div>
+        			<div class="share-platform">
+            			<div class="share-platform-l">社交平台：</div>
+            			<div class="share-platform-r">
+                			<div class="bdsharebuttonbox">
+                    			<a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    			<a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                   				<a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                    			<a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                			</div>
+                			<div class="share-platform-text">
+                    			您可以直接复制短链，分享给朋友，也可直接点击社交平台图标，指定分享。
+                			</div>
+            			</div>
+        			</div>
+    			</div>
+				</div>
+				<script>
+					window._bd_share_config={"common":{
+						"bdSnsKey":{},
+						"bdText":"分享到新浪微博",
+						"bdMini":"1",
+						"bdMiniList":["bdxc","tqf","douban","bdhome","sqq","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","fbook","twi","linkedin","h163","evernotecn","copy","print"],
+						"bdPic":"",
+						"bdStyle":"1","bdSize":"32"},
+						"share":{}
+						};
+						with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+				</script>
+				<script src="../js/ZeroClipboard.js"></script>
+				<script>
+					var g_url = window.location.href;
+	    				$("input[name='shareurl']").val(g_url);
+						var clip = new ZeroClipboard( document.getElementById("btnCopy"));
+				</script>
+			</div>
 			
-
 			<div class="row clearfix">
 				<div class="col-md-9 column" style="margin:20px 0px;">
 					<div id="article_footer">
@@ -407,6 +461,7 @@
 					$(".pun").css("color","#174646");
 				}
 			}
+			
 		}	
 	</script>
 </body>
