@@ -132,6 +132,15 @@ a{
     padding-left: 10px;
     color: #9d9a9a;
 }
+
+.social-share{
+	
+	display:none;
+}
+.share:hover .social-share{
+	
+	display:block;
+}
 #article_footer{
 	
 	height:6em;

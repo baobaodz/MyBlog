@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="site" content="http://baobaodz.com" />
 <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="../editor.md-master/css/editormd.min.css"/>
 <link rel="stylesheet" href="../editor.md-master/css/editormd.css"/>
@@ -15,9 +16,11 @@
 <link rel="stylesheet" href="../css/elusive-webfont.css">
 <link rel="stylesheet" href="../css/share.css">
 <link rel="stylesheet" href="../css/details.css" >
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" >
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <script src="../js/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
 <script src="../bootstrap-3.3.7/js/bootstrap.js"></script>
 <script src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="../js/dynamicscrollspy.js"></script>
@@ -34,7 +37,8 @@
 <script src="../editor.md-master/lib/raphael.min.js"></script>
 <script src="../editor.md-master/lib/sequence-diagram.min.js"></script>
 <script src="../editor.md-master/lib/underscore.min.js"></script>
-
+<script src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=428219"></script>
+<link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style1_32.css">
 <title></title>
 </head>
 <body style="background-color: #f5f8f9">
@@ -335,6 +339,11 @@
 							offText: "LIGHT"
 							
 						});
+						var $config = {
+							disabled            : ['google', 'facebook', 'twitter'], // 禁用的站点
+						};
+
+						socialShare(".social-share", $config);
 						
 					});
 					
@@ -358,62 +367,19 @@
 						<a href="javascript:void(null)" class="favorite">
 						<i class="far fa-thumbs-up"></i> 赞<span class="fav-num"></span>
 						</a>
-						<a href="#sharemodal" class="socialshare" data-toggle="adaptive-modal">
-						<i class="far fa-thumbs-up"></i> 分享<span class="fav-num"></span>
+						<a href="#sharemodal" class="share" data-toggle="adaptive-modal">
+						<i class="fa fa-share-alt"></i> 分享<span></span>
 						</a>
 						
 					</div>
 					
 				</div>
 			</div>
+			<div class="social-share"></div>
 			<div id="sharemodal">
-				
-				<div class="share-dialog">
-    				<div class="share-close"></div>
-    				<div class="share-dialog-title">分享</div>
-    				<div class="share-dialog-cont">
-        				<div class="share-copy">
-            				<div class="share-copy-l">分享链接：</div>
-            				<div class="share-copy-c"><input name="shareurl" id="copytext" type="text"/></div>
-            				<div id="btnCopy" class="share-copy-r"  data-clipboard-target="copytext">复制链接</div>
-            				<div class="clear"></div>
-            			
-        				</div>
-        			<div class="share-platform">
-            			<div class="share-platform-l">社交平台：</div>
-            			<div class="share-platform-r">
-                			<div class="bdsharebuttonbox">
-                    			<a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                    			<a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                   				<a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
-                    			<a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                			</div>
-                			<div class="share-platform-text">
-                    			您可以直接复制短链，分享给朋友，也可直接点击社交平台图标，指定分享。
-                			</div>
-            			</div>
-        			</div>
-    			</div>
-				</div>
-				<script>
-					window._bd_share_config={"common":{
-						"bdSnsKey":{},
-						"bdText":"分享到新浪微博",
-						"bdMini":"1",
-						"bdMiniList":["bdxc","tqf","douban","bdhome","sqq","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","fbook","twi","linkedin","h163","evernotecn","copy","print"],
-						"bdPic":"",
-						"bdStyle":"1","bdSize":"32"},
-						"share":{}
-						};
-						with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-				</script>
-				<script src="../js/ZeroClipboard.js"></script>
-				<script>
-					var g_url = window.location.href;
-	    				$("input[name='shareurl']").val(g_url);
-						var clip = new ZeroClipboard( document.getElementById("btnCopy"));
-				</script>
+				<div class="social-share"></div>
 			</div>
+				
 			
 			<div class="row clearfix">
 				<div class="col-md-9 column" style="margin:20px 0px;">
