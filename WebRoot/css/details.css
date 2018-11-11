@@ -132,12 +132,46 @@ a{
     padding-left: 10px;
     color: #9d9a9a;
 }
-
-.social-share{
+.socialoperation,.socialoperation ul{
 	
+	height:40px;
+	padding:0px;
+}
+.socialoperation ul li{
+	
+	float:left;
+	display:inline-block;
+	margin-right:7px;
+}
+.socialoperation ul li a:hover{
+	
+	text-decoration:none;
+}
+.socialoperation .favorite{
+	
+	
+	
+}
+.socialoperation ul .share{
+	
+	diplay:inline-block;
+	width:35%;
+	position:relative;
+}
+.socialoperation ul .share .social-share{
+	
+	position:absolute;
+	top:2.3em;
+	left:-2.7em;
 	display:none;
 }
-.share:hover .social-share{
+
+
+.socialoperation ul .share:hover .social-share{
+	
+	display:block;
+}
+.socialoperation ul .share .social-share:hover{
 	
 	display:block;
 }

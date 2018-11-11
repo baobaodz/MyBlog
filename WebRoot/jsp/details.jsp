@@ -363,21 +363,22 @@
 			</div>
 			<div class="row clearfix">
 				<div class="col-md-12 column" style="height:40px;line-height:40px;">
-					<div>
-						<a href="javascript:void(null)" class="favorite">
-						<i class="far fa-thumbs-up"></i> 赞<span class="fav-num"></span>
-						</a>
-						<a href="#sharemodal" class="share" data-toggle="adaptive-modal">
-						<i class="fa fa-share-alt"></i> 分享<span></span>
-						</a>
-						
+					<div class="socialoperation">
+						<ul>
+							<li class="favorite">
+								<a href="javascript:void(null)">
+									<i class="far fa-thumbs-up"></i> 赞<span class="fav-num"></span>
+								</a>
+							</li>
+							<li class="share">
+								<a href="javascript:void(null)" data-toggle="adaptive-modal">
+									<i class="fa fa-share-alt"></i> 分享<span></span>
+								</a>
+								<div class="social-share"></div>
+							</li>
+						</ul>
 					</div>
-					
 				</div>
-			</div>
-			<div class="social-share"></div>
-			<div id="sharemodal">
-				<div class="social-share"></div>
 			</div>
 				
 			

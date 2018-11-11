@@ -20,11 +20,17 @@ li{
 	list-style: none;
 	
 }
-@font-face {
-	font-family: "mFont";
- 	src: url(../fonts/songkebenxiukai.ttf);
-}
 
+@font-face {
+    font-family: "mFont";
+    src: url("../fonts/songkebenxiukai.eot");
+    src: url("../fonts/songkebenxiukai.eot?#iefix") format("embedded-opentype"),
+         url("../fonts/songkebenxiukai.woff") format("woff"),
+         url("../fonts/songkebenxiukai.ttf") format("truetype"),
+         url("../fonts/songkebenxiukai.svg#webfont34M5alKg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
 .navbar-nav > li:hover{
 	
 	border-bottom:4px solid #fbd257;
@@ -163,7 +169,7 @@ li{
 }
 .articlelist li .infocontainer h4 p{
 	
-	font-family:"mFont";
+	font-family:mFont;
 }
 .articlelist li .infocontainer .summarycontainer{
 	
