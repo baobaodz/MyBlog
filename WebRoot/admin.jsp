@@ -20,8 +20,7 @@
 		var aname = $("input[type='text']").val();
 		
 		var apassword = $("input[type='password']").val();
-		alert(aname);
-		alert(apassword);
+		
 		$.ajax({
 			url : "<%=request.getContextPath()%>/login",
      		type: "post",

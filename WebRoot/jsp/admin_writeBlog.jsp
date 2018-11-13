@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="../editor.md-master/css/editormd.css"/>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/editormd.min.js"></script>
-
 <script src="../js/editormd.js"></script>
 <script src="../editor.md-master/lib/marked.min.js"></script>
 <script src="../editor.md-master/lib/flowchart.min.js"></script>
