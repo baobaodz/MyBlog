@@ -6,7 +6,6 @@
 <head>
     <title>后台|baobaodz</title>
     
-    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
@@ -113,9 +112,9 @@
                 <nav class="navbar navbar-default" role="navigation">
                     <div class="side-menu-container">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="#">
+                            <a class="navbar-brand" href="<%=request.getContextPath()%>/jsp/admin_main.jsp">
                                 <div class="icon fa fa-paper-plane"></div>
-                                <div class="title">Flat Admin V.2</div>
+                                <div class="title">baobaodz的个人博客</div>
                             </a>
                             <button type="button" class="navbar-expand-toggle pull-right visible-xs">
                                 <i class="fa fa-times icon"></i>
@@ -437,7 +436,7 @@
                 <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
             </div>
         </footer>
-        <div>
+        
             <!-- Javascript Libs -->
             <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
             <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>

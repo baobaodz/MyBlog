@@ -196,7 +196,7 @@
 							}
 						
 						}
-						
+						$("#SOHUCS").attr("sid",aid);
 						//获取全文字数和阅读时间
 						function getArticleWords(){
 						
@@ -389,7 +389,43 @@
 							<!--js追加上一篇下一篇 -->
 						</ul>
 					</div>
+					<div class="article_review">
+						<div id="SOHUCS" sid="请将此处替换为配置SourceID的语句" ></div> 
+					</div>
 					
+					<script type="text/javascript"> 
+						(function(){ 
+							var appid = 'cytV2uHWj'; 
+							var conf = 'prod_dff1e0e1dd8c717b07c0b04043279419'; 
+							var width = window.innerWidth || document.documentElement.clientWidth; 
+							if (width < 960) { 
+								window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); 
+							} else { 
+								var loadJs=function(d,a){
+									var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;
+									var b=document.createElement("script");
+									b.setAttribute("type","text/javascript");
+									b.setAttribute("charset","UTF-8");
+									b.setAttribute("src",d);
+									if(typeof a==="function"){
+										if(window.attachEvent){
+											b.onreadystatechange=function(){
+												var e=b.readyState;
+												if(e==="loaded"||e==="complete"){
+													b.onreadystatechange=null;a()
+												}
+											}
+										}else{
+											b.onload=a
+										}
+									}
+									c.appendChild(b)};
+									loadJs("http://changyan.sohu.com/upload/changyan.js",function(){
+										window.changyan.api.config({appid:appid,conf:conf})
+								}); 
+							} 
+						})(); 
+					</script>
 				</div>
 				<div class="col-md-3 column" style="height:60px;text-align:center;line-height:60px;">
 				

@@ -45,7 +45,6 @@
 	<script type="text/javascript" src="../editor.md-master/lib/raphael.min.js"></script>
 	<script type="text/javascript" src="../editor.md-master/lib/sequence-diagram.min.js"></script>
 	<script type="text/javascript" src="../editor.md-master/lib/underscore.min.js"></script>
-    <!-- Javascript -->
     <script type="text/javascript" src="../js/app.js"></script>
 
 	<script type="text/javascript">
@@ -106,8 +105,69 @@
 
 			});
 		}
+	
+   		$("#myModal").modal("hide");
+		$(".save_summary").click(function(){
+			var sum = $(".summarytext").val();
+			$("#myModal").modal("hide");
+	
+		})
 		
-	});
+		//保存为草稿，或发布，或更新
+     $(".btn_DoSomething").click(function() {
+     	var aidParam = window.location.search;//?aid=
+     	if(aidParam!=null&&aidParam!=""){
+		 	var aid = aidParam.substr(5,5);
+		}
+     	var btnIndex = $(this).parent().index();
+     	if(btnIndex==0){
+     		var url = "<%=request.getContextPath()%>/saveToDraft";
+     		var draft = 1;
+     	}else if(btnIndex==1){
+     		var url = "<%=request.getContextPath()%>/saveToDraft";
+     		var draft = 0;
+     	}else if(btnIndex==2){
+     		var url = "<%=request.getContextPath()%>/saveToDraft?isUpdate=true";
+     		var draft = 1;
+     	}else{
+     		var url = "<%=request.getContextPath()%>/saveToDraft?isUpdate=true";
+     		var draft = 0;
+     	}
+     	
+     	var operation = $(this).text();
+     	
+     	
+        //获取第二个textarea的值，即生成的HTML代码   实际开发中此值存入后台数据库
+        var contenthtml=$(".editormd-html-textarea").val();
+        //获取第一个textarea的值，即md值  实际开发中此值存入后台数据库
+        var content=$(".editormd-markdown-textarea").val();
+        var summary = $(".summarytext").val();
+        alert(summary);
+	    var title = $("input[name='title']").val();
+	    var category_id = $(".selectcat").val();
+		alert(title);	
+		$.ajax({
+     		url: url,
+     		type: "post",
+     		dataType : "json", 
+     		contentType: "application/json;charset=utf-8",
+     		data:JSON.stringify({
+     			"aid": aid==null?"":aid,
+     			"title": title,
+     			"content": content,
+     			"summary": summary,
+     			"category_id": category_id,
+     			"draft": draft
+     		}),
+     		success:function(data){
+     		
+     			alert(operation+"成功!");
+     			window.location.href = "admin_manageBlog.jsp";
+     		}
+     	});
+     });
+   });
+
 </script>
 </head>
 
@@ -200,9 +260,9 @@
                 <nav class="navbar navbar-default" role="navigation">
                     <div class="side-menu-container">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="#">
+                            <a class="navbar-brand" href="<%=request.getContextPath()%>/jsp/admin_main.jsp">
                                 <div class="icon fa fa-paper-plane"></div>
-                                <div class="title">Flat Admin V.2</div>
+                                <div class="title">baobaodz个人博客</div>
                             </a>
                             <button type="button" class="navbar-expand-toggle pull-right visible-xs">
                                 <i class="fa fa-times icon"></i>
@@ -233,35 +293,16 @@
                                             </li>
                                             <li><a href="../ui-kits/modal.html">Modals</a>
                                             </li>
-                                            <li><a href="../ui-kits/alert.html">Alerts & Toasts</a>
-                                            </li>
-                                            <li><a href="../ui-kits/panel.html">Panels</a>
-                                            </li>
-                                            <li><a href="../ui-kits/loader.html">Loaders</a>
-                                            </li>
-                                            <li><a href="../ui-kits/step.html">Tabs & Steps</a>
-                                            </li>
-                                            <li><a href="../ui-kits/other.html">Other</a>
-                                            </li>
+                                          
                                         </ul>
                                     </div>
                                 </div>
                             </li>
-                            <li class="active panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">Table</span>
+                            <li>
+                                <a href="<%=request.getContextPath()%>/jsp/admin_manage.jsp">
+                                    <span class="icon fa fa-table"></span><span class="title">编辑文章</span>
                                 </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-table" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../table/table.html">Table</a>
-                                            </li>
-                                            <li><a href="../table/datatable.html">Datatable</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                
                             </li>
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-form">
@@ -331,8 +372,8 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="../license.html">
-                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">License</span>
+                                <a href="<%=request.getContextPath()%>/jsp/admin_creation.jsp">
+                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">创作</span>
                                 </a>
                             </li>
                         </ul>
@@ -343,9 +384,22 @@
             <!-- Main Content -->
             <div class="container-fluid">
                 <div class="side-body">
-                    <div class="page-title">
+                    <div class="page-title" style="display:inline-block;float:left;">
                         <span class="title">创作</span>
-                        <div class="description">经验，总结，学习，这里就是我的世界</div>
+                        <div class="description" >经验，总结，学习，这里就是我的世界</div>
+                        
+                    </div>
+                    <div class="article-operation">
+                    	<div class="btn-group">
+      						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      						保存 <span class="caret"></span></button>
+      						<ul class="dropdown-menu" role="menu">
+        						<li class="btn_DoSomething"><a href="#">保存为草稿</a></li>
+        						<li class="btn_DoSomething"><a href="#">保存并发布</a></li>
+        						<li class="btn_DoSomething"><a href="#">更新到草稿</a></li>
+        						<li class="btn_DoSomething"><a href="#">更新并发布</a></li>
+      						</ul>
+    					</div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
@@ -364,10 +418,9 @@
 												<select name="category" class="selectcat"></select>
 												
 											</div>
-											<textarea class="form-control summarytext" rows="4" cols="70"></textarea>
 										</form>
 										<!-- 按钮触发模态框 -->
-										<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">添加简介</button>
+										<button class="btn btn-default" data-toggle="modal" data-target="#myModal">添加简介</button>
 										
 
 										<!-- 模态框（Modal） -->
@@ -385,11 +438,12 @@
 													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-														<button type="button" class="btn btn-primary">保存</button>
+														<button type="button" class="btn btn-primary save_summary">保存</button>
 													</div>
 												</div><!-- /.modal-content -->
 											</div><!-- /.modal-dialog -->
 										</div><!-- /.modal -->
+										
                                     </div>
                                     </div>
                                 </div>

@@ -146,7 +146,7 @@
      		   			var rad = Math.floor((data[i].mname.substring(0,1).charCodeAt()+data[i].mname.substring(9).charCodeAt())/6);
      		   	 		$(".messagelist").append("<li>"+
      		   	 		"<div class='leftheadimage'>"+
-     		   	 			"<img src='http://pgxn28eo1.bkt.clouddn.com/images/headimage/default"+rad+".png'>"+
+     		   	 			"<img src='http://resource.baobaodz.com/image/avatar/default"+rad+".png'>"+
      		   	 		"</div>"+
      		   	 		"<div class='rightinfo'>"+
      		   	 			"<span class='rname'>"+data[i].mname+"</span>"+
@@ -227,7 +227,7 @@
 			<div class="col-md-12 column" style="width: 100%; height: 70px;">
 				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 					<div class="navbar-header">
-					 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="index.jsp">BAOBAODZ</a>
+					 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="<%=request.getContextPath()%>">BAOBAODZ</a>
 					</div>
 				
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

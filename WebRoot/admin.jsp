@@ -65,9 +65,10 @@
 			<input type="text" class="form-control" name="aname" value="" placeholder="请输入"/><br />
 			<label for="name">密码</label>
 			<input type="password" class="form-control" name="apassword" value=""/>
-			<button class="btn">登录</button>
+			
 		</div>
 
 	</form>
+	<button class="btn">登录</button>
 </body>
 </html>

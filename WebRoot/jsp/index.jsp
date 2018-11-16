@@ -112,14 +112,14 @@
      		   	 var cat = getCategoryName(data[i].category_id);
      		   	 $(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px;height:180px;'>"+
      		   	 "<div class='imgcontainer visible-md-8 hidden-xs'>"+
-     		   	 	"<a href='http://pgxn28eo1.bkt.clouddn.com/images/jpg/articlepreview"+data[i].aid+".jpg' target='blank' title='下载原图'>"+
-     		   	 		"<img src='http://pgxn28eo1.bkt.clouddn.com/images/jpg/articlepreview"+data[i].aid+".jpg'>"+
+     		   	 	"<a href='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg' target='blank' title='下载原图'>"+
+     		   	 		"<img src='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg'>"+
      		   	 	"</a>"+
      		   	 "</div>"+
      		   	 "<div class='infocontainer'>"+
      		   	 	"<h4>"+
-     		   	 		"<span><a href='index.jsp?cid="+data[i].category_id+"&page=1'>"+cat+"</a><i class='label-arrow'></i></span>"+
-     		   	 		"<a href='details.jsp?aid="+data[i].aid+"' class='toview'>"+data[i].title+"</a>"+
+     		   	 		"<span><a href='<%=request.getContextPath()%>/jsp/details.jsp?cid="+data[i].category_id+"&page=1'>"+cat+"</a><i class='label-arrow'></i></span>"+
+     		   	 		"<a href='<%=request.getContextPath()%>/jsp/details.jsp?aid="+data[i].aid+"' class='toview'>"+data[i].title+"</a>"+
      		   	 	"</h4>"+
      			 	"<span class='glyphicon glyphicon-time'></span><span>"+new Date(data[i].ptime).toLocaleString()+"</span><br/>"+
      			 	"<p class='summarycontainer'>简介："+data[i].summary+"</p>"+
@@ -160,7 +160,7 @@
 		function loadPagination(pageNumber,cid){
 			if(cid!=0){
 				var cat = getCategoryName(cid);
-				$(".breadcrumb").find("li").eq(1).html("<a href='index.jsp?cid="+cid+"&page=1'>"+cat+"</a>");
+				$(".breadcrumb").find("li").eq(1).html("<a href='<%=request.getContextPath()%>/jsp/index.jsp?cid="+cid+"&page=1'>"+cat+"</a>");
 			}
 			$.ajax({
 				url: "<%=request.getContextPath()%>/queryAllArticle",
@@ -179,12 +179,12 @@
      					$(".pagination").find("li").eq(0).css("display","none");
      				}else{
      					$(".slide").empty();//清空轮播图div下所有节点
-     					$(".pagination").append("<li><a href='index.jsp?cid="+cid+"&page="+(--currentPage)+"'>上一页</a></li>");
+     					$(".pagination").append("<li><a href='<%=request.getContextPath()%>/jsp/index.jsp?cid="+cid+"&page="+(--currentPage)+"'>上一页</a></li>");
      				}
      			
      				var pageCount = parseInt((data.length-1)/6)+1;//总页数
      		   		for(var i=1;i<=pageCount;i++){
-     			 		$(".pagination").append("<li><a href='index.jsp?cid="+cid+"&page="+i+"'>"+i+"</a></li>");
+     			 		$(".pagination").append("<li><a href='<%=request.getContextPath()%>/jsp/index.jsp?cid="+cid+"&page="+i+"'>"+i+"</a></li>");
 			  		}
 			  		
 			  		if(pageNumber>=pageCount){
@@ -192,7 +192,7 @@
      					$(".pagination").find("li").eq(pageCount+1).css("display","none");
      					$(".pagination").find("li").eq(pageNumber).find("a").css("background-color","#ffeb3b");
      				}else{
-     					$(".pagination").append("<li><a href='index.jsp?cid="+cid+"&page="+(++pageNumber)+"'>下一页</a></li>");
+     					$(".pagination").append("<li><a href='<%=request.getContextPath()%>/jsp/index.jsp?cid="+cid+"&page="+(++pageNumber)+"'>下一页</a></li>");
      					$(".pagination").find("li").eq(pageNumber-1).find("a").css("background-color","#ffeb3b");
      				}
 				}
@@ -210,7 +210,7 @@
      			data:JSON.stringify({}),
      			success:function(data){
      				for(var i=0;i<data.length;i++){
-     			 		$(".mymostview ul").append("<li style='margin: 4px 0px;'><span>"+(i+1)+"</span><a href='details.jsp?aid="+data[i].aid+"'>"+data[i].title+"</a></li>");
+     			 		$(".mymostview ul").append("<li style='margin: 4px 0px;'><span>"+(i+1)+"</span><a href='<%=request.getContextPath()%>/jsp/details.jsp?aid="+data[i].aid+"'>"+data[i].title+"</a></li>");
 			  		}
      			}
 			});
@@ -225,7 +225,7 @@
      			data:JSON.stringify({}),
      			success:function(data){
      				for(var i=0;i<data.length;i++){
-     			 		$(".myarchives ul").append("<li><span><a href='archives.jsp?ym="+data[i].YM+"'>"+data[i].YM.substr(0,4)+"年"+data[i].YM.substr(5)+"月</a></span><span>"+data[i].COUNT+"篇</span></li>");
+     			 		$(".myarchives ul").append("<li><span><a href='<%=request.getContextPath()%>/jsp/archives.jsp?ym="+data[i].YM+"'>"+data[i].YM.substr(0,4)+"年"+data[i].YM.substr(5)+"月</a></span><span>"+data[i].COUNT+"篇</span></li>");
 			  		}
      			}
 			});
@@ -254,23 +254,23 @@
 			<div class="col-md-12 column" style="width: 100%; height: 70px;">
 				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 					<div class="navbar-header">
-					 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="index.jsp">BAOBAODZ</a>
+					 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="<%=request.getContextPath()%>/jsp/index.jsp">BAOBAODZ</a>
 					</div>
 				
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li class=""><a href="index.jsp?cid=2&page=1"><i class="fab fa-java fa-1x"></i> Java</a></li>
-							<li class=""><a href="index.jsp?cid=3&page=1"><i class="fa fa-database"></i> 数据库</a></li>
+							<li class=""><a href="<%=request.getContextPath()%>/jsp/index.jsp?cid=2&page=1"><i class="fab fa-java fa-1x"></i> Java</a></li>
+							<li class=""><a href="<%=request.getContextPath()%>/jsp/index.jsp?cid=3&page=1"><i class="fa fa-database"></i> 数据库</a></li>
 							<li class=""><a href="#"><i class="fa fa-desktop"></i> 计算机网络</a></li>
-							<li class=""><a href="index.jsp?cid=5&page=1"><i class="fas fa-bug"></i> BUG</a></li>
+							<li class=""><a href="<%=request.getContextPath()%>/jsp/index.jsp?cid=5&page=1"><i class="fas fa-bug"></i> BUG</a></li>
 							<li class=""><a href="#"><i class="fas fa-code-branch"></i> 数据结构</a></li>
-							<li class=""><a href="index.jsp?cid=1&page=1"> 生活杂记</a></li>
+							<li class=""><a href="<%=request.getContextPath()%>/jsp/index.jsp?cid=1&page=1"> 生活杂记</a></li>
 							<li class="more">
 								<a href="#"><i class="fas fa-caret-down"></i> 更多</a>
 								<ul class="more-expand">
-									<li><a href="index.jsp?cid=1&page=1">生活杂记</a></li>
-									<li><a href="index.jsp?cid=4&page=1">音乐随想</a></li>
-									<li><a href="index.jsp?cid=6&page=1">宇宙奇想</a></li>
+									<li><a href="<%=request.getContextPath()%>/jsp/index.jsp?cid=1&page=1">生活杂记</a></li>
+									<li><a href="<%=request.getContextPath()%>/jsp/index.jsp?cid=4&page=1">音乐随想</a></li>
+									<li><a href="<%=request.getContextPath()%>/jsp/index.jsp?cid=6&page=1">宇宙奇想</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -283,8 +283,8 @@
 						</form>
 						
 						<ul class="nav navbar-nav navbar-right" style="margin-right:2px;">
-							<li><a href="archives.jsp">归档</a></li>
-							<li><a href="message.jsp">留言</a></li>
+							<li><a href="<%=request.getContextPath()%>/jsp/archives.jsp">归档</a></li>
+							<li><a href="<%=request.getContextPath()%>/jsp/message.jsp">留言</a></li>
 						</ul>
 					</div>
 				
@@ -310,21 +310,21 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="item active" style="height:inherit;">
-							<img alt="" src="../images/bg1.JPG"/>
+							<img alt="" src="<%=request.getContextPath()%>/images/bg1.JPG"/>
 							<div class="carousel-caption">
 								<h4>First Thumbnail label</h4>
 								<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id</p>
 							</div>
 						</div>
 						<div class="item" style="height:inherit;">
-							<img alt="" src="../images/bg1.JPG"/>
+							<img alt="" src="<%=request.getContextPath()%>/images/bg1.JPG"/>
 							<div class="carousel-caption">
 								<h4>Second Thumbnail label</h4>
 								<p>Cras justo odio, dapibus ac facilisis in, ege
 							</div>
 						</div>
 						<div class="item" style="height:inherit;">
-							<img alt="" src="../images/bg1.JPG"/>
+							<img alt="" src="<%=request.getContextPath()%>/images/bg1.JPG"/>
 							<div class="carousel-caption">
 							<h4>Third Thumbnail label</h4>
 							<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. D</p>
@@ -352,7 +352,7 @@
 				</div>
 				<div class="panel-body myblogmotto">
 					<dl style="width:35%;">
-						<dt><img alt="头像" src="../images/avatar.png" class="img-circle"></dt>
+						<dt><img alt="头像" src="<%=request.getContextPath()%>/images/avatar.png" class="img-circle"></dt>
 					</dl>
 					<dl style="width:65%;">
 						<dt><h3>baoabaodz</h3></dt>
@@ -419,7 +419,7 @@
 				</div>
 				<div class="panel-body myarchives">
 					<ul style="padding-left:0px;"></ul>
-					<center><a href="archives.jsp">more</a></center>
+					<center><a href="<%=request.getContextPath()%>/jsp/archives.jsp">more</a></center>
 				</div>
 				
 			</div>
