@@ -434,6 +434,7 @@
 						<li><a href="https://www.xttblog.com/" target="blank">业余草</a></li>
 						<li><a href="https://www.hollischuang.com/" target="blank">Hollis</a></li>
 						<li><a href="http://www.importnew.com/" target="blank">importnew</a></li>
+						<li><a href="https://www.nmyswls.com/" target="blank">农码一生为了谁</a></li>
 					</ul>
 				</div>
 				
