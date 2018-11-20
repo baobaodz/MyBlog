@@ -13,9 +13,8 @@
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.css" >
 <link rel="stylesheet" href="../css/bootstrap-switch.css">
 <link rel="stylesheet" href="../css/adaptive-modal.css">
-<link rel="stylesheet" href="../css/elusive-webfont.css">
-<link rel="stylesheet" href="../css/share.css">
 <link rel="stylesheet" href="../css/details.css" >
+<link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style1_32.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" >
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <script type="text/javascript" src="../js/jquery.min.js"></script>
@@ -39,7 +38,7 @@
 <script type="text/javascript" src="../editor.md-master/lib/sequence-diagram.min.js"></script>
 <script type="text/javascript" src="../editor.md-master/lib/underscore.min.js"></script>
 <script type="text/javascript"src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=428219"></script>
-<link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style1_32.css">
+
 <title></title>
 </head>
 <body style="background-color: #f5f8f9">

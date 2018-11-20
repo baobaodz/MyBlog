@@ -17,6 +17,7 @@
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/timecount.js"></script>
 
+
 <title>baobaodz的主页</title>
 <script type="text/javascript">
 	$(function(){
@@ -137,6 +138,8 @@
 			})
 		
 		}
+		loadArchives();
+		
 		loadMostViewCount();//加载右侧最多浏览
 		function loadMostViewCount(){
 			$.ajax({
@@ -148,6 +151,21 @@
      			success:function(data){
      				for(var i=0;i<data.length;i++){
      			 		$(".mymostview ul").append("<li style='margin: 4px 0px;'><span>"+(i+1)+"</span><a href='details.jsp?aid="+data[i].aid+"'>"+data[i].title+"</a></li>");
+			  		}
+     			}
+			});
+		}
+		//加载文章归档
+		function loadArchives(){
+			$.ajax({
+				url: "<%=request.getContextPath()%>/queryArchivesGroupByMonth",
+     			type: "post",
+     			dataType : "json",
+     			contentType: "application/json;charset=utf-8",
+     			data:JSON.stringify({}),
+     			success:function(data){
+     				for(var i=0;i<data.length;i++){
+     			 		$(".myarchives ul").append("<li><span><a href='archives.jsp?ym="+data[i].YM+"'>"+data[i].YM.substr(0,4)+"年"+data[i].YM.substr(5)+"月</a></span><span>"+data[i].COUNT+"篇</span></li>");
 			  		}
      			}
 			});
@@ -210,93 +228,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="col-md-3 column myblogright" style="padding:10px 0px;">
-		
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h5 class="panel-title"><i class="fa fa-align-justify "></i> 关于本站</h5>
-					</div>
-					<div class="panel-body myblogmotto">
-						<dl style="width:35%;">
-							<dt><img alt="头像" src="../images/avatar.png" class="img-circle"></dt>
-						</dl>
-						<dl style="width:65%;">
-							<dt><h3>baoabaodz</h3></dt>
-							<dd><p>长路漫漫,只管前方</p></dd>
-							<dd><p>赚钱养梦,唯心不死</p></dd>
-						</dl>
-					</div>
-					<div class="panel-body mybloginfo">
-						<dl>
-        					<dt>文章</dt>
-        					<dd></dd>
-        				</dl>
-        				<dl>
-        					<dt>喜欢</dt>
-        					<dd></dd>
-        				</dl>
-        				<dl>
-        					<dt>浏览</dt>
-        					<dd></dd>
-        				</dl>
-        				<dl>
-        					<dt>留言</dt>
-        					<dd></dd>
-        				</dl>
-        				
-					</div>
-				<div class="panel-body mybloginfo">
-					<dl>
-        				<dt><a href="https://github.com/baobaodz" target="blank" title="github"><i class="fab fa-github fa-2x"></i></a></dt>
-        				<dd></dd>
-        			</dl>
-        			<dl>
-        				<dt><a href="https://www.jianshu.com/u/ff2b133101d4" target="blank" title="简书"><i class="fab fa-envira fa-2x"></i></a></dt>
-        				<dd></dd>
-        			</dl>
-        			<dl>
-        				<dt><a href="https://www.jianshu.com/u/ff2b133101d4" target="blank" title="微信"><i class="fab fa-weixin fa-2x"></i></a></dt>
-        				<dd></dd>
-        			</dl>
-        			<dl>
-        				<dt><a href="https://www.jianshu.com/u/ff2b133101d4" target="blank" title="邮箱"><i class="fa fa-envelope fa-2x"></i></a></dt>
-        				<dd></dd>
-        			</dl>
-        				
-				</div>
-			</div>
-			<!--日历插件 -->
-			<div class="datepicker">
-  				<div class="datepicker-header"></div>
-			</div>
- 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 最多浏览</h3>
-				</div>
-				<div class="panel-body mymostview">
-					<ul style="padding-left:0px;"></ul>
-				</div>
-				
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 文章归档</h3>
-				</div>
-				<div class="panel-body myarchives">
-					<ul style="padding-left:0px;"></ul>
-				</div>
-				
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 联系我</h3>
-				</div>
-				<div class="panel-body">
-					<ul style="padding-left:0px;"></ul>
-				</div>
-				
-			</div>
+			<jsp:include page="common/broadside.jsp"></jsp:include>
 		</div>
 	</div>
 			

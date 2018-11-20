@@ -258,7 +258,9 @@
 </head>
 <body>
 	<div class="container">
+		<!-- 头部菜单栏 -->
 		<jsp:include page="common/header.jsp"></jsp:include>
+		<!-- 面包屑导航 -->
 		<div class="row clearfix mycatnav">
 			<div class="col-md-12 column" style="padding-right:0px;">
 				<ol class="breadcrumb">
@@ -267,9 +269,10 @@
 				</ol>
 			</div>
 		</div>
+		
 		<div class="row clearfix">
-			
 			<div class="col-md-9 column myblogleft">
+				<!-- 轮播图  -->
 				<div class="carousel slide" id="carousel-356013">
 					<ol class="carousel-indicators">
 						<li class="active" data-slide-to="0" data-target="#carousel-356013"></li>
@@ -294,117 +297,23 @@
 						</div>
 						</div> <a class="left carousel-control" href="#carousel-356013" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-356013" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 				</div>
-			<!--文章列表 -->
-			<div class="con">
-				<ul class="list-group articlelist"></ul>
-			</div>
-			<!--bootstrap分页 -->
-			<div class="confoot" style="width:100%; text-align:center;">
-				<ul class="pagination pagination-sm">
-					<!--js追加底部分页条 -->
-				</ul>
-			</div>
-		</div>
-		<div class="col-md-3 column myblogright" style="padding:10px 0px;">
-		
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h5 class="panel-title"><i class="fa fa-align-justify "></i> 关于本站</h5>
+				<!--文章列表 -->
+				<div class="con">
+					<ul class="list-group articlelist"></ul>
+				</div>
+				<!--分页条 -->
+				<div class="confoot" style="width:100%; text-align:center;">
+					<ul class="pagination pagination-sm">
 					
-				</div>
-				<div class="panel-body myblogmotto">
-					<dl style="width:35%;">
-						<dt><img alt="头像" src="<%=request.getContextPath()%>/images/avatar.png" class="img-circle"></dt>
-					</dl>
-					<dl style="width:65%;">
-						<dt><h3>baoabaodz</h3></dt>
-						<dd><p>长路漫漫,只管前方</p></dd>
-						<dd><p>赚钱养梦,唯心不死</p></dd>
-					</dl>
-				</div>
-				<div class="panel-body mybloginfo">
-					<dl>
-        				<dt>文章</dt>
-        				<dd></dd>
-        			</dl>
-        			<dl>
-        				<dt>喜欢</dt>
-        				<dd></dd>
-        			</dl>
-        			<dl>
-        				<dt>浏览</dt>
-        				<dd></dd>
-        			</dl>
-        			<dl>
-        				<dt>留言</dt>
-        				<dd></dd>
-        			</dl>
-        				
-				</div>
-				<div class="panel-body mybloginfo">
-					<dl>
-        				<dt><a href="https://github.com/baobaodz" target="blank" title="github"><i class="fab fa-github fa-2x"></i></a></dt>
-        				<dd></dd>
-        			</dl>
-        			<dl>
-        				<dt><a href="https://www.jianshu.com/u/ff2b133101d4" target="blank" title="简书"><i class="fab fa-envira fa-2x"></i></a></dt>
-        				<dd></dd>
-        			</dl>
-        			<dl>
-        				<dt><a href="https://www.jianshu.com/u/ff2b133101d4" target="blank" title="微信"><i class="fab fa-weixin fa-2x"></i></a></dt>
-        				<dd></dd>
-        			</dl>
-        			<dl>
-        				<dt><a href="https://www.jianshu.com/u/ff2b133101d4" target="blank" title="邮箱"><i class="fa fa-envelope fa-2x"></i></a></dt>
-        				<dd></dd>
-        			</dl>
-        				
-				</div>
-			</div>
-			<!--日历插件 -->
-			<div class="datepicker">
-  				<div class="datepicker-header"></div>
-			</div>
- 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 最多浏览</h3>
-				</div>
-				<div class="panel-body mymostview">
-					<ul style="padding-left:0px;"></ul>
-				</div>
-				
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 文章归档</h3>
-				</div>
-				<div class="panel-body myarchives">
-					<ul style="padding-left:0px;"></ul>
-					<center><a href="<%=request.getContextPath()%>/jsp/archives.jsp">more</a></center>
-				</div>
-				
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 友链</h3>
-				</div>
-				<div class="panel-body">
-					<ul style="padding-left:0px;">
-						<li><a href="http://baobaodz.top" target="blank">baobaodz的hexo博客</a></li>
-						<li><a href="https://www.liaoxuefeng.com/" target="blank">廖雪峰的官方网站</a></li>
-						<li><a href="https://www.xttblog.com/" target="blank">业余草</a></li>
-						<li><a href="https://www.hollischuang.com/" target="blank">Hollis</a></li>
-						<li><a href="http://www.importnew.com/" target="blank">importnew</a></li>
-						<li><a href="https://www.nmyswls.com/" target="blank">农码一生为了谁</a></li>
 					</ul>
 				</div>
-				
 			</div>
+			<!-- 右侧  -->
+			<jsp:include page="common/broadside.jsp"></jsp:include>
 		</div>
-	</div>
 			
-		</div>
-		<jsp:include page="common/footer.jsp"></jsp:include>
-	</body>
+	</div>
+	<!-- 底部  -->
+	<jsp:include page="common/footer.jsp"></jsp:include>
+</body>
 </html>
