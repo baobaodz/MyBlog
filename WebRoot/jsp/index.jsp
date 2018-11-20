@@ -8,18 +8,18 @@
 <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.css" >
-<link href="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.css" >
 <link rel="stylesheet" href="../css/index.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery-ui.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.js"></script>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.js"></script>
+<script type="text/javascript" src="../js/timecount.js"></script>
 
 <title>baobaodz的主页</title>
 <script type="text/javascript">
@@ -39,6 +39,9 @@
       			success:function(data){
       				localStorage.ipname = ip;//把ip地址出入本地
       				var rank = data.RN;
+      				
+      				sessionStorage.setItem("rank",rank);
+      				
       				var visitorName = data.VNAME;
       				localStorage.visitorName = visitorName;//把访客名存入本地
       				$.cookie("vistorName",visitorName,{"path":"/"});
@@ -63,6 +66,7 @@
       			}
       		})
 		}
+		$("#show-count").text("本站累计访问次数："+sessionStorage.getItem("rank")+"次");
       	//通过枚举类型来定义，不需要从后台获取，缺点就是非动态
 		function getCategoryName(cid){
 			var blogCategoryID = {
@@ -108,9 +112,13 @@
      		}),
      		success:function(data){
      		   
+     		   if(data.length==0){
+     		   	  
+     		   	  $(".articlelist").append("<div class='search-none'><img src='http://resource.baobaodz.com/image/search/search_none.svg'/></div>");
+     		   }
      		   for(var i=0;i<data.length;i++){
      		   	 var cat = getCategoryName(data[i].category_id);
-     		   	 $(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px;height:180px;'>"+
+     		   	 $(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px;height:180px;box-sizing: content-box;'>"+
      		   	 "<div class='imgcontainer visible-md-8 hidden-xs'>"+
      		   	 	"<a href='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg' target='blank' title='下载原图'>"+
      		   	 		"<img src='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg'>"+
@@ -243,54 +251,14 @@
 		$(".search-input").blur(function(){
 			$(this).width(150);
 		})
-	
+		TimeDown("show-time", "2018-11-14 00:00:00");
 	})
 	
 </script>
 </head>
 <body>
 	<div class="container">
-		<div class="row clearfix">
-			<div class="col-md-12 column" style="width: 100%; height: 70px;">
-				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-					<div class="navbar-header">
-					 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="<%=request.getContextPath()%>/jsp/index.jsp">BAOBAODZ</a>
-					</div>
-				
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li class=""><a href="<%=request.getContextPath()%>/jsp/index.jsp?cid=2&page=1"><i class="fab fa-java fa-1x"></i> Java</a></li>
-							<li class=""><a href="<%=request.getContextPath()%>/jsp/index.jsp?cid=3&page=1"><i class="fa fa-database"></i> 数据库</a></li>
-							<li class=""><a href="#"><i class="fa fa-desktop"></i> 计算机网络</a></li>
-							<li class=""><a href="<%=request.getContextPath()%>/jsp/index.jsp?cid=5&page=1"><i class="fas fa-bug"></i> BUG</a></li>
-							<li class=""><a href="#"><i class="fas fa-code-branch"></i> 数据结构</a></li>
-							<li class=""><a href="<%=request.getContextPath()%>/jsp/index.jsp?cid=1&page=1"> 生活杂记</a></li>
-							<li class="more">
-								<a href="#"><i class="fas fa-caret-down"></i> 更多</a>
-								<ul class="more-expand">
-									<li><a href="<%=request.getContextPath()%>/jsp/index.jsp?cid=1&page=1">生活杂记</a></li>
-									<li><a href="<%=request.getContextPath()%>/jsp/index.jsp?cid=4&page=1">音乐随想</a></li>
-									<li><a href="<%=request.getContextPath()%>/jsp/index.jsp?cid=6&page=1">宇宙奇想</a></li>
-								</ul>
-							</li>
-						</ul>
-						<form class="navbar-form navbar-left" role="search" style="width:180px;">
-							<div class="form-group search">
-								<input type="text" class="form-control search-input" placeholder=" 搜索" />
-								<a class="search-btn" href="javascript:void(null)"><span class="glyphicon glyphicon-search"></span></a>
-							</div> 
-						
-						</form>
-						
-						<ul class="nav navbar-nav navbar-right" style="margin-right:2px;">
-							<li><a href="<%=request.getContextPath()%>/jsp/archives.jsp">归档</a></li>
-							<li><a href="<%=request.getContextPath()%>/jsp/message.jsp">留言</a></li>
-						</ul>
-					</div>
-				
-				</nav>
-			</div>
-		</div>
+		<jsp:include page="common/header.jsp"></jsp:include>
 		<div class="row clearfix mycatnav">
 			<div class="col-md-12 column" style="padding-right:0px;">
 				<ol class="breadcrumb">
@@ -312,22 +280,16 @@
 						<div class="item active" style="height:inherit;">
 							<img alt="" src="<%=request.getContextPath()%>/images/bg1.JPG"/>
 							<div class="carousel-caption">
-								<h4>First Thumbnail label</h4>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id</p>
 							</div>
 						</div>
 						<div class="item" style="height:inherit;">
 							<img alt="" src="<%=request.getContextPath()%>/images/bg1.JPG"/>
 							<div class="carousel-caption">
-								<h4>Second Thumbnail label</h4>
-								<p>Cras justo odio, dapibus ac facilisis in, ege
 							</div>
 						</div>
 						<div class="item" style="height:inherit;">
 							<img alt="" src="<%=request.getContextPath()%>/images/bg1.JPG"/>
 							<div class="carousel-caption">
-							<h4>Third Thumbnail label</h4>
-							<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. D</p>
 							</div>
 						</div>
 						</div> <a class="left carousel-control" href="#carousel-356013" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-356013" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -441,13 +403,8 @@
 			</div>
 		</div>
 	</div>
-			<div class="row clearfix">
-				<div class="col-md-12 column" style="width:100%;height:70px;background-color:white; text-align:center;line-height:70px;">
-					<p>Copyright © baobaodz博客 丨苏ICP备17002430号 丨 苏公网安备36042102000137</p>
-				</div>
-		
-
-			</div>
+			
 		</div>
+		<jsp:include page="common/footer.jsp"></jsp:include>
 	</body>
 </html>

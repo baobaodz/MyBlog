@@ -17,8 +17,9 @@
 <script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../js/timecount.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.js"></script>
+<script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
 
 
@@ -216,6 +217,8 @@
 		$(".search-input").blur(function(){
 			$(this).width(150);
 		})
+		TimeDown("show-time", "2018-11-14 00:00:00");//调用计时
+		$("#show-count").text("本站累计访问次数："+sessionStorage.getItem("rank")+"次");
 	
 	})
 	
@@ -223,47 +226,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row clearfix">
-			<div class="col-md-12 column" style="width: 100%; height: 70px;">
-				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-					<div class="navbar-header">
-					 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="<%=request.getContextPath()%>">BAOBAODZ</a>
-					</div>
-				
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li class=""><a href="index.jsp?cid=2&page=1"><i class="fab fa-java fa-1x"></i> Java</a></li>
-							<li class=""><a href="index.jsp?cid=3&page=1"><i class="fa fa-database"></i> 数据库</a></li>
-							<li class=""><a href="#"><i class="fa fa-desktop"></i> 计算机网络</a></li>
-							<li class=""><a href="index.jsp?cid=5&page=1"><i class="fas fa-bug"></i> BUG</a></li>
-							<li class=""><a href="#"><i class="fas fa-code-branch"></i> 数据结构</a></li>
-							<li class=""><a href="index.jsp?cid=1&page=1"> 生活杂记</a></li>
-							<li class="more">
-								<a href="#"><i class="fas fa-caret-down"></i> 更多</a>
-								<ul class="more-expand">
-									<li><a href="index.jsp?cid=1&page=1">生活杂记</a></li>
-									<li><a href="index.jsp?cid=4&page=1">音乐随想</a></li>
-									<li><a href="index.jsp?cid=6&page=1">宇宙奇想</a></li>
-								</ul>
-							</li>
-						</ul>
-						<form class="navbar-form navbar-left" role="search" style="width:180px;">
-							<div class="form-group search">
-								<input type="text" class="form-control search-input" placeholder=" 搜索" />
-								<a class="search-btn" href="javascript:void(null)"><span class="glyphicon glyphicon-search"></span></a>
-							</div> 
-						
-						</form>
-						
-						<ul class="nav navbar-nav navbar-right" style="margin-right:2px;">
-							<li><a href="archives.jsp">归档</a></li>
-							<li><a href="#">关于</a></li>
-						</ul>
-					</div>
-				
-				</nav>
-			</div>
-		</div>
+		<jsp:include page="common/header.jsp"></jsp:include>
 		<div class="row clearfix mycatnav">
 			<div class="col-md-12 column" style="padding-right:0px;">
 				<ol class="breadcrumb">
@@ -392,13 +355,8 @@
 			</div>
 		</div>
 	</div>
-			<div class="row clearfix">
-				<div class="col-md-12 column" style="width:100%;height:70px;background-color:white; text-align:center;line-height:70px;">
-					<p>Copyright © baobaodz博客 丨苏ICP备17002430号 丨 苏公网安备36042102000137</p>
-				</div>
-		
-
-			</div>
+			
 		</div>
+		<jsp:include page="common/footer.jsp"></jsp:include>
 	</body>
 </html>

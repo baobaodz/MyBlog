@@ -18,26 +18,27 @@
 <link rel="stylesheet" href="../css/details.css" >
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" >
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-<script src="../js/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-<script src="../bootstrap-3.3.7/js/bootstrap.js"></script>
-<script src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
-<script src="../js/dynamicscrollspy.js"></script>
-<script src="../js/dynamicscrollspy.min.js"></script>
-<script src="../js/bootstrap-switch.js"></script>
-<script src="../js/jquery.adaptive-modal.js"></script>
-<script src="../js/modernizr.js"></script>
-<script src="../js/editormd.min.js"></script>
-<script src="../js/editormd.js"></script>
-<script src="../editor.md-master/lib/marked.min.js"></script>
-<script src="../editor.md-master/lib/flowchart.min.js"></script>
-<script src="../editor.md-master/lib/jquery.flowchart.min.js"></script>
-<script src="../editor.md-master/lib/prettify.min.js"></script>
-<script src="../editor.md-master/lib/raphael.min.js"></script>
-<script src="../editor.md-master/lib/sequence-diagram.min.js"></script>
-<script src="../editor.md-master/lib/underscore.min.js"></script>
-<script src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=428219"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
+<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/timecount.js"></script>
+<script type="text/javascript" src="../js/dynamicscrollspy.js"></script>
+<script type="text/javascript" src="../js/dynamicscrollspy.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap-switch.js"></script>
+<script type="text/javascript" src="../js/jquery.adaptive-modal.js"></script>
+<script type="text/javascript" src="../js/modernizr.js"></script>
+<script type="text/javascript" src="../js/editormd.min.js"></script>
+<script type="text/javascript" src="../js/editormd.js"></script>
+<script type="text/javascript" src="../editor.md-master/lib/marked.min.js"></script>
+<script type="text/javascript" src="../editor.md-master/lib/flowchart.min.js"></script>
+<script type="text/javascript" src="../editor.md-master/lib/jquery.flowchart.min.js"></script>
+<script type="text/javascript" src="../editor.md-master/lib/prettify.min.js"></script>
+<script type="text/javascript" src="../editor.md-master/lib/raphael.min.js"></script>
+<script type="text/javascript" src="../editor.md-master/lib/sequence-diagram.min.js"></script>
+<script type="text/javascript" src="../editor.md-master/lib/underscore.min.js"></script>
+<script type="text/javascript"src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=428219"></script>
 <link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style1_32.css">
 <title></title>
 </head>
@@ -343,7 +344,9 @@
 							disabled            : ['google', 'facebook', 'twitter'], // 禁用的站点
 						};
 
-						socialShare(".social-share", $config);
+						socialShare(".social-share", $config);//调用分享
+						TimeDown("show-time", "2018-11-14 00:00:00");//调用计时
+						$("#show-count").text("本站累计访问次数："+sessionStorage.getItem("rank")+"次");
 						
 					});
 					
@@ -432,13 +435,9 @@
 				</div>
 				
 			</div>
-			<div class="row clearfix">
-				<div class="col-md-12 column" style="width:100%;height:70px;background-color:white; text-align:center;line-height:70px;">
-					<p>Copyright © baobaodz博客 丨苏ICP备17002430号 丨 苏公网安备36042102000137</p>
-				</div>
-			</div>
+			
 	</div>
-	
+	<jsp:include page="common/footer.jsp"></jsp:include>
 	<!--页面全部加载完后执行 -->
 	<script type="text/javascript">
 		window.onload = function(){
