@@ -231,11 +231,6 @@
 			<jsp:include page="common/broadside.jsp"></jsp:include>
 		</div>
 	</div>
-			
-		
-
-			</div>
-		</div>
-		<jsp:include page="common/footer.jsp"></jsp:include>
-	</body>
+	<jsp:include page="common/footer.jsp"></jsp:include>
+</body>
 </html>

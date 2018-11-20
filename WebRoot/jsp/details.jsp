@@ -44,12 +44,12 @@
 <body style="background-color: #f5f8f9">
 	<div class="container">
 		<div class="row clearfix">
+			<!-- 头部菜单栏  -->
 		    <div class="col-md-12 column" style="width: 100%; height: 70px;font-size:1em;">
 			   	<nav class="navbar navbar-default navbar-fixed-top mynav" role="navigation">
 					<div class="navbar-header">
 					 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="index.jsp">BAOBAODZ</a>
 					</div>
-				
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav" id="catline" style="width:60%;">
 						
@@ -83,27 +83,23 @@
 				</nav>
 			</div>
 		</div>
-			<!--面包屑导航栏 -->
-			<div class="row clearfix" style="height:30px;background-color:white;box-sizing:border-box;">
-		    	<div class="col-md-12 column" style="width: 80%;margin-bottom:15px; height:30px;font-size:.9em;box-sizing:border-box;">
-		    		<ol class="breadcrumb" style="background-color:white;">
-    					<li><a href="index.jsp">主页</a></li>
-    					<li><a href="#"></a></li>
-    					<li class="active">正文</li>
-					</ol>
-		    	</div>
+		<!--面包屑导航栏 -->
+		<div class="row clearfix" style="height:30px;background-color:white;box-sizing:border-box;">
+		    <div class="col-md-12 column" style="width: 80%;margin-bottom:15px; height:30px;font-size:.9em;box-sizing:border-box;">
+		    	<ol class="breadcrumb" style="background-color:white;">
+    				<li><a href="index.jsp">主页</a></li>
+    				<li><a href="#"></a></li>
+    				<li class="active">正文</li>
+				</ol>
 		    </div>
-			<div class="row clearfix">
-				<div class="col-md-9 column" style="background-color:white;position:relative;">
-					<div id="article_header"></div>
-					
-					<div id="blogcontainer" style="width: 100%;margin:0 auto;">
+		</div>
+		<div class="row clearfix">
+			<div class="col-md-9 column" style="background-color:white;position:relative;">
+				<div id="article_header"></div>
+				<div id="blogcontainer" style="width: 100%;margin:0 auto;">
 						<textarea id="textmarkdown" style="display:none;"></textarea>
-					</div>
-					
-					
-					
 				</div>
+			</div>
 				<script type="text/javascript">
 					$(function(){
 						var aidParam = window.location.search;//?aid=
@@ -357,12 +353,10 @@
 						<p>代码块风格不喜欢？点击下方按钮切换</p>
 						<input type="checkbox" name="switchcheckbox" checked >
                     </div>
-                    <div class="totop">
-<!--                    		<img src="../images/totop.png"> -->
-                    </div>
+                    <div class="totop"></div>
 				</div>
-			
 			</div>
+			
 			<div class="row clearfix">
 				<div class="col-md-12 column" style="height:40px;line-height:40px;">
 					<div class="socialoperation">
@@ -383,14 +377,15 @@
 				</div>
 			</div>
 				
-			
 			<div class="row clearfix">
 				<div class="col-md-9 column" style="margin:20px 0px;">
+					<!--文章底部 -->
 					<div id="article_footer">
 						<ul class="nepr" style="width:100%;margin:0">
-							<!--js追加上一篇下一篇 -->
+							
 						</ul>
 					</div>
+					<!--畅言评论 -->
 					<div class="article_review">
 						<div id="SOHUCS" sid="请将此处替换为配置SourceID的语句" ></div> 
 					</div>
@@ -436,6 +431,7 @@
 			</div>
 			
 	</div>
+	<!--底部 -->
 	<jsp:include page="common/footer.jsp"></jsp:include>
 	<!--页面全部加载完后执行 -->
 	<script type="text/javascript">
