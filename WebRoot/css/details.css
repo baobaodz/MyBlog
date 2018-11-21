@@ -196,15 +196,22 @@ a{
 #article_footer .nepr li{
 	
 	display: inline-block;
+	
 	width: 50%;
 	height:6em;
 	position: relative;
 	
+	
 }
-
+#article_footer .nepr li:nth-child(1){
+	border-right:2px solid gray;
+	
+	
+}
 #article_footer .nepr li a{
 	
 	width: 100%;
+	
 	text-decoration:none;
 	color:#5fb6ad;
 	position: absolute;

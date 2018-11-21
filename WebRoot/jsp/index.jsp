@@ -5,21 +5,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
-<link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.css" >
+<link rel="shortcut icon" href="<%=request.getContextPath()%>/images/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.css" >
-<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/index.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="../js/jquery-ui.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
-<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
-<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.js"></script>
-<script type="text/javascript" src="../js/timecount.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/timecount.js"></script>
 
 <title>baobaodz的主页</title>
 <script type="text/javascript">
