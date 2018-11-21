@@ -94,12 +94,29 @@ li{
 	margin-bottom:0px;
 	background-color:white;
 }
+
+.carousel-inner .item .pre-titile{
+	
+	position:absolute;
+	top:0px;
+	
+	height:35px;
+	width:220px;
+	background-color:#ff8040;
+	line-height:35px;
+	text-align:center;
+}
+.carousel-inner .item .pre-titile a{
+	
+	color:white;
+	
+}
 .articlelist .search-none{
 	
 	
 	width:100%;
-	height:720px;
-	padding:60px 0px;
+	height:540px;
+	
 }
 .articlelist .search-none img{
 	
@@ -107,7 +124,7 @@ li{
 	display:inline-block;
 	height:145px;
 	width:180px;
-	margin:0 auto;
+	margin:20% 35%;
 	
 }
 .articlelist li{

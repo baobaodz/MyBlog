@@ -12,6 +12,7 @@ a{
 	
 	font-size:1em;
 	line-height:50px;
+	overflow: visible;
 	
 }
 .mynav #bs-example-navbar-collapse-1 #catline > li{
@@ -48,6 +49,7 @@ a{
 	text-align:center;
 	position: relative;
     display: inline-block;
+    overflow: visible;
 }
 
 .mynav #bs-example-navbar-collapse-1 #catline .more .more-expand{
@@ -55,11 +57,12 @@ a{
 	display: none;
     position: absolute;
     left:0px;
+    top:48px;
     background-color: #f9f9f9;
     min-width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 4px 2px;
-    z-index: 1;
+    z-index: 10;
 }
 .mynav #bs-example-navbar-collapse-1 #catline .more:hover .more-expand{
 	
@@ -226,7 +229,7 @@ a{
 	
 	position:fixed;
 	top:50px;
-	right:138px;
+	right:150px;
 	display:none;
 }
 #scrollspy .switchtheme p{

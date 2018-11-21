@@ -17,27 +17,6 @@
 <link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style1_32.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" >
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-<script type="text/javascript" src="../js/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
-<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/timecount.js"></script>
-<script type="text/javascript" src="../js/dynamicscrollspy.js"></script>
-<script type="text/javascript" src="../js/dynamicscrollspy.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap-switch.js"></script>
-<script type="text/javascript" src="../js/jquery.adaptive-modal.js"></script>
-<script type="text/javascript" src="../js/modernizr.js"></script>
-<script type="text/javascript" src="../js/editormd.min.js"></script>
-<script type="text/javascript" src="../js/editormd.js"></script>
-<script type="text/javascript" src="../editor.md-master/lib/marked.min.js"></script>
-<script type="text/javascript" src="../editor.md-master/lib/flowchart.min.js"></script>
-<script type="text/javascript" src="../editor.md-master/lib/jquery.flowchart.min.js"></script>
-<script type="text/javascript" src="../editor.md-master/lib/prettify.min.js"></script>
-<script type="text/javascript" src="../editor.md-master/lib/raphael.min.js"></script>
-<script type="text/javascript" src="../editor.md-master/lib/sequence-diagram.min.js"></script>
-<script type="text/javascript" src="../editor.md-master/lib/underscore.min.js"></script>
-<script type="text/javascript"src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=428219"></script>
 
 <title></title>
 </head>
@@ -100,6 +79,79 @@
 						<textarea id="textmarkdown" style="display:none;"></textarea>
 				</div>
 			</div>
+				<!--右侧动态目录 -->
+				<div class="col-md-3 column visible-md-8 hidden-xs" id="scrollspy" style="height:150px;;">
+					<div class="switchtheme">
+						<p>代码块风格不喜欢？点击下方按钮切换</p>
+						<input type="checkbox" name="switchcheckbox" checked >
+                    </div>
+                    <div class="totop"></div>
+				</div>
+		</div>
+		<!-- 点赞分享 -->
+		<div class="row clearfix">
+			<div class="col-md-12 column" style="height:40px;line-height:40px;">
+				<div class="socialoperation">
+					<ul>
+						<li class="favorite">
+							<a href="javascript:void(null)">
+								<i class="far fa-thumbs-up"></i> 赞<span class="fav-num"></span>
+							</a>
+						</li>
+						<li class="share">
+							<a href="javascript:void(null)" data-toggle="adaptive-modal">
+								<i class="fa fa-share-alt"></i> 分享<span></span>
+							</a>
+							<div class="social-share"></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--文章底部 -->	
+		<div class="row clearfix">
+			<div class="col-md-9 column" style="margin:20px 0px;">
+				<!--上下篇 -->
+				<div id="article_footer">
+					<ul class="nepr" style="width:100%;margin:0">
+							
+					</ul>
+				</div>
+				<!--畅言评论 -->
+				<div class="article_review">
+					<div id="SOHUCS" sid="请将此处替换为配置SourceID的语句" ></div> 
+				</div>
+					
+			</div>
+			<div class="col-md-3 column" style="height:60px;text-align:center;line-height:60px;">
+				
+			</div>
+				
+		</div>
+			
+	</div>
+	<!--底部 -->
+	<jsp:include page="common/footer.jsp"></jsp:include>
+	
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+	<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/timecount.js"></script>
+	<script type="text/javascript" src="../js/dynamicscrollspy.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap-switch.js"></script>
+	<script type="text/javascript" src="../js/jquery.adaptive-modal.js"></script>
+	<script type="text/javascript" src="../js/modernizr.js"></script>
+	<script type="text/javascript" src="../js/editormd.min.js"></script>
+	<script type="text/javascript" src="../js/editormd.js"></script>
+	<script type="text/javascript" src="../editor.md-master/lib/marked.min.js"></script>
+	<script type="text/javascript" src="../editor.md-master/lib/flowchart.min.js"></script>
+	<script type="text/javascript" src="../editor.md-master/lib/jquery.flowchart.min.js"></script>
+	<script type="text/javascript" src="../editor.md-master/lib/prettify.min.js"></script>
+	<script type="text/javascript" src="../editor.md-master/lib/raphael.min.js"></script>
+	<script type="text/javascript" src="../editor.md-master/lib/sequence-diagram.min.js"></script>
+	<script type="text/javascript" src="../editor.md-master/lib/underscore.min.js"></script>
+	<script type="text/javascript"src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=428219"></script>
 				<script type="text/javascript">
 					$(function(){
 						var aidParam = window.location.search;//?aid=
@@ -343,54 +395,6 @@
 						TimeDown("show-time", "2018-11-14 00:00:00");//调用计时
 						$("#show-count").text("本站累计访问次数："+sessionStorage.getItem("rank")+"次");
 						
-					});
-					
-				</script>
-				
-				<!--右侧动态目录 -->
-				<div class="col-md-3 column visible-md-8 hidden-xs" id="scrollspy" style="height:150px;;">
-					<div class="switchtheme">
-						<p>代码块风格不喜欢？点击下方按钮切换</p>
-						<input type="checkbox" name="switchcheckbox" checked >
-                    </div>
-                    <div class="totop"></div>
-				</div>
-			</div>
-			
-			<div class="row clearfix">
-				<div class="col-md-12 column" style="height:40px;line-height:40px;">
-					<div class="socialoperation">
-						<ul>
-							<li class="favorite">
-								<a href="javascript:void(null)">
-									<i class="far fa-thumbs-up"></i> 赞<span class="fav-num"></span>
-								</a>
-							</li>
-							<li class="share">
-								<a href="javascript:void(null)" data-toggle="adaptive-modal">
-									<i class="fa fa-share-alt"></i> 分享<span></span>
-								</a>
-								<div class="social-share"></div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-				
-			<div class="row clearfix">
-				<div class="col-md-9 column" style="margin:20px 0px;">
-					<!--文章底部 -->
-					<div id="article_footer">
-						<ul class="nepr" style="width:100%;margin:0">
-							
-						</ul>
-					</div>
-					<!--畅言评论 -->
-					<div class="article_review">
-						<div id="SOHUCS" sid="请将此处替换为配置SourceID的语句" ></div> 
-					</div>
-					
-					<script type="text/javascript"> 
 						(function(){ 
 							var appid = 'cytV2uHWj'; 
 							var conf = 'prod_dff1e0e1dd8c717b07c0b04043279419'; 
@@ -421,18 +425,12 @@
 										window.changyan.api.config({appid:appid,conf:conf})
 								}); 
 							} 
-						})(); 
-					</script>
-				</div>
-				<div class="col-md-3 column" style="height:60px;text-align:center;line-height:60px;">
+						})(); 						
+					});
+					
+				</script>
 				
-				</div>
-				
-			</div>
-			
-	</div>
-	<!--底部 -->
-	<jsp:include page="common/footer.jsp"></jsp:include>
+
 	<!--页面全部加载完后执行 -->
 	<script type="text/javascript">
 		window.onload = function(){

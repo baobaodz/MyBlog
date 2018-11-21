@@ -113,35 +113,37 @@
      		success:function(data){
      		   
      		   if(data.length==0){
-     		   	  
      		   	  $(".articlelist").append("<div class='search-none'><img src='http://resource.baobaodz.com/image/search/search_none.svg'/></div>");
-     		   }
-     		   for(var i=0;i<data.length;i++){
-     		   	 var cat = getCategoryName(data[i].category_id);
-     		   	 $(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px;height:180px;box-sizing: content-box;'>"+
-     		   	 "<div class='imgcontainer visible-md-8 hidden-xs'>"+
-     		   	 	"<a href='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg' target='blank' title='下载原图'>"+
-     		   	 		"<img src='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg'>"+
-     		   	 	"</a>"+
-     		   	 "</div>"+
-     		   	 "<div class='infocontainer'>"+
-     		   	 	"<h4>"+
-     		   	 		"<span><a href='<%=request.getContextPath()%>/jsp/details.jsp?cid="+data[i].category_id+"&page=1'>"+cat+"</a><i class='label-arrow'></i></span>"+
-     		   	 		"<a href='<%=request.getContextPath()%>/jsp/details.jsp?aid="+data[i].aid+"' class='toview'>"+data[i].title+"</a>"+
-     		   	 	"</h4>"+
-     			 	"<span class='glyphicon glyphicon-time'></span><span>"+new Date(data[i].ptime).toLocaleString()+"</span><br/>"+
-     			 	"<p class='summarycontainer'>简介："+data[i].summary+"</p>"+
-     				"<p class='visible-md-8 hidden-xs'>"+
-     					"<span style='display:inline-block;float:left;'><i class='fa fa-eye'></i>("+data[i].viewcount+")&nbsp;&nbsp;<i class='far fa-heart'></i>("+data[i].likecount+")</span>"+
-     					"<span style='display:inline-block;float:right;'><a class='btn' href='details.jsp?aid="+data[i].aid+"'>View details »</a></span>"+
-     				"</p>"+
-     			"</div></li>");
+     		   }else{
+     		      for(var i=0;i<data.length;i++){
+     		   	  	var cat = getCategoryName(data[i].category_id);
+     		   	 	$(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px;height:180px;box-sizing: content-box;'>"+
+     		   	 	"<div class='imgcontainer visible-md-8 hidden-xs'>"+
+     		   	 		"<a href='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg' target='blank' title='下载原图'>"+
+     		   	 			"<img src='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg'>"+
+     		   	 		"</a>"+
+     		   	 	"</div>"+
+     		   	 	"<div class='infocontainer'>"+
+     		   	 		"<h4>"+
+     		   	 			"<span><a href='<%=request.getContextPath()%>/jsp/details.jsp?cid="+data[i].category_id+"&page=1'>"+cat+"</a><i class='label-arrow'></i></span>"+
+     		   	 			"<a href='<%=request.getContextPath()%>/jsp/details.jsp?aid="+data[i].aid+"' class='toview'>"+data[i].title+"</a>"+
+     		   	 		"</h4>"+
+     			 		"<span class='glyphicon glyphicon-time'></span><span>"+new Date(data[i].ptime).toLocaleString()+"</span><br/>"+
+     			 		"<p class='summarycontainer'>简介："+data[i].summary+"</p>"+
+     					"<p class='visible-md-8 hidden-xs'>"+
+     						"<span style='display:inline-block;float:left;'><i class='fa fa-eye'></i>("+data[i].viewcount+")&nbsp;&nbsp;<i class='far fa-heart'></i>("+data[i].likecount+")</span>"+
+     						"<span style='display:inline-block;float:right;'><a class='btn' href='details.jsp?aid="+data[i].aid+"'>View details »</a></span>"+
+     					"</p>"+
+     				"</div></li>");
 			   		
-			   }
-			   loadSiteInfo();//加载站点信息
-			   loadPagination(pageNumber,cid);//加载底部分页
-			   loadMostViewCount();//加载右侧最多浏览
-			   loadArchives();//加载文章归档
+			   		}
+			   		loadPagination(pageNumber,cid);//加载底部分页
+			   		
+     		   	}
+     		   	loadSiteInfo();//加载站点信息
+			   	loadMostViewCount();//加载右侧最多浏览
+			   	loadArchives();//加载文章归档
+
 			}
 			
 		}); 
@@ -155,10 +157,11 @@
      			contentType: "application/json;charset=utf-8",
      			data:JSON.stringify({}),
      			success:function(data){
-     				$(".mybloginfo").find("dd").eq(0).text(data.ARTICLENUM);
-     				$(".mybloginfo").find("dd").eq(1).text(data.LIKENUM);
-     				$(".mybloginfo").find("dd").eq(2).text(data.VIEWNUM);
-     				$(".mybloginfo").find("dd").eq(3).text(data.MESSNUM);
+     				var mybloginfo = $(".mybloginfo");
+     				mybloginfo.find("dd").eq(0).text(data.ARTICLENUM);
+     				mybloginfo.find("dd").eq(1).text(data.LIKENUM);
+     				mybloginfo.find("dd").eq(2).text(data.VIEWNUM);
+     				mybloginfo.find("dd").eq(3).text(data.MESSNUM);
 				}
 			})
 		
@@ -182,26 +185,28 @@
      			success:function(data){
      			
      				var currentPage = pageNumber;
+     				var pagination = $(".pagination");
      				if(currentPage==1){
-     					$(".pagination").append("<li><a>上一页</a></li>");
-     					$(".pagination").find("li").eq(0).css("display","none");
+     					
+     					pagination.append("<li><a>上一页</a></li>");
+     					pagination.find("li").eq(0).css("display","none");
      				}else{
      					$(".slide").empty();//清空轮播图div下所有节点
-     					$(".pagination").append("<li><a href='<%=request.getContextPath()%>/jsp/index.jsp?cid="+cid+"&page="+(--currentPage)+"'>上一页</a></li>");
+     					pagination.append("<li><a href='<%=request.getContextPath()%>/jsp/index.jsp?cid="+cid+"&page="+(--currentPage)+"'>上一页</a></li>");
      				}
      			
      				var pageCount = parseInt((data.length-1)/6)+1;//总页数
      		   		for(var i=1;i<=pageCount;i++){
-     			 		$(".pagination").append("<li><a href='<%=request.getContextPath()%>/jsp/index.jsp?cid="+cid+"&page="+i+"'>"+i+"</a></li>");
+     			 		pagination.append("<li><a href='<%=request.getContextPath()%>/jsp/index.jsp?cid="+cid+"&page="+i+"'>"+i+"</a></li>");
 			  		}
 			  		
 			  		if(pageNumber>=pageCount){
-     					$(".pagination").append("<li><a>下一页</a></li>");
-     					$(".pagination").find("li").eq(pageCount+1).css("display","none");
-     					$(".pagination").find("li").eq(pageNumber).find("a").css("background-color","#ffeb3b");
+     					pagination.append("<li><a>下一页</a></li>");
+     					pagination.find("li").eq(pageCount+1).css("display","none");
+     					pagination.find("li").eq(pageNumber).find("a").css("background-color","#ffeb3b");
      				}else{
-     					$(".pagination").append("<li><a href='<%=request.getContextPath()%>/jsp/index.jsp?cid="+cid+"&page="+(++pageNumber)+"'>下一页</a></li>");
-     					$(".pagination").find("li").eq(pageNumber-1).find("a").css("background-color","#ffeb3b");
+     					pagination.append("<li><a href='<%=request.getContextPath()%>/jsp/index.jsp?cid="+cid+"&page="+(++pageNumber)+"'>下一页</a></li>");
+     					pagination.find("li").eq(pageNumber-1).find("a").css("background-color","#ffeb3b");
      				}
 				}
 				
@@ -244,11 +249,12 @@
     		nextText: '<i class="fa fa-fw fa-angle-right"></i>'
  		});
  		//搜素框焦点事件 
- 		$(".search-input").focus(function(){
+ 		var search = $(".search-input");
+ 		search.focus(function(){
 			$(this).width(150);//避免第一次没有效果
 			$(this).width(200);
 		})
-		$(".search-input").blur(function(){
+		search.blur(function(){
 			$(this).width(150);
 		})
 		TimeDown("show-time", "2018-11-14 00:00:00");
@@ -281,18 +287,33 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="item active" style="height:inherit;">
-							<img alt="" src="<%=request.getContextPath()%>/images/bg1.JPG"/>
+							<a href="<%=request.getContextPath()%>/jsp/details.jsp?aid=3">
+								<img alt="" src="http://resource.baobaodz.com/image/slide/slide-bg1.jpg"/>
+							</a>
 							<div class="carousel-caption">
+							</div>
+							<div class="pre-titile" style="height:inherit;position:absolute;">
+								<span><a href="<%=request.getContextPath()%>/jsp/details.jsp?aid=3">Javaweb个人博客网站搭建（上）</a></span>
 							</div>
 						</div>
 						<div class="item" style="height:inherit;">
-							<img alt="" src="<%=request.getContextPath()%>/images/bg1.JPG"/>
+							<a href="<%=request.getContextPath()%>/jsp/details.jsp?aid=4">
+								<img alt="" src="http://resource.baobaodz.com/image/slide/slide-bg2.jpg"/>
+							</a>
 							<div class="carousel-caption">
+							</div>
+							<div class="pre-titile" style="height:inherit;position:absolute;">
+								<span><a href="<%=request.getContextPath()%>/jsp/details.jsp?aid=4">Javaweb个人博客网站搭建（下）</a></span>
 							</div>
 						</div>
 						<div class="item" style="height:inherit;">
-							<img alt="" src="<%=request.getContextPath()%>/images/bg1.JPG"/>
+							<a href="<%=request.getContextPath()%>/jsp/details.jsp?aid=5">
+								<img alt="" src="http://resource.baobaodz.com/image/slide/slide-bg3.jpg"/>
+							</a>	
 							<div class="carousel-caption">
+							</div>
+							<div class="pre-titile" style="height:inherit;position:absolute;">
+								<span><a href="<%=request.getContextPath()%>/jsp/details.jsp?aid=5">javaweb项目部署</a></span>
 							</div>
 						</div>
 						</div> <a class="left carousel-control" href="#carousel-356013" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-356013" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
