@@ -66,7 +66,7 @@
 		<div class="row clearfix" style="height:30px;background-color:white;box-sizing:border-box;">
 		    <div class="col-md-12 column" style="width: 80%;margin-bottom:15px; height:30px;font-size:.9em;box-sizing:border-box;">
 		    	<ol class="breadcrumb" style="background-color:white;">
-    				<li><a href="index.jsp">主页</a></li>
+    				<li><a href="<%=request.getContextPath()%>">主页</a></li>
     				<li><a href="#"></a></li>
     				<li class="active">正文</li>
 				</ol>

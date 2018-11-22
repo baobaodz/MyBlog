@@ -198,7 +198,7 @@
 		<div class="row clearfix mycatnav">
 			<div class="col-md-12 column" style="padding-right:0px;">
 				<ol class="breadcrumb">
-    					<li><a href="index.jsp"><i class="fas fa-file-signature"></i> 文章 </a></li>
+    					<li><a href="<%=request.getContextPath()%>"><i class="fas fa-file-signature"></i> 文章 </a></li>
     					<li><a href="archives.jsp">归档</a></li>
     					<li></li>
     					<li></li>
