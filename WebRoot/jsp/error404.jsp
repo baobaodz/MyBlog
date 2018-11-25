@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../css/error404.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/error404.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -12,12 +12,12 @@
 	<div id="page-wrapper">    
 		<div class="page-blank-wrap">
 			<div class="site-error">
-				<h1 class="headline"><img src="../images/404.png" alt="404"></h1>
+				<h1 class="headline"><img src="<%=request.getContextPath()%>/images/404.png" alt="404"></h1>
 				<div class="error-content">
 					<h4>海面雾气太大</h4><h4>受天气影响，该页无法正常显示</h4>
-					<h5> 你可以 <a href="index.jsp">返回首页</a> 。</h5>
+					<h5> 你可以 <a href="<%=request.getContextPath()%>">返回首页</a> 。</h5>
 				</div>
-				<img src="../images/error-bg.png" style="padding:20px 0 120px;">
+				<img src="<%=request.getContextPath()%>/images/error-bg.png" style="padding:20px 0 120px;">
 			</div>
 		</div> 	   
 	</div>

@@ -20,7 +20,6 @@
     <link rel="stylesheet" type="text/css" href="../css/admin/dataTables.bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../css/admin/select2.min.css">
     <link rel="stylesheet" type="text/css" href="../editor.md-master/css/editormd.min.css"/>
-	<link rel="stylesheet" type="text/css" href="../editor.md-master/css/editormd.css"/>
     <!-- CSS App -->
     <link rel="stylesheet" type="text/css" href="../css/admin/style.css">
     <link rel="stylesheet" type="text/css" href="../css/admin/flat-blue.css">
@@ -34,8 +33,8 @@
     <script type="text/javascript" src="../js/admin/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../js/admin/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript" src="../js/admin/select2.full.min.js"></script>
+    
 	<script type="text/javascript" src="../js/editormd.min.js"></script>
-	<script type="text/javascript" src="../js/editormd.js"></script>
 	<script type="text/javascript" src="../editor.md-master/lib/marked.min.js"></script>
 	<script type="text/javascript" src="../editor.md-master/lib/flowchart.min.js"></script>
 	<script type="text/javascript" src="../editor.md-master/lib/jquery.flowchart.min.js"></script>

@@ -20,16 +20,10 @@ li{
 	list-style: none;
 	
 }
-
-@font-face {
-    font-family: "mFont";
-    src: url("../fonts/songkebenxiukai.eot");
-    src: url("../fonts/songkebenxiukai.eot?#iefix") format("embedded-opentype"),
-         url("../fonts/songkebenxiukai.woff") format("woff"),
-         url("../fonts/songkebenxiukai.ttf") format("truetype"),
-         url("../fonts/songkebenxiukai.svg#webfont34M5alKg") format("svg");
-    font-weight: normal;
-    font-style: normal;
+.navbar-header .navbar-brand,.myblogmotto,.mybloginfo,
+.carousel-inner .item .pre-titile{
+	
+	font-family: "华文中宋";
 }
 .navbar-nav > li:hover{
 	
@@ -129,7 +123,10 @@ li{
 }
 .articlelist li{
 	
+	background-color: white;
+	margin:10px 0px;
 	padding: 2px 15px 10px 15px;
+	height:180px;
 	border-radius: 5px;
 	box-sizing: content-box;
 	
@@ -201,9 +198,9 @@ li{
 	
 	
 }
-.articlelist li .infocontainer h4 p{
+.articlelist li .infocontainer h4{
 	
-	font-family:mFont;
+	font-family: "华文中宋";
 }
 .articlelist li .infocontainer .summarycontainer{
 	
@@ -223,13 +220,18 @@ li{
 .articlelist li .infocontainer p span:nth-child(2){
 	
 	float:right;
-	background-color:#FFEB3B;
+	background-color:white;
+	border:1px solid gray;
 	
+}
+.articlelist li .infocontainer p span:nth-child(2):hover a{
+	
+	color:#48b79b;
 }
 .confoot .pagination li{
 	
 	display:inline-block;
-	border:1px solid #f1f1f1;
+	border:1px solid white;
 	border-radius:3px;
 	margin:0px 3px;
 	

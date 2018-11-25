@@ -230,7 +230,7 @@
 		<div class="row clearfix mycatnav">
 			<div class="col-md-12 column" style="padding-right:0px;">
 				<ol class="breadcrumb">
-    					<li><a href="index.jsp"><i class="fas fa-file-signature"></i>baobaodz </a></li>
+    					<li><a href="<%=request.getContextPath()%>"><i class="fas fa-file-signature"></i>baobaodz </a></li>
     					<li><a href="#">留言</a></li>
 				</ol>
 			</div>
@@ -256,12 +256,7 @@
 			<div class="con">
 				<ul class="list-group articlelist"></ul>
 			</div>
-			<!--bootstrap分页 -->
-			<div class="confoot" style="width:100%; text-align:center;">
-				<ul class="pagination pagination-lg">
-					<!--js追加底部分页条 -->
-				</ul>
-			</div>
+			
 		</div>
 		<jsp:include page="common/broadside.jsp"></jsp:include>
 	</div>

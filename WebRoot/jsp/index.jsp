@@ -115,7 +115,7 @@
      		   }else{
      		      for(var i=0;i<data.length;i++){
      		   	  	var cat = getCategoryName(data[i].category_id);
-     		   	 	$(".articlelist").append("<li style='background-color: white;margin:10px 0px;padding:2px 15px 10px 15px;height:180px;box-sizing: content-box;'>"+
+     		   	 	$(".articlelist").append("<li>"+
      		   	 	"<div class='imgcontainer visible-md-8 hidden-xs'>"+
      		   	 		"<a href='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg' target='blank' title='下载原图'>"+
      		   	 			"<img src='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg'>"+
@@ -130,7 +130,7 @@
      			 		"<p class='summarycontainer'>简介："+data[i].summary+"</p>"+
      					"<p class='visible-md-8 hidden-xs'>"+
      						"<span style='display:inline-block;float:left;'><i class='fa fa-eye'></i>("+data[i].viewcount+")&nbsp;&nbsp;<i class='far fa-heart'></i>("+data[i].likecount+")</span>"+
-     						"<span style='display:inline-block;float:right;'><a class='btn' href='details.jsp?aid="+data[i].aid+"'>View details »</a></span>"+
+     						"<span style='display:inline-block;float:right;'><a class='btn' href='<%=request.getContextPath()%>/jsp/details.jsp?aid="+data[i].aid+"'>阅读更多»</a></span>"+
      					"</p>"+
      				"</div></li>");
 			   		
