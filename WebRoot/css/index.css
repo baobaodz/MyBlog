@@ -21,9 +21,10 @@ li{
 	
 }
 .navbar-header .navbar-brand,.myblogmotto,.mybloginfo,
-.carousel-inner .item .pre-titile{
+.carousel-inner .item .pre-titile,
+.articlelist li .infocontainer h4{
 	
-	font-family: "华文中宋";
+	font-family: "华文中宋","微软雅黑";
 }
 .navbar-nav > li:hover{
 	
@@ -196,11 +197,6 @@ li{
 	
 	display:inline-block;
 	
-	
-}
-.articlelist li .infocontainer h4{
-	
-	font-family: "华文中宋";
 }
 .articlelist li .infocontainer .summarycontainer{
 	

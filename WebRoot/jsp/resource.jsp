@@ -162,7 +162,7 @@
 		})
 		TimeDown("show-time", "2018-11-14 00:00:00");//调用计时
 		$("#show-count").text("本站累计访问次数："+sessionStorage.getItem("rank")+"次");
-	
+		$(".datepicker,.aboutsite,.learnsite").addClass("visible-md-8 hidden-xs");
 	})
 	
 </script>
@@ -226,11 +226,59 @@
 	
 				</div>
 			</div>
-			<div class="appreciation">
-				
-				<div><button class="btn btn-info btn-appreciation">￥赞赏</button></div>
-			
+			<div class="panel panel-default appreciation">
+    			<div class="panel-body" >
+    				<div class="appre-do">
+    					<p>收集不易，给点鼓励</p>
+        				<button class="btn btn-danger btn-appreciation">￥赞赏</button>
+        				<div class="appre-QRcode">
+        					<img src="http://resource.baobaodz.com/image/QRcode/zhifubao_QRcode.jpg">
+        				</div>
+    				</div>
+    				
+    			</div>
 			</div>
+				<!--畅言评论 -->
+				<div class="article_review">
+					<div id="SOHUCS" sid="resource" ></div> 
+					<script type="text/javascript"> 
+						(function(){ 
+							
+							var aid = window.location.search.substr(5,5);
+							$("#SOHUCS").attr("sid",aid);
+							var appid = "cytV2uHWj"; 
+							var conf = "abb600240fcf5e4632996e05dca7ba71"; 
+							var width = window.innerWidth || document.documentElement.clientWidth; 
+							if (width < 960) { 
+								
+								window.document.write("<script id='changyan_mobile_js' charset='utf-8' type='text/javascript' src='http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=" + appid + "&conf=" + conf + "'><\/script>'"); 
+							} else { 
+								var loadJs=function(d,a){
+									var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;
+									var b=document.createElement("script");
+									b.setAttribute("type","text/javascript");
+									b.setAttribute("charset","UTF-8");
+									b.setAttribute("src",d);
+									if(typeof a==="function"){
+										if(window.attachEvent){
+											b.onreadystatechange=function(){
+												var e=b.readyState;
+												if(e==="loaded"||e==="complete"){
+													b.onreadystatechange=null;a()
+												}
+											}
+										}else{
+											b.onload=a
+										}
+									}
+									c.appendChild(b)};
+									loadJs("http://changyan.sohu.com/upload/changyan.js",function(){
+										window.changyan.api.config({appid:appid,conf:conf})
+								}); 
+							} 
+						})(); 
+				</script>
+				</div>			
 			
 		</div>
 		<jsp:include page="common/broadside.jsp"></jsp:include>

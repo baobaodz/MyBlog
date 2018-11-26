@@ -185,7 +185,7 @@
  		})
  		TimeDown("show-time", "2018-11-14 00:00:00");//调用计时
  		$("#show-count").text("本站累计访问次数："+sessionStorage.getItem("rank")+"次");
- 		
+ 		$(".datepicker,.aboutsite,.learnsite").addClass("visible-md-8 hidden-xs");
 	});
 	
 </script>

@@ -9,7 +9,7 @@
 <body>
 <div class="col-md-3 column myblogright" style="padding:10px 0px;">
 		
-			<div class="panel panel-default">
+			<div class="panel panel-default aboutsite">
 				<div class="panel-heading">
 					<h5 class="panel-title"><i class="fa fa-align-justify "></i> 关于本站</h5>
 					
@@ -87,7 +87,7 @@
 				</div>
 				
 			</div>
-			<div class="panel panel-default">
+			<div class="panel panel-default learnsite">
 				<div class="panel-heading">
 					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 学习</h3>
 				</div>
