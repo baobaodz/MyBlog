@@ -108,13 +108,11 @@ li{
 }
 .articlelist .search-none{
 	
-	
 	width:100%;
 	height:540px;
 	
 }
 .articlelist .search-none img{
-	
 	
 	display:inline-block;
 	height:145px;
@@ -133,11 +131,7 @@ li{
 	
 }
 .articlelist li:hover{
-	
-	
 	border-left: 2px solid white;
-	
-	
 }
 .articlelist li h4>span{
 	
@@ -162,7 +156,6 @@ li{
 	color:white;
 	font-size: .7em;
     margin: 8px;
-	
 }
 .label-arrow{
 	
@@ -192,8 +185,9 @@ li{
 	
 	height:80%;
 	padding-top:5px;
+	position:relative;
 }
-.articlelist li .infocontainer p span{
+.articlelist li .infocontainer .moreinfo span{
 	
 	display:inline-block;
 	
@@ -205,7 +199,7 @@ li{
 	line-height:1.5em;
 	color:gray;
 }
-.articlelist li .infocontainer p span:nth-child(1){
+.articlelist li .infocontainer .moreinfo span:nth-child(1){
 	
 	float:left;
 	line-height: 1.8em;
@@ -213,22 +207,38 @@ li{
     height: 1.8em;
 	
 }
-.articlelist li .infocontainer p span:nth-child(2){
+.articlelist li .infocontainer .moreinfo span:nth-child(2){
 	
 	float:right;
 	background-color:white;
 	border:1px solid gray;
+	font-size:.9em;
 	
 }
-.articlelist li .infocontainer p span:nth-child(2):hover a{
+.articlelist li .infocontainer .moreinfo span:nth-child(2):hover a{
 	
 	color:#48b79b;
+}
+.articlelist li .moblie-moreinfo span{
+	
+	display:inline-block;
+	height:2.3em;
+	width:100%;
+	text-align:center;
+	
+}
+.articlelist li .moblie-moreinfo span a{
+	
+	display:inline-block;
+	height:2.3em;
+	border:1px solid gray;
+	border-radius:0px;
+	font-size:.7em;
 }
 .confoot .pagination li{
 	
 	display:inline-block;
 	border:1px solid white;
-	border-radius:3px;
 	margin:0px 3px;
 	
 }

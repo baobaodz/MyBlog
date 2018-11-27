@@ -8,6 +8,7 @@ a{
 	text-decoration:none;
 	color:#5fb6ad;
 }
+
 #catline{
 	
 	font-size:1em;
@@ -265,6 +266,7 @@ a{
 	background:url(../images/totop.png);
 	
 }
+
 /* nav */
 .nav {
   padding-left: 0px;

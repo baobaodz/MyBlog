@@ -21,7 +21,7 @@
 
 
 
-<title>baobaodz的主页</title>
+<title>baobaodz｜资源分享</title>
 <script type="text/javascript">
 	$(function(){
 		   
@@ -85,38 +85,6 @@
 			})
 		
 		}
-      	//通过枚举类型来定义，不需要从后台获取，缺点就是非动态
-		function getCategoryName(cid){
-			var blogCategoryID = {
-				生活杂记:1,
-				java:2,
-				数据库:3,
-				音乐随想:4,
-				bug:5,
-				宇宙奇想:6
-			}
-							
-			for(var cat in blogCategoryID){
-				if(cid==blogCategoryID[cat]){
-					return cat;
-				}
-			}
-						
-		}
-		
-	
-		var urlParam = window.location.search;//获取url参数?cid=2&page=6
-		if (urlParam == null || urlParam == "") {
-			
-			var pageNumber = 1;
-			
-			$(".myblogright").css("padding-top","10px");
-		} else if (urlParam.indexOf("page") != -1) {
-			
-			pageNumber = urlParam.substr(6, 2);
-			getCategoryName(cid);//获取分类名
-		} 
-		
 		//加载最多浏览
 		function loadMostViewCount(){
 			$.ajax({

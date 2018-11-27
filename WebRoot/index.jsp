@@ -14,17 +14,6 @@
 
 </head>
 <body>
- <p id="p1"></p><br>
-    <p id="p2"></p><br>
-    
-    <!-- 点击进入index2界面，即HTML前端展示界面 -->
-	文章题目：<input type="text" name="title" value="">
-	<button id="btn">按钮</button><br>
-     
-	<div id="test-editormd">
-   		<textarea class="editormd-markdown-textarea" name="test-editormd-markdown-doc"></textarea>
-  		<!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
-  		<textarea class="editormd-html-textarea" name="bloghtml" ></textarea>
-	</div>
+
 </body>
 </html>

@@ -11,15 +11,15 @@
 		
 			<div class="panel panel-default aboutsite">
 				<div class="panel-heading">
-					<h5 class="panel-title"><i class="fa fa-align-justify "></i> 关于本站</h5>
+					<h5 class="panel-title"><i class="fas fa-laptop-code" style="color:gray;"></i> 关于本站</h5>
 					
 				</div>
 				<div class="panel-body myblogmotto">
 					<dl style="width:35%;">
-						<dt><img alt="头像" src="<%=request.getContextPath()%>/images/avatar.png" class="img-circle"></dt>
+						<dt><img alt="avatar" src="<%=request.getContextPath()%>/images/avatar.png" class="img-circle"></dt>
 					</dl>
 					<dl style="width:65%;">
-						<dt><h3>baoabaodz</h3></dt>
+						<dt><h3><a href="<%=request.getContextPath()%>/jsp/admin_main.jsp" target="blank">baoabaodz</a></h3></dt>
 						<dd><p>长路漫漫,只管前方</p></dd>
 						<dd><p>赚钱养梦,唯心不死</p></dd>
 					</dl>
@@ -70,7 +70,7 @@
  
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 最多浏览</h3>
+					<h3 class="panel-title"><i class="fab fa-hotjar" style="color:gray;"></i> 最多浏览</h3>
 				</div>
 				<div class="panel-body mymostview">
 					<ul style="padding-left:0px;"></ul>
@@ -79,7 +79,7 @@
 			</div>
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 文章归档</h3>
+					<h3 class="panel-title"><i class="fas fa-archive" style="color:gray;"></i> 文章归档</h3>
 				</div>
 				<div class="panel-body myarchives">
 					<ul style="padding-left:0px;"></ul>
@@ -89,7 +89,7 @@
 			</div>
 			<div class="panel panel-default learnsite">
 				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fas fa-align-justify"></i> 学习</h3>
+					<h3 class="panel-title"><i class="fas fa-code" style="color:gray;"></i> 学习</h3>
 				</div>
 				<div class="panel-body">
 					<ul style="padding-left:0px;">

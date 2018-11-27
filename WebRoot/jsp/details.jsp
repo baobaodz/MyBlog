@@ -45,9 +45,9 @@
 						
 							<li class=""><a href="<%=request.getContextPath()%>?cid=2&page=1"><i class="fab fa-java fa-1x"></i> Java</a></li>
 							<li class=""><a href="<%=request.getContextPath()%>?cid=3&page=1"><i class="fa fa-database"></i> 数据库</a></li>
-							<li class=""><a href="#"><i class="fa fa-desktop"></i> 计算机网络</a></li>
+							<li class=""><a href="<%=request.getContextPath()%>/?cid=8&page=1"><i class="fa fa-desktop"></i> 计算机网络</a></li>
 							<li class=""><a href="<%=request.getContextPath()%>?cid=5&page=1"><i class="fas fa-bug"></i> BUG</a></li>
-							<li class=""><a href="#"><i class="fas fa-code-branch"></i> 数据结构</a></li>
+							<li class=""><a href="<%=request.getContextPath()%>/?cid=7&page=1"><i class="fas fa-code-branch"></i> 数据结构</a></li>
 							<li class="more">
 								<a href="#"><i class="fas fa-caret-down"></i> 更多</a>
 								<ul class="more-expand">
@@ -216,7 +216,9 @@
 					数据库:3,
 					音乐随想:4,
 					bug:5,
-					宇宙奇想:6
+					宇宙奇想:6,
+					数据结构:7,
+					计算机网络:8
 				}
 							
 				for(var cat in blogCategoryID){

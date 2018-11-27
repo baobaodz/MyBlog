@@ -7,35 +7,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.css" >
 <link rel="stylesheet" href="../css/index.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery-ui.js"></script>
 <script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
-<script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.js"></script>
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/timecount.js"></script>
 
 
-<title>baobaodz的主页</title>
+<title>baobaodz｜归档</title>
 <script type="text/javascript">
 	$(function(){
       	
 		var urlParam = window.location.search;//获取url参数
+		var breadcrumb = $(".breadcrumb");
 		if(urlParam==null||urlParam==""){
-			$(".breadcrumb").find("li").eq(3).remove();
+			breadcrumb.find("li").eq(3).remove();
 			
 		}else if(urlParam.indexOf("ym")!=-1){//包含年-月
 			var ym = urlParam.substring(4);
 			var data = JSON.stringify({"date":ym});
-			$(".breadcrumb").find("li").eq(2).html("<a href='archives.jsp?y="+ym.substr(0,4)+"'>"+ym.substr(0,4)+"</a>");
-			$(".breadcrumb").find("li").eq(3).html("<a href='#'>"+ym.substr(5)+"</a>");
+			breadcrumb.find("li").eq(2).html("<a href='archives.jsp?y="+ym.substr(0,4)+"'>"+ym.substr(0,4)+"</a>");
+			breadcrumb.find("li").eq(3).html("<a href='#'>"+ym.substr(5)+"</a>");
 			$(".btn-archivesyear").empty();//清空年份按钮节点
 		}else{//只有年份
 			var year = urlParam.substring(3);
 			var data = JSON.stringify({"date":year});
-			$(".breadcrumb").find("li").eq(2).html("<a href='archives.jsp?y="+year+"'>"+year+"</a>");
+			breadcrumb.find("li").eq(2).html("<a href='archives.jsp?y="+year+"'>"+year+"</a>");
 			$(".btn-archivesyear").empty();
 		}
 		
@@ -51,8 +50,8 @@
      			contentType: "application/json;charset=utf-8",
      			data:data,
      			success:function(data){
-     			
-     		   		$(".panel-group").empty();
+     				var panelgroup = $(".panel-group");
+     		   		panelgroup.empty();
      		   		if(data[0].VIEWCOUNT==null){//年和月份
      		   			$("#cmonth").collapse("show");
      		   			for(var i=0;i<data.length;i++){
@@ -62,7 +61,7 @@
      		   		}else{//年
      		   			for(var i=0;i<data.length-1;i++){
      		   				if(data[i+1].YM!=data[i].YM){
-     		   					$(".panel-group").append("<div class='panel panel-default'>"+
+     		   					panelgroup.append("<div class='panel panel-default'>"+
      		   						"<div class='panel-heading'>"+
      		   							"<h4 class='panel-title t"+data[i].YM+"'>"+
      		   								"<a data-toggle='collapse' data-parent='#accordion' data-target='#c"+data[i].YM+"'><i class='fa fa-angle-double-down'></i> "+data[i].YM+"</a>"+
@@ -81,7 +80,7 @@
      		   				}
      		   			}
      		   			//追加最后一个月
-     		   			$(".panel-group").append("<div class='panel panel-default'>"+
+     		   			panelgroup.append("<div class='panel panel-default'>"+
      		   					"<div class='panel-heading'>"+
      		   						"<h4 class='panel-title t"+data[i].YM+"'>"+
      		   							"<a data-toggle='collapse' data-parent='#accordion' data-target='#c"+data[data.length-1].YM+"'><i class='fa fa-angle-double-down'></i> "+data[data.length-1].YM+"</a>"+
@@ -101,26 +100,9 @@
 			}); 
 		}
 		
-		//通过枚举类型来定义，不需要从后台获取，缺点就是非动态
-		function getCategoryName(cid){
-			var blogCategoryID = {
-				生活杂记:1,
-				java:2,
-				数据库:3,
-				音乐随想:4,
-				bug:5,
-				宇宙奇想:6
-			}
-							
-			for(var cat in blogCategoryID){
-				if(cid==blogCategoryID[cat]){
-					$(".breadcrumb").find("li").eq(1).html("<a href='index.jsp?cid="+cid+"&page=1'>"+cat+"</a>");
-				}
-			}
-						
-		}
-		
 		loadSiteInfo();//加载站点信息
+		loadArchives();
+		loadMostViewCount();//加载右侧最多浏览
 		//加载站点信息
 		function loadSiteInfo(){
 			$.ajax({
@@ -130,17 +112,16 @@
      			contentType: "application/json;charset=utf-8",
      			data:JSON.stringify({}),
      			success:function(data){
-     				$(".mybloginfo").find("dd").eq(0).text(data.ARTICLENUM);
-     				$(".mybloginfo").find("dd").eq(1).text(data.LIKENUM);
-     				$(".mybloginfo").find("dd").eq(2).text(data.VIEWNUM);
-     				$(".mybloginfo").find("dd").eq(3).text(data.MESSNUM);
+     				var mybloginfo = $(".mybloginfo");
+     				mybloginfo.find("dd").eq(0).text(data.ARTICLENUM);
+     				mybloginfo.find("dd").eq(1).text(data.LIKENUM);
+     				mybloginfo.find("dd").eq(2).text(data.VIEWNUM);
+     				mybloginfo.find("dd").eq(3).text(data.MESSNUM);
 				}
 			})
 		
 		}
-		loadArchives();
-		
-		loadMostViewCount();//加载右侧最多浏览
+
 		function loadMostViewCount(){
 			$.ajax({
 				url: "<%=request.getContextPath()%>/orderByViewCount",
@@ -179,7 +160,7 @@
  		$(".archivesyear").click(function(){
  			var y = $(this).text();
  			var data = JSON.stringify({"date":y});
- 			$(".breadcrumb").find("li").eq(2).html("<a href='archives.jsp?y="+y+"'>"+y+"</a>");
+ 			breadcrumb.find("li").eq(2).html("<a href='archives.jsp?y="+y+"'>"+y+"</a>");
  			getArchivesByDate(data);
  			
  		})
@@ -221,12 +202,7 @@
             			<div class="panel-body" style="background-color:white;"></div>
                 	</div>
 				</div>
-				<!--bootstrap分页 -->
-				<div class="confoot" style="width:100%; text-align:center;">
-					<ul class="pagination pagination-lg">
-						<!--js追加底部分页条 -->
-					</ul>
-				</div>
+				
 			</div>
 			<jsp:include page="common/broadside.jsp"></jsp:include>
 		</div>

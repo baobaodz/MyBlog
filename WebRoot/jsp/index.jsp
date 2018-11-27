@@ -19,7 +19,7 @@
 <script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/timecount.js"></script>
 
-<title>baobaodz的主页</title>
+<title>baobaodz｜主页</title>
 <script type="text/javascript">
 	$(function(){
 		
@@ -73,7 +73,9 @@
 				数据库:3,
 				音乐随想:4,
 				bug:5,
-				宇宙奇想:6
+				宇宙奇想:6,
+				数据结构:7,
+				计算机网络:8
 			}
 							
 			for(var cat in blogCategoryID){
@@ -126,13 +128,18 @@
      		   	 			"<span><a href='<%=request.getContextPath()%>/jsp/details.jsp?cid="+data[i].category_id+"&page=1'>"+cat+"</a><i class='label-arrow'></i></span>"+
      		   	 			"<a href='<%=request.getContextPath()%>/jsp/details.jsp?aid="+data[i].aid+"' class='toview'>"+data[i].title+"</a>"+
      		   	 		"</h4>"+
-     			 		"<span class='glyphicon glyphicon-time'></span><span>"+new Date(data[i].ptime).toLocaleString()+"</span><br/>"+
+     			 		"<span><i class='fas fa-cloud-upload-alt'></i></span> <span>"+new Date(data[i].ptime).toLocaleString()+"</span><br/>"+
      			 		"<p class='summarycontainer'>简介："+data[i].summary+"</p>"+
-     					"<p class='visible-md-8 hidden-xs'>"+
-     						"<span style='display:inline-block;float:left;'><i class='fa fa-eye'></i>("+data[i].viewcount+")&nbsp;&nbsp;<i class='far fa-heart'></i>("+data[i].likecount+")</span>"+
-     						"<span style='display:inline-block;float:right;'><a class='btn' href='<%=request.getContextPath()%>/jsp/details.jsp?aid="+data[i].aid+"'>阅读更多»</a></span>"+
-     					"</p>"+
-     				"</div></li>");
+     					"<div class='moreinfo visible-md-8 hidden-xs'>"+
+     						"<span><i class='fa fa-eye'></i>("+data[i].viewcount+")&nbsp;&nbsp;<i class='far fa-heart'></i>("+data[i].likecount+")</span>"+
+     						"<span><a class='btn' href='<%=request.getContextPath()%>/jsp/details.jsp?aid="+data[i].aid+"'>阅读更多»</a></span>"+
+     					"</div>"+
+     					
+     				"</div>"+
+     					"<div class='moblie-moreinfo hidden-md-8 visible-xs'>"+
+     						"<span><a class='btn' href='<%=request.getContextPath()%>/jsp/details.jsp?aid="+data[i].aid+"'>阅读更多</a></span>"+
+     					"</div>"+
+     				"</li>");
 			   		
 			   		}
 			   		loadPagination(pageNumber,cid);//加载底部分页

@@ -9,7 +9,7 @@
 
 <body>
 		<div class="foot"  style="width:inherit;">
-				<div style="height:110px;background-color:white; text-align:center;line-height:25px;padding:10px 0px;margin-top:30px;">
+				<div style="height:110px;background-color:white; text-align:center;line-height:25px;padding:10px 0px;margin-top:30px;font-family:'微软雅黑'">
 					
 					<p id="show-time" style="margin:0"></p>
 					<p id="show-count" style="margin:0"></p>
@@ -17,7 +17,7 @@
 						<a href="https://github.com/baobaodz/MyBlog/issues" target="blank">意见反馈 </a>丨
 						<a href="https://github.com/baobaodz/MyBlog" target="blank">代码源址 </a>
 					</p>
-					<p style="margin:0">Copyright © 2018 baobaodz博客 丨 苏ICP备18061978号</p>
+					<p style="margin:0">Copyright © 2018 <a href="#">baobaodz博客</a> 丨 苏ICP备18061978号</p>
 				</div>
 		
 
