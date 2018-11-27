@@ -86,7 +86,7 @@ public class ArticleController {
 	/*
 	 * 获取最多浏览文章列表
 	 */
-	@RequestMapping(value="orderByViewCount",method = RequestMethod.POST)
+	@RequestMapping(value="/orderByViewCount",method = RequestMethod.POST)
 	@ResponseBody
 	public String orderByViewCount(@RequestBody Map<String,Object> map,HttpServletRequest request){
 		

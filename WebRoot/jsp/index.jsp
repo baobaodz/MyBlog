@@ -13,6 +13,8 @@
 
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/mysite.js"></script>
+
 <script type="text/javascript" src="<%=request.getContextPath()%>/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
@@ -99,7 +101,6 @@
 			getCategoryName(cid);//获取分类名
 		} 
 		
-		
 		//根据条件获取文章列表
 		$.ajax({
 			url : "<%=request.getContextPath()%>/queryAllArticle",
@@ -154,23 +155,23 @@
 		}); 
 		
 		//加载站点信息
-		function loadSiteInfo(){
-			$.ajax({
-				url : "<%=request.getContextPath()%>/querySiteInfo",
-     			type: "post",
-     			dataType : "json",
-     			contentType: "application/json;charset=utf-8",
-     			data:JSON.stringify({}),
-     			success:function(data){
-     				var mybloginfo = $(".mybloginfo");
-     				mybloginfo.find("dd").eq(0).text(data.ARTICLENUM);
-     				mybloginfo.find("dd").eq(1).text(data.LIKENUM);
-     				mybloginfo.find("dd").eq(2).text(data.VIEWNUM);
-     				mybloginfo.find("dd").eq(3).text(data.MESSNUM);
-				}
-			})
+// 		function loadSiteInfo(){
+// 			$.ajax({
+// 				url : "<%=request.getContextPath()%>/querySiteInfo",
+//      			type: "post",
+//      			dataType : "json",
+//      			contentType: "application/json;charset=utf-8",
+//      			data:JSON.stringify({}),
+//      			success:function(data){
+//      				var mybloginfo = $(".mybloginfo");
+//      				mybloginfo.find("dd").eq(0).text(data.ARTICLENUM);
+//      				mybloginfo.find("dd").eq(1).text(data.LIKENUM);
+//      				mybloginfo.find("dd").eq(2).text(data.VIEWNUM);
+//      				mybloginfo.find("dd").eq(3).text(data.MESSNUM);
+// 				}
+// 			})
 		
-		}
+// 		}
 		
 		//加载底部分页，参数为当前页数及类别ID
 		function loadPagination(pageNumber,cid){
@@ -219,20 +220,20 @@
 			
 		}
 		//加载最多浏览
-		function loadMostViewCount(){
-			$.ajax({
-				url: "<%=request.getContextPath()%>/orderByViewCount",
-     			type: "post",
-     			dataType : "json",
-     			contentType: "application/json;charset=utf-8",
-     			data:JSON.stringify({}),
-     			success:function(data){
-     				for(var i=0;i<data.length;i++){
-     			 		$(".mymostview ul").append("<li style='margin: 4px 0px;'><span>"+(i+1)+"</span><a href='<%=request.getContextPath()%>/jsp/details.jsp?aid="+data[i].aid+"'>"+data[i].title+"</a></li>");
-			  		}
-     			}
-			});
-		}
+// 		function loadMostViewCount(){
+// 			$.ajax({
+// 				url: "<%=request.getContextPath()%>/orderByViewCount",
+//      			type: "post",
+//      			dataType : "json",
+//      			contentType: "application/json;charset=utf-8",
+//      			data:JSON.stringify({}),
+//      			success:function(data){
+//      				for(var i=0;i<data.length;i++){
+//      			 		$(".mymostview ul").append("<li style='margin: 4px 0px;'><span>"+(i+1)+"</span><a href='<%=request.getContextPath()%>/jsp/details.jsp?aid="+data[i].aid+"'>"+data[i].title+"</a></li>");
+// 			  		}
+//      			}
+// 			});
+// 		}
 		//加载文章归档
 		function loadArchives(){
 			$.ajax({

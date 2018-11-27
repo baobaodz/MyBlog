@@ -10,7 +10,9 @@
 <link rel="stylesheet" href="../css/index.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <script type="text/javascript" src="../js/jquery.min.js"></script>
+
 <script type="text/javascript" src="../js/jquery-ui.js"></script>
+
 <script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/timecount.js"></script>
@@ -96,6 +98,7 @@
     						$(".panel-group #c"+data[data.length-1].YM+" .panel-body").append("<p><span>"+datetime+"</span><a href='details.jsp?aid="+data[j].AID+"'>"+data[j].TITLE+"</a><span>阅读&nbsp;("+data[j].VIEWCOUNT+")</span></p>");
     					}
      		   		}
+     		   		
 				}
 			}); 
 		}
@@ -121,7 +124,7 @@
 			})
 		
 		}
-
+		//加载最多浏览
 		function loadMostViewCount(){
 			$.ajax({
 				url: "<%=request.getContextPath()%>/orderByViewCount",
