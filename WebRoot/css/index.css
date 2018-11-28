@@ -109,7 +109,7 @@ li{
 .articlelist .search-none{
 	
 	width:100%;
-	height:540px;
+	height:500px;
 	
 }
 .articlelist .search-none img{
@@ -117,7 +117,10 @@ li{
 	display:inline-block;
 	height:145px;
 	width:180px;
-	margin:20% 35%;
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
 	
 }
 .articlelist li{

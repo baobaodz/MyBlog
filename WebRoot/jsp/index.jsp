@@ -152,26 +152,7 @@
 			}
 			
 		}); 
-		
-		//加载站点信息
-// 		function loadSiteInfo(){
-// 			$.ajax({
-// 				url : "<%=request.getContextPath()%>/querySiteInfo",
-//      			type: "post",
-//      			dataType : "json",
-//      			contentType: "application/json;charset=utf-8",
-//      			data:JSON.stringify({}),
-//      			success:function(data){
-//      				var mybloginfo = $(".mybloginfo");
-//      				mybloginfo.find("dd").eq(0).text(data.ARTICLENUM);
-//      				mybloginfo.find("dd").eq(1).text(data.LIKENUM);
-//      				mybloginfo.find("dd").eq(2).text(data.VIEWNUM);
-//      				mybloginfo.find("dd").eq(3).text(data.MESSNUM);
-// 				}
-// 			})
-		
-// 		}
-		
+			
 		//加载底部分页，参数为当前页数及类别ID
 		function loadPagination(pageNumber,cid){
 			if(cid!=0){
@@ -218,21 +199,6 @@
 			});
 			
 		}
-		//加载最多浏览
-// 		function loadMostViewCount(){
-// 			$.ajax({
-// 				url: "<%=request.getContextPath()%>/orderByViewCount",
-//      			type: "post",
-//      			dataType : "json",
-//      			contentType: "application/json;charset=utf-8",
-//      			data:JSON.stringify({}),
-//      			success:function(data){
-//      				for(var i=0;i<data.length;i++){
-//      			 		$(".mymostview ul").append("<li style='margin: 4px 0px;'><span>"+(i+1)+"</span><a href='<%=request.getContextPath()%>/jsp/details.jsp?aid="+data[i].aid+"'>"+data[i].title+"</a></li>");
-// 			  		}
-//      			}
-// 			});
-// 		}
 		//加载文章归档
 		function loadArchives(){
 			$.ajax({
@@ -248,6 +214,7 @@
      			}
 			});
 		}
+		TimeDown("show-time", "2018-11-14 00:00:00");
 		//日历插件左右按钮
 		$(".datepicker").datepicker({
     		prevText: '<i class="fa fa-fw fa-angle-left"></i>',
@@ -262,7 +229,7 @@
 		search.blur(function(){
 			$(this).width(150);
 		})
-		TimeDown("show-time", "2018-11-14 00:00:00");
+		
 	})
 	
 </script>
