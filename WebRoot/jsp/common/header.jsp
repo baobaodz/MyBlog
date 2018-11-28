@@ -17,12 +17,12 @@
 					 		<span class="icon-bar"></span>
 					 		<span class="icon-bar"></span>
 					 	</button> 
-					 	<a class="navbar-brand" href="<%=request.getContextPath()%>">BAOBAODZ</a>
+					 	<a class="navbar-brand" href="<%=request.getContextPath()%>/">BAOBAODZ</a>
 					</div>
 				
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li class=""><a href="<%=request.getContextPath()%>?cid=2&page=1"><i class="fab fa-java fa-1x"></i> Java</a></li>
+							<li class=""><a href="<%=request.getContextPath()%>/?cid=2&page=1"><i class="fab fa-java fa-1x"></i> Java</a></li>
 							<li class=""><a href="<%=request.getContextPath()%>/?cid=3&page=1"><i class="fa fa-database"></i> 数据库</a></li>
 							<li class=""><a href="<%=request.getContextPath()%>/?cid=8&page=1"><i class="fa fa-desktop"></i> 计算机网络</a></li>
 							<li class=""><a href="<%=request.getContextPath()%>/?cid=5&page=1"><i class="fas fa-bug"></i> BUG</a></li>

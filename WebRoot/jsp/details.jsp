@@ -38,22 +38,28 @@
 		    <div class="col-md-12 column" style="width: 100%; height: 70px;font-size:1em;">
 			   	<nav class="navbar navbar-default navbar-fixed-top mynav" role="navigation">
 					<div class="navbar-header">
-					 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="<%=request.getContextPath()%>">BAOBAODZ</a>
+					 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
+					 		<span class="sr-only"></span>
+					 		<span class="icon-bar"></span>
+					 		<span class="icon-bar"></span>
+					 		<span class="icon-bar"></span>
+					 	</button> 
+					 	<a class="navbar-brand" href="<%=request.getContextPath()%>/">BAOBAODZ</a>
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav" id="catline" style="width:60%;">
 						
-							<li class=""><a href="<%=request.getContextPath()%>?cid=2&page=1"><i class="fab fa-java fa-1x"></i> Java</a></li>
-							<li class=""><a href="<%=request.getContextPath()%>?cid=3&page=1"><i class="fa fa-database"></i> 数据库</a></li>
+							<li class=""><a href="<%=request.getContextPath()%>/?cid=2&page=1"><i class="fab fa-java fa-1x"></i> Java</a></li>
+							<li class=""><a href="<%=request.getContextPath()%>/?cid=3&page=1"><i class="fa fa-database"></i> 数据库</a></li>
 							<li class=""><a href="<%=request.getContextPath()%>/?cid=8&page=1"><i class="fa fa-desktop"></i> 计算机网络</a></li>
-							<li class=""><a href="<%=request.getContextPath()%>?cid=5&page=1"><i class="fas fa-bug"></i> BUG</a></li>
+							<li class=""><a href="<%=request.getContextPath()%>/?cid=5&page=1"><i class="fas fa-bug"></i> BUG</a></li>
 							<li class=""><a href="<%=request.getContextPath()%>/?cid=7&page=1"><i class="fas fa-code-branch"></i> 数据结构</a></li>
 							<li class="more">
 								<a href="#"><i class="fas fa-caret-down"></i> 更多</a>
 								<ul class="more-expand">
-									<li><a href="<%=request.getContextPath()%>?cid=1&page=1">生活杂记</a></li>
-									<li><a href="<%=request.getContextPath()%>?cid=4&page=1">音乐随想</a></li>
-									<li><a href="<%=request.getContextPath()%>?cid=6&page=1">宇宙奇想</a></li>
+									<li><a href="<%=request.getContextPath()%>/?cid=1&page=1">生活杂记</a></li>
+									<li><a href="<%=request.getContextPath()%>/?cid=4&page=1">音乐随想</a></li>
+									<li><a href="<%=request.getContextPath()%>/?cid=6&page=1">宇宙奇想</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -77,7 +83,7 @@
 		<div class="row clearfix" style="height:30px;background-color:white;box-sizing:border-box;">
 		    <div class="col-md-12 column" style="width: 80%;margin-bottom:15px; height:30px;font-size:.9em;box-sizing:border-box;">
 		    	<ol class="breadcrumb" style="background-color:white;">
-    				<li><a href="<%=request.getContextPath()%>">主页</a></li>
+    				<li><a href="<%=request.getContextPath()%>/">主页</a></li>
     				<li><a href="#"></a></li>
     				<li class="active">正文</li>
 				</ol>
@@ -223,7 +229,7 @@
 							
 				for(var cat in blogCategoryID){
 					if(data.category_id==blogCategoryID[cat]){
-						$(".breadcrumb").find("li").eq(1).html("<a href='index.jsp?cid="+data.category_id+"&page=1'>"+cat+"</a>");
+						$(".breadcrumb").find("li").eq(1).html("<a href='<%=request.getContextPath()%>/?cid="+data.category_id+"&page=1'>"+cat+"</a>");
 					}
 				}
 						

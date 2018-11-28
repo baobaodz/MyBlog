@@ -10,13 +10,11 @@
 <link rel="stylesheet" href="../css/index.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <script type="text/javascript" src="../js/jquery.min.js"></script>
-
 <script type="text/javascript" src="../js/jquery-ui.js"></script>
-
-<script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
 <script type="text/javascript" src="../bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/broadside.js"></script>
 <script type="text/javascript" src="../js/timecount.js"></script>
-
+<script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
 
 <title>baobaodz｜归档</title>
 <script type="text/javascript">
@@ -39,8 +37,6 @@
 			breadcrumb.find("li").eq(2).html("<a href='archives.jsp?y="+year+"'>"+year+"</a>");
 			$(".btn-archivesyear").empty();
 		}
-		
-		$(".slide").empty();//清空轮播图div下所有节点
 		getArchivesByDate(data);
 		
 		//根据条件获取文章列表
@@ -106,54 +102,7 @@
 		loadSiteInfo();//加载站点信息
 		loadArchives();
 		loadMostViewCount();//加载右侧最多浏览
-		//加载站点信息
-		function loadSiteInfo(){
-			$.ajax({
-				url : "<%=request.getContextPath()%>/querySiteInfo",
-     			type: "post",
-     			dataType : "json",
-     			contentType: "application/json;charset=utf-8",
-     			data:JSON.stringify({}),
-     			success:function(data){
-     				var mybloginfo = $(".mybloginfo");
-     				mybloginfo.find("dd").eq(0).text(data.ARTICLENUM);
-     				mybloginfo.find("dd").eq(1).text(data.LIKENUM);
-     				mybloginfo.find("dd").eq(2).text(data.VIEWNUM);
-     				mybloginfo.find("dd").eq(3).text(data.MESSNUM);
-				}
-			})
-		
-		}
-		//加载最多浏览
-		function loadMostViewCount(){
-			$.ajax({
-				url: "<%=request.getContextPath()%>/orderByViewCount",
-     			type: "post",
-     			dataType : "json",
-     			contentType: "application/json;charset=utf-8",
-     			data:JSON.stringify({}),
-     			success:function(data){
-     				for(var i=0;i<data.length;i++){
-     			 		$(".mymostview ul").append("<li style='margin: 4px 0px;'><span>"+(i+1)+"</span><a href='details.jsp?aid="+data[i].aid+"'>"+data[i].title+"</a></li>");
-			  		}
-     			}
-			});
-		}
-		//加载文章归档
-		function loadArchives(){
-			$.ajax({
-				url: "<%=request.getContextPath()%>/queryArchivesGroupByMonth",
-     			type: "post",
-     			dataType : "json",
-     			contentType: "application/json;charset=utf-8",
-     			data:JSON.stringify({}),
-     			success:function(data){
-     				for(var i=0;i<data.length;i++){
-     			 		$(".myarchives ul").append("<li><span><a href='archives.jsp?ym="+data[i].YM+"'>"+data[i].YM.substr(0,4)+"年"+data[i].YM.substr(5)+"月</a></span><span>"+data[i].COUNT+"篇</span></li>");
-			  		}
-     			}
-			});
-		}
+		TimeDown("show-time", "2018-11-14 00:00:00");//调用计时
 		//日历插件左右按钮
 		$(".datepicker").datepicker({
     		prevText: '<i class="fa fa-fw fa-angle-left"></i>',
@@ -167,7 +116,7 @@
  			getArchivesByDate(data);
  			
  		})
- 		TimeDown("show-time", "2018-11-14 00:00:00");//调用计时
+ 		
  		$("#show-count").text("本站累计访问次数："+sessionStorage.getItem("rank")+"次");
  		$(".datepicker,.aboutsite,.learnsite").addClass("visible-md-8 hidden-xs");
 	});
@@ -182,7 +131,7 @@
 		<div class="row clearfix mycatnav">
 			<div class="col-md-12 column" style="padding-right:0px;">
 				<ol class="breadcrumb">
-    					<li><a href="<%=request.getContextPath()%>"><i class="fas fa-file-signature"></i> 文章 </a></li>
+    					<li><a href="<%=request.getContextPath()%>/"><i class="fas fa-file-signature"></i> 文章 </a></li>
     					<li><a href="archives.jsp">归档</a></li>
     					<li></li>
     					<li></li>
