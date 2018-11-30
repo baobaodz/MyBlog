@@ -5,7 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="<%=request.getContextPath()%>/images/favicon.ico" type="image/x-icon" />
+<meta name="keywords" content="JAVA,LINUX,MYSQL,ORACLE,WEB,JavaScript,Spring,Javaweb个人博客,个人网站,IT网站,IT技术博客,技术分享,技术干货,系统架构,生活随笔,开发者,编程,代码,开源">
+<meta name="description" content="本博客为Javaweb个人博客，专注java，数据库，计算机网络，JavaScript等学习总结与技术分享">
+<meta name="author" content="BAOBAODZ">
+<link rel="shortcut icon" href="<%=request.getContextPath()%>/images/favicon.ico" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap-3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/busy-load/dist/app.min.css" >
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/index.css">
@@ -119,8 +122,8 @@
      		   	  	var cat = getCategoryName(data[i].category_id);
      		   	 	$(".articlelist").append("<li>"+
      		   	 	"<div class='imgcontainer visible-md-8 hidden-xs'>"+
-     		   	 		"<a href='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg' target='blank' title='下载原图'>"+
-     		   	 			"<img src='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg'>"+
+     		   	 		"<a id='"+data[i].aid+"' href='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".gif' target='blank' title='下载原图'>"+
+     		   	 			"<img src='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".gif' onerror='errorImage("+data[i].aid+");'/>"+
      		   	 		"</a>"+
      		   	 	"</div>"+
      		   	 	"<div class='infocontainer'>"+
@@ -229,12 +232,26 @@
 		search.blur(function(){
 			$(this).width(150);
 		})
+
 		
 	})
-	
+	$(window).load(function() { 
+
+		function errorImage(id) {
+			$("a#"+id).attr("href","http://resource.baobaodz.com/image/preview/articlepreview"+id+".jpg");
+    		var img = event.srcElement;
+    		img.src = "http://resource.baobaodz.com/image/preview/articlepreview"+id+".jpg";
+    		img.onerror = null;
+		}
+	}
 </script>
 </head>
 <body>
+	<!--[if lt IE 8]>
+	<div class="browsehappy" role="dialog">
+   		 当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/" target="_blank">升级你的浏览器</a>。
+	</div>
+	<![endif]-->
 	<div class="container">
 		<!-- 头部菜单栏 -->
 		<jsp:include page="common/header.jsp"></jsp:include>

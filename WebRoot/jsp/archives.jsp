@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="JAVA,LINUX,MYSQL,ORACLE,WEB,JavaScript,Spring,Javaweb个人博客,个人网站,IT网站,IT技术博客,技术分享,技术干货,系统架构,生活随笔,开发者,编程,代码,开源">
+<meta name="description" content="本博客为Javaweb个人博客，专注java，数据库，计算机网络，JavaScript等学习总结与技术分享">
+<meta name="author" content="BAOBAODZ">
 <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/index.css">

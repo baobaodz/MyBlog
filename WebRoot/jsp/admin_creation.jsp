@@ -139,7 +139,7 @@
      	if(aidParam!=null&&aidParam!=""){
 		 	var aid = aidParam.substr(5,5);
 		}
-     	var btnIndex = $(this).parent().index();
+     	var btnIndex = $(this).index();
      	if(btnIndex==0){
      		var url = "<%=request.getContextPath()%>/saveToDraft";
      		var draft = 1;
@@ -182,7 +182,7 @@
      		success:function(data){
      		
      			alert(operation+"成功!");
-     			window.location.href = "admin_manageBlog.jsp";
+     			window.location.href = "admin_main.jsp";
      		}
      	});
      });
@@ -291,10 +291,10 @@
       						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
       						保存 <span class="caret"></span></button>
       						<ul class="dropdown-menu" role="menu">
-        						<li class="btn_DoSomething"><a href="#">保存为草稿</a></li>
-        						<li class="btn_DoSomething"><a href="#">保存并发布</a></li>
-        						<li class="btn_DoSomething"><a href="#">更新到草稿</a></li>
-        						<li class="btn_DoSomething"><a href="#">更新并发布</a></li>
+        						<li class="btn_DoSomething"><a href="">保存为草稿</a></li>
+        						<li class="btn_DoSomething"><a href="">保存并发布</a></li>
+        						<li class="btn_DoSomething"><a href="">更新到草稿</a></li>
+        						<li class="btn_DoSomething"><a href="">更新并发布</a></li>
       						</ul>
     					</div>
                     </div>
