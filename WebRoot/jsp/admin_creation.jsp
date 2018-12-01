@@ -34,16 +34,15 @@
     <script type="text/javascript" src="../js/admin/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript" src="../js/admin/select2.full.min.js"></script>
     
-	<script type="text/javascript" src="../js/editormd.min.js"></script>
+	
 	<script type="text/javascript" src="../editor.md-master/lib/marked.min.js"></script>
-	<script type="text/javascript" src="../editor.md-master/lib/flowchart.min.js"></script>
-	<script type="text/javascript" src="../editor.md-master/lib/jquery.flowchart.min.js"></script>
 	<script type="text/javascript" src="../editor.md-master/lib/prettify.min.js"></script>
 	<script type="text/javascript" src="../editor.md-master/lib/raphael.min.js"></script>
 	<script type="text/javascript" src="../editor.md-master/lib/sequence-diagram.min.js"></script>
 	<script type="text/javascript" src="../editor.md-master/lib/underscore.min.js"></script>
-    
-
+	<script type="text/javascript" src="../editor.md-master/lib/flowchart.min.js"></script>
+	<script type="text/javascript" src="../editor.md-master/lib/jquery.flowchart.min.js"></script>
+	<script type="text/javascript" src="../js/editormd.min.js"></script>
 	<script type="text/javascript">
 
 	$(function() {
@@ -77,12 +76,12 @@
 			height : 600,
 			syncScrolling : "single",
 			path : "../editor.md-master/lib/",
-			//这个配置在simple.html中并没有，但是为了能够提交表单，
-			//使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
+			htmlDecode: true,
             previewCodeHighlight : true,
             //previewTheme : "dark",
 			emoji:true,
         	saveHTMLToTextarea : true
+        	
 		});
 		
 		//刚进来获取分类动态加载下拉菜单

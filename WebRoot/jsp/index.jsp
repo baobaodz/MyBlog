@@ -76,7 +76,7 @@
 				java:2,
 				数据库:3,
 				音乐随想:4,
-				bug:5,
+				前端:5,
 				宇宙奇想:6,
 				数据结构:7,
 				计算机网络:8
@@ -122,8 +122,8 @@
      		   	  	var cat = getCategoryName(data[i].category_id);
      		   	 	$(".articlelist").append("<li>"+
      		   	 	"<div class='imgcontainer visible-md-8 hidden-xs'>"+
-     		   	 		"<a id='"+data[i].aid+"' href='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".gif' target='blank' title='下载原图'>"+
-     		   	 			"<img src='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".gif' onerror='errorImage("+data[i].aid+");'/>"+
+     		   	 		"<a href='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg' target='blank' title='下载原图'>"+
+     		   	 			"<img src='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg' onerror='errorImage("+data[i].aid+");'/>"+
      		   	 		"</a>"+
      		   	 	"</div>"+
      		   	 	"<div class='infocontainer'>"+
@@ -232,18 +232,15 @@
 		search.blur(function(){
 			$(this).width(150);
 		})
-
-		
+	
 	})
-	$(window).load(function() { 
-
-		function errorImage(id) {
-			$("a#"+id).attr("href","http://resource.baobaodz.com/image/preview/articlepreview"+id+".jpg");
-    		var img = event.srcElement;
-    		img.src = "http://resource.baobaodz.com/image/preview/articlepreview"+id+".jpg";
-    		img.onerror = null;
-		}
+	function errorImage(id) {
+    	var img = event.srcElement;
+    	img.parentNode.href = "http://resource.baobaodz.com/image/preview/articlepreview"+id+".gif";
+    	img.src = "http://resource.baobaodz.com/image/preview/articlepreview"+id+".gif";
+    	img.onerror = null;
 	}
+
 </script>
 </head>
 <body>

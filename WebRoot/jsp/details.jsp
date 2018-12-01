@@ -9,8 +9,9 @@
 <meta name="description" content="本博客为Javaweb个人博客，专注java，数据库，计算机网络，JavaScript等学习总结与技术分享">
 <meta name="author" content="BAOBAODZ">
 <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
-<link rel="stylesheet" href="../editor.md-master/css/editormd.min.css"/>
+
 <link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="../editor.md-master/css/editormd.min.css"/>
 <link rel="stylesheet" href="../css/bootstrap-switch.css">
 <link rel="stylesheet" href="../css/details.css" >
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" >
@@ -21,11 +22,11 @@
 <script type="text/javascript" src="../js/dynamicscrollspy.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap-switch.js"></script>
 <script type="text/javascript" src="../editor.md-master/lib/marked.min.js"></script>
-<script type="text/javascript" src="../editor.md-master/lib/flowchart.min.js"></script>
-<script type="text/javascript" src="../editor.md-master/lib/jquery.flowchart.min.js"></script>
 <script type="text/javascript" src="../editor.md-master/lib/prettify.min.js"></script>
 <script type="text/javascript" src="../editor.md-master/lib/raphael.min.js"></script>
 <script type="text/javascript" src="../editor.md-master/lib/underscore.min.js"></script>
+<script type="text/javascript" src="../editor.md-master/lib/flowchart.min.js"></script>
+<script type="text/javascript" src="../editor.md-master/lib/jquery.flowchart.min.js"></script>
 <script type="text/javascript" src="../js/editormd.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
@@ -54,7 +55,7 @@
 							<li class=""><a href="<%=request.getContextPath()%>/?cid=2&page=1"><i class="fab fa-java fa-1x"></i> Java</a></li>
 							<li class=""><a href="<%=request.getContextPath()%>/?cid=3&page=1"><i class="fa fa-database"></i> 数据库</a></li>
 							<li class=""><a href="<%=request.getContextPath()%>/?cid=8&page=1"><i class="fa fa-desktop"></i> 计算机网络</a></li>
-							<li class=""><a href="<%=request.getContextPath()%>/?cid=5&page=1"><i class="fas fa-bug"></i> BUG</a></li>
+							<li class=""><a href="<%=request.getContextPath()%>/?cid=5&page=1"><i class="fab fa-js"></i> 前端</a></li>
 							<li class=""><a href="<%=request.getContextPath()%>/?cid=7&page=1"><i class="fas fa-code-branch"></i> 数据结构</a></li>
 							<li class="more">
 								<a href="#"><i class="fas fa-caret-down"></i> 更多</a>
@@ -223,7 +224,7 @@
 					java:2,
 					数据库:3,
 					音乐随想:4,
-					bug:5,
+					前端:5,
 					宇宙奇想:6,
 					数据结构:7,
 					计算机网络:8
@@ -252,10 +253,8 @@
 							
 				//开始对div转换
         		editormd.markdownToHTML("blogcontainer", {
-        			htmlDecode : false,
-           			//htmlDecode: "style,script,iframe", //可以过滤标签解码
+        			htmlDecode : "style,script,iframe",
            			previewCodeHighlight : true,
-           			previewTheme : "dark",
             		emoji: true,
             		taskList:true,
             		tex: true,             // 默认不解析
