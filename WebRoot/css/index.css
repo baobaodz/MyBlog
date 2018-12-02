@@ -178,17 +178,22 @@ li{
 	float:left;
 	background-color:#c0c0c0;
 	margin:14px 18px 0px 0px;
+	
 }
 .articlelist li .imgcontainer a,.articlelist li .imgcontainer img{
 	
+	display:block;
 	height:100%;
 	width:100%;
+	position: relative;
+	z-index:2;
 }
 .articlelist li .infocontainer{
 	
 	height:80%;
 	padding-top:5px;
 	position:relative;
+	z-index:1;
 }
 .articlelist li .infocontainer .moreinfo span{
 	

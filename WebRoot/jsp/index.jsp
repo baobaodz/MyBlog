@@ -120,7 +120,7 @@
      		   }else{
      		      for(var i=0;i<data.length;i++){
      		   	  	var cat = getCategoryName(data[i].category_id);
-     		   	 	$(".articlelist").append("<li>"+
+     		   	 	$(".articlelist").append("<li class='row clearfix'>"+
      		   	 	"<div class='imgcontainer visible-md-8 hidden-xs'>"+
      		   	 		"<a href='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg' target='blank' title='下载原图'>"+
      		   	 			"<img src='http://resource.baobaodz.com/image/preview/articlepreview"+data[i].aid+".jpg' onerror='errorImage("+data[i].aid+");'/>"+
