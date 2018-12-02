@@ -49,6 +49,7 @@
                             </form>
                             <div class="login-button text-center">
                                     <input type="submit" class="btn btn-primary" value="Login">
+                                    <p style="color:red;margin-top:.8em;"></p>
                             </div>
                         </div>
                         <div class="login-footer">
@@ -75,7 +76,7 @@
     <script type="text/javascript">
 		$(function(){
 	
-			$(".login-button").click(function(){
+			$(".btn-primary").click(function(){
 				var aname = $("input[type='text']").val();
 				var apassword = $("input[type='password']").val();
 				$.ajax({
@@ -84,24 +85,45 @@
      				dataType : "json",
      				contentType: "application/json;charset=utf-8",
      				data:JSON.stringify({
-     				"aname":aname,
-     				"apassword":apassword
-     			}),
-     			success:function(data){
-     				sessionStorage.setItem("name", aname);
-     				sessionStorage.setItem("password", apassword);
-     				window.location.href = "<%=request.getContextPath()%>/jsp/admin_main.jsp";
-     			},
-     			error:function(data){
-     				window.location.href = "<%=request.getContextPath()%>/jsp/admin_login.jsp";
-     			}
+     					"aname":aname,
+     					"apassword":apassword
+     				}),
+     				success:function(data){
+     					sessionStorage.setItem("name", aname);
+     					sessionStorage.setItem("password", apassword);
+     					window.location.href = "<%=request.getContextPath()%>/jsp/admin_main.jsp";
+     				},
+     				error:function(data){
+     				
+     					$(".login-button p").text("用户名或密码错误！");
+     					return false;
+     				}
 		
-			});
-		
-		})
-
+				});
+			})
 		});
-
+		window.onload = function(){
+		
+            var aname = sessionStorage.getItem("name");
+            var apassword = sessionStorage.getItem("password");
+            if(aname!=""&&aname!=null&&apassword!=""&&apassword!=null){
+				$.ajax({
+					url : "<%=request.getContextPath()%>/login",
+     				type: "post",
+     				dataType : "json",
+     				contentType: "application/json;charset=utf-8",
+     				data:JSON.stringify({
+     					"aname":aname,
+     					"apassword":apassword
+     				}),
+    				success:function(data){
+     				
+     					window.location.href = "<%=request.getContextPath()%>/jsp/admin_main.jsp";
+     				}
+				});
+            }            		
+		
+		}
 </script>
 </body>
 </html>

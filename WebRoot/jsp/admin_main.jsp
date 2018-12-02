@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+``<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -88,14 +88,14 @@
                             </ul>
                         </li>
                         <li class="dropdown profile">
-                            <a href="#" class="dropdown-toggle admin-info" data-toggle="dropdown" role="button" aria-expanded="false">Emily Hart <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle admin-info" data-toggle="dropdown" role="button" aria-expanded="false">${sessionScope.name} <span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li class="profile-img">
                                     <img src="http://resource.baobaodz.com/image/avatar/admin_baobaodz.jpg" class="profile-img">
                                 </li>
                                 <li>
                                     <div class="profile-info">
-                                        <h4 class="username">Emily Hart</h4>
+                                        <h4 class="username">${sessionStorage.getItem("name")}</h4>
                                         <p>emily_hart@email.com</p>
                                         <div class="btn-group margin-bottom-2x" role="group">
                                             <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
@@ -110,7 +110,7 @@
             </nav>
           	<!--Side Menu  -->
             <jsp:include page="common/sidemenu.jsp"></jsp:include>
-            <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >免费网站模板</a></div>
+            <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" ></a></div>
             <!-- Main Content -->
             <div class="container-fluid">
                 <div class="side-body padding-top">
@@ -319,37 +319,6 @@
             <!-- Javascript -->
             <script type="text/javascript" src="../js/admin/app.js"></script>
             <script type="text/javascript" src="../js/admin/index.js"></script>
-            <script type="text/javascript">
-            	$(function(){
-            
-            		var aname = sessionStorage.getItem("name");
-            		var apassword = sessionStorage.getItem("password");
-            		if(aname==""||aname==null||apassword==""||apassword==null){
-            		
-            			window.location.href = "<%=request.getContextPath()%>/jsp/admin_login.jsp";
-            		
-            		}else{
-            		
-            			$.ajax({
-							url : "<%=request.getContextPath()%>/login",
-     						type: "post",
-     						dataType : "json",
-     						contentType: "application/json;charset=utf-8",
-     						data:JSON.stringify({
-     							"aname":aname,
-     							"apassword":apassword
-     						}),
-     						error:function(data){
-     							window.location.href = "<%=request.getContextPath()%>/jsp/admin_login.jsp";
-     						}
-		
-						});
-            		}
-            		$(".admin-info,.profile-info h4").text(aname);
-            	});
-            
-            </script>
-            
 </body>
 
 </html>

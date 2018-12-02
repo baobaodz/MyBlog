@@ -19,7 +19,7 @@
 						<dt><img alt="avatar" src="<%=request.getContextPath()%>/images/avatar.png" class="img-circle"></dt>
 					</dl>
 					<dl style="width:65%;">
-						<dt><h3><a href="<%=request.getContextPath()%>/jsp/admin_main.jsp" target="blank">baoabaodz</a></h3></dt>
+						<dt><h3><a href="<%=request.getContextPath()%>/jsp/admin_login.jsp" target="blank">baoabaodz</a></h3></dt>
 						<dd><p>长路漫漫,只管前方</p></dd>
 						<dd><p>赚钱养梦,唯心不死</p></dd>
 					</dl>
