@@ -53,7 +53,7 @@
         				<dd></dd>
         			</dl>
         			<dl>
-        				<dt><a href="https://www.jianshu.com/u/ff2b133101d4" target="blank" title="微信"><i class="fab fa-weixin fa-2x"></i></a></dt>
+        				<dt><a href="http://baobaodz.top" target="blank" title="hexo"><i class="fas fa-heading fa-2x"></i></a></dt>
         				<dd></dd>
         			</dl>
         			<dl>

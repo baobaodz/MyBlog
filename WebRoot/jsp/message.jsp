@@ -65,6 +65,7 @@
       			}
       		})
       	}
+      	
       	queryMessage();
       	loadSiteInfo();//加载站点信息
       	loadMostViewCount();//加载右侧最多浏览
@@ -146,8 +147,9 @@
 		$("#show-count").text("本站累计访问次数："+sessionStorage.getItem("rank")+"次");
 		
 		$(".datepicker,.aboutsite,.learnsite").addClass("visible-md-8 hidden-xs");
-	
+
 	})
+	
 	
 </script>
 </head>
