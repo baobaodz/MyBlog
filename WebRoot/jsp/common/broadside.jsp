@@ -19,9 +19,9 @@
 						<dt><img alt="avatar" src="<%=request.getContextPath()%>/images/avatar.png" class="img-circle"></dt>
 					</dl>
 					<dl style="width:65%;">
-						<dt><h3><a href="<%=request.getContextPath()%>/jsp/admin_login.jsp" target="blank">baoabaodz</a></h3></dt>
-						<dd><p>长路漫漫,只管前方</p></dd>
-						<dd><p>赚钱养梦,唯心不死</p></dd>
+						<dt><h3><a href="<%=request.getContextPath()%>/jsp/admin_login.jsp" target="blank">&nbsp;baoabaodz</a></h3></dt>
+						<dd><p>&nbsp;&nbsp;&nbsp;长路漫漫,只管前方</p></dd>
+						<dd><p>be hungry,be humble</p></dd>
 					</dl>
 				</div>
 				<div class="panel-body mybloginfo">
@@ -57,7 +57,7 @@
         				<dd></dd>
         			</dl>
         			<dl>
-        				<dt><a href="https://www.jianshu.com/u/ff2b133101d4" target="blank" title="邮箱"><i class="fa fa-envelope fa-2x"></i></a></dt>
+        				<dt><a href="<%=request.getContextPath()%>/lovetoSuperman" target="blank" title="superman"><i class="fas fa-compact-disc fa-2x"></i></a></dt>
         				<dd></dd>
         			</dl>
         				

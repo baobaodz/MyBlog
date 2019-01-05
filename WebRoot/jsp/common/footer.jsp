@@ -17,7 +17,7 @@
 						<a href="https://github.com/baobaodz/MyBlog/issues" target="blank">意见反馈 </a>丨
 						<a href="https://github.com/baobaodz/MyBlog" target="blank">代码源址 </a>
 					</p>
-					<p style="margin:0">Copyright © 2018 <a href="#">baobaodz博客</a> 丨 苏ICP备18061978号</p>
+					<p style="margin:0">Copyright © 2018 <a href="#">baobaodz博客</a> 丨 <a href="http://www.miitbeian.gov.cn" target="blank">苏ICP备18061978号</a></p>
 				</div>
 		
 

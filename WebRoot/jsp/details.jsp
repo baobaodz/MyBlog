@@ -110,7 +110,7 @@
 		</div>
 		<!-- 点赞分享 -->
 		<div class="row clearfix">
-			<div class="col-md-12 column" style="height:40px;line-height:40px;">
+			<div class="col-md-9 column" style="height:40px;line-height:40px;">
 				<div class="socialoperation">
 					<ul>
 						<li class="favorite">
@@ -120,12 +120,21 @@
 						</li>
 						<li class="share">
 							<a href="javascript:void(null)">
-								<i class="fa fa-share-alt"></i> 分享<span></span>
+								<span><i class="fa fa-share-alt"></i> 分享</span>
 							</a>
 							<div class="social-share"></div>
 						</li>
+						<li class="b_review" style="float:right">
+							<a href="#review">
+								<span> 评论 <i class="far fa-comments"></i></span>
+							</a>
+							
+						</li>
 					</ul>
 				</div>
+			</div>
+			<div class="col-md-3 column" style="height:60px;text-align:center;line-height:60px;">
+				
 			</div>
 		</div>
 		<!--文章底部 -->	
@@ -138,7 +147,9 @@
 					</ul>
 				</div>
 				<!--畅言评论 -->
+				<a id="review"></a>
 				<div class="article_review">
+					
 					<div id="SOHUCS" sid="" ></div> 
 					<script type="text/javascript"> 
 						(function(){ 
@@ -394,6 +405,27 @@
 				}
 						
 			})
+			//点击时增加赞数
+			$(".downloadMD").click(function(){
+				var articleTitle = $("#testH").text();
+				$.ajax({
+					url:"<%=request.getContextPath()%>/downloadMD",
+					type : "post",
+					dataType : "json",
+					contentType : "application/json;charset=utf-8",
+					data : JSON.stringify({
+						"aid" : aid,
+						"articleTitle":articleTitle
+					}),
+					success : function(data) {
+						$.cookie("likeID",aid,{"path":"/"})
+						$(".fa-thumbs-up").css("color","red");
+						var num=Number($(".fav-num").text())+1;
+						$(".fav-num").empty().html(num);
+						},
+				});
+						
+			})
 
 			//搜素框焦点事件
 			var searchinput = $(".search-input");
@@ -404,7 +436,7 @@
 			searchinput.blur(function(){
 				$(this).width(160);
 			})
-						
+				
 			if(localStorage.normalCodeBlockTheme!="true"){//浅色
 				$("input[name='switchcheckbox']").attr("checked",false);
 			}
@@ -451,7 +483,11 @@
 					
 				}
 			}
+			$(".b_review").click(function(){
+				
+				$(".textarea-bf").focus();
 			
+			})		
 		}	
 	</script>
 </body>

@@ -1,5 +1,8 @@
 package com.blog.article.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+
 
 
 
@@ -42,13 +46,14 @@ public class ArticleController {
 	public Map<String, Object> saveToDraft(
 			@RequestBody Map<String, Object> map, ModelAndView mv,
 			HttpServletRequest request) {
-
+		
 		String updateStr = request.getQueryString();
 		if (updateStr != null && updateStr != ""&& updateStr.contains("isUpdate")) {
 			articleService.updateToDraft(map);
 		} else {
 			articleService.saveToDraft(map);
 		}
+		outputMD(map);
 		return map;
 
 	}
@@ -261,4 +266,53 @@ public class ArticleController {
 		Map<String,String> siteInfo = articleService.querySiteInfo();
 		return siteInfo;
 	}
+	/*
+	 * 生成md文件
+	 * @map
+	 */
+	public void outputMD(Map<String,Object> map) {
+		
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		String title =String.valueOf(map.get("title"));
+		
+		String strTtitle = "title: "+ title+"\r\n";
+		String strDate = "date: "+sdf.format(date)+"\r\n";
+		String strArticleid = "articleID: "+String.valueOf(map.get("aid"))+"\r\n";
+		String strCategory = "categories: "+String.valueOf(map.get("category_id"))+"\r\n";
+		
+		String strSummary = String.valueOf(map.get("summary"))+"\r\n<!--more-->\r\n";
+		String strContent = String.valueOf(map.get("content"));
+		String strInfo = "---\r\n";
+		String str = strInfo
+				+ strTtitle
+				+ strArticleid
+				+ strDate
+				+ strCategory
+			    + strInfo
+			    + strSummary
+			    + strContent;
+		File file = new File("/root/blogs/"+sdf.format(date).substring(0, 11)+title+".md");
+		try (FileOutputStream fop = new FileOutputStream(file)) {
+
+            if (!file.exists()) {
+                file.createNewFile();
+              
+            }
+            byte[] contentInBytes = str.getBytes();
+
+            fop.write(contentInBytes);
+            fop.flush();
+            fop.close();
+
+            System.out.println("生成文件成功");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            
+        }
+
+
+	}	
 }
